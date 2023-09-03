@@ -1,41 +1,54 @@
 window = Window()
-window.setIcon(images("javascript.png"))
-window.setSize(400, 100)
+window:center()
+window:setIcon(images("lua.png"))
+anim=Animation(window)
 
-noti = Notification(images('furniture.png'))
-noti.setMessage('limekit', 'First ever lua material framework!', 'information', 1000)
-noti.show()
+window:setOnShown(function()
+  window:center()
+  noti = Notification(images('furniture.png'))
+  noti:setMessage('limekit', 'First ever lua material framework!', 'information', 1000)
+
+
+end)
+window:setOnResize(function()
+  window:setTitle('Width: '..window:getSize()[0]..' Height: '..window:getSize()[1])
+end)
+window:setOnClose(function(sender, event)
+  -- event.ignore()
+  event.accept()
+end)
+window:setSize(400, 100)
 
 toolbar = Toolbar();
 
 tray = SysTray();
-tray.setImage(images("heart.png"));
-tray.setVisibility(true);
+tray:setImage(images("heart.png"));
+tray:setVisibility(true);
 
 menubar = Menubar()
 menu = Menu();
 compose = MenuItem("Compose");
-compose.setImage(images("add.png"));
+compose:setImage(images("add.png"));
 
 open = MenuItem("Open");
-open.setImage(images("open.png"));
+open:setImage(images("open.png"));
 
 exit = MenuItem("Exit");
-exit.setImage(images("exit.png"));
-menu.addMenuItems(compose, open, exit);
-tray.setMenu(menu);
+exit:setImage(images("exit.png"));
+menu:addMenuItems(compose, open, exit);
+tray:setMenu(menu);
 
 malawi = ToolbarButton();
-malawi.setTooltip("Develoepd from Malawi");
-malawi.setImage(images("malawi.png"));
+malawi:setTooltip("Develoepd from Malawi");
+malawi:setImage(images("malawi.png"));
 toolbar.addAction(malawi);
 
 toolbar.addSeparator();
 
 b = ToolbarButton();
-b.setTooltip("hey");
-b.setImage(images("icons8_send_50px.png"));
-b.onClick(function (self)
+b:setTooltip("hey");
+b:setImage(images("icons8_send_50px.png"));
+b:onClick(function (self)
   self.setImage(images("icons8_curriculum_50px.png"));
 end);
 b.setCheckable(true);
@@ -57,8 +70,9 @@ mainLay1 = VLayout();
 button = Button();
 button.setText("Click me");
 button.setToolTip("I am a tooltip");
-button.onClick(function (x) 
-  app.setClipboardText("Clipboard text!");
+button:onClick(function (x) 
+  -- app.setClipboardText("Clipboard text!");
+  anim.start()
    -- app.qPopup(window, 'title', 'message', ['yes', 'apply', 'discard', 'retry'])
    -- alert(window, "Alert title", app.getClipboardText());
   alert(window, "Title here", "These buttons are super cool!", "question", {
@@ -69,20 +83,21 @@ button.onClick(function (x)
     "ignore",
     "notoall",
   });
+
   -- return;
   -- dialog = InputDialog(window);
   -- obtainedText = dialog.getText();
   -- if (obtainedText) x.setText(obtainedText);
 end);
 
-mainLay1.addChild(button);
+mainLay1:addChild(button);
 
  -- label = Label("Hello World");
 combo = ComboBox();
  -- combo.addItems(["Omega", "Msiska", "Mitosis", "X"]);
-combo.addItems(theme.getThemes());
-combo.onItemSelect(function (sender, data) 
-  theme.setTheme(data);
+combo:addDataItems(theme.getThemes());
+combo:onItemSelected(function (sender, data) 
+  theme:setTheme(data);
 end);
 
 progress = ProgressBar();
@@ -91,7 +106,7 @@ progress.setValue(20);
 spin = Spinner();
 spin.setPrefix("%");
 spin.setToolTip("Progressbar percentage");
-spin.onValueChange(function (sender, value) 
+spin:onValueChange(function (sender, value) 
   progress.setValue(value);
 end);
 spin.setRange(10, 50);
@@ -146,8 +161,8 @@ spin2.setPrefix("$");
 spin2.setRange(1, 100);
 lay2.addChildren(combo2, spin2);
 
-spin1.onValueChange(calculateTotal);
-spin2.onValueChange(calculateTotal);
+spin1:onValueChange(calculateTotal);
+spin2:onValueChange(calculateTotal);
 
 function calculateTotal(sender)
   total = spin1.getValue() + spin2.getValue();
@@ -155,8 +170,8 @@ function calculateTotal(sender)
 end
 
 styles = ComboBox();
-styles.addItems(window.getStyles());
-styles.onItemSelect(function (sender, style)
+styles.addDataItems(window.getStyles());
+styles.onItemSelected(function (sender, style)
   window.setStyle(style);
 end);
 

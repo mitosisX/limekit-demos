@@ -1,5 +1,5 @@
 -- Creating the window
-window = Window("Calculator - Miranda")
+window = Window("Calculator - Limekit")
 window:setIcon(images("calc.png"))
 window:setSize(280, 80)
 
@@ -13,7 +13,7 @@ display = TextEdit()
 display.setReadOnly(true)
 display.setFixedHeight(35)
 
-mainLay:addChild(display)
+mainLay.addChild(display)
 
 grid = GridLayout()
 mainLay:addLayout(grid)

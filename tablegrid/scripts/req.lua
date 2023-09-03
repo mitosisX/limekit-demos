@@ -1,1 +1,3 @@
-a = Button("Hello")
+add = function(x,y)
+	return x+y
+end

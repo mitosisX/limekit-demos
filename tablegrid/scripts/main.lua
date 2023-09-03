@@ -1,6 +1,7 @@
 -- Creating a window
-window = Window()
-window:setIcon(images("javascript.png"))
+window = Window("TableGrid - Limekit")
+window:setSize(520,310)
+window:setIcon(images("lua.png"))
 
 -- Creating a main horizontal layout
 mainLay = VLayout()
@@ -8,28 +9,31 @@ mainLay = VLayout()
 theme = Theme("material")
 theme:setTheme("light_blue")
 
-app.setClipboardText('Clipboard')
-
 -- Creating a table grid with dimensions 10x10
 table = TableGrid(10, 10)
+table:setColumnSorting(false)
+-- table.setAltRowColors(true)
 -- table.setCellsEditable(false)
-ckbox=Calendar()
+combo = ComboBox()
+combo:addImageItems({{'lua', images('lua.png') }, {'malawi', images('malawi.png')}, {'heart', images('heart.png') }});
+
+-- combo.addDataItems({'Pass','Failed'})
 -- ckbox.onClick(function()
 --     print('Clicked')
 -- end)
-table.setCellWidget(0, 2, ckbox)
+table:setCellChild(0, 2, combo)
 -- table.setGridVisible(false) -- Hides the grid lines
 -- table:setHeaderToolTip(1, 'Names go here')
-table:setColumns(4)
-table.setRowLabelsVisible(false)
+table:setMaxColumns(4)
+-- table.setRowLabelsVisible(false)
 -- table.setColumnWidth(0,200)
-table:setColumnHeaders({'Name','Surname'})
+table:setColumnHeaders({'Name','Surname','Age','Class','Grade'})
+table:setRowHeaders({'Biology','Physics','Mathematics','English','Geography','Agriculture','Computer','Economics','Chemistry','Total'})
 
-table.setHeaderToolTip(0, 'Holds names')
+table:setColumnHeaderToolTip(0, 'Holds names')
 
 -- Setting data in the table at row 1, column 0
-table:setData(1, 0, "Text")
-table:setData(9, 0, "Text")
+table:setData(9, 0, "200")
 
 -- Adding an event handler for when a cell edit is finished
 table:onCellEditFinish(function (obj, row, column)
@@ -41,7 +45,7 @@ rightDock = Dock("Employees")
 
 btnLay = HLayout()
 
-table.deleteRows(2)
+table:deleteRows(2)
 
 -- Adding the right dock to the window
 -- window:addDock(rightDock, "right")
