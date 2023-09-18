@@ -1,7 +1,11 @@
 window = Window()
 window:center()
 window:setIcon(images("lua.png"))
-anim=Animation(window)
+window:setCustomCursor(route('cursor'))
+
+-- app.readFile(misc('sample.txt'))
+
+-- print(py_indexing({1,2,3,4,5,6}, "[0]"))
 
 window:setOnShown(function()
   window:center()
@@ -62,7 +66,6 @@ window.addToolbar(toolbar);
 -- Theme to be used
 theme = Theme("material");
  -- theme.setTheme("light_blue");
-
 mainLayout = HLayout();
 
 mainLay1 = VLayout();
@@ -72,7 +75,6 @@ button.setText("Click me");
 button.setToolTip("I am a tooltip");
 button:onClick(function (x) 
   -- app.setClipboardText("Clipboard text!");
-  anim.start()
    -- app.qPopup(window, 'title', 'message', ['yes', 'apply', 'discard', 'retry'])
    -- alert(window, "Alert title", app.getClipboardText());
   alert(window, "Title here", "These buttons are super cool!", "question", {

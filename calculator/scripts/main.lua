@@ -50,17 +50,17 @@ for keySymbol, button in pairs(buttonMap) do
     button:onClick(function(obj)
       local calText = display:getText()
       local newCalText = calText .. obj:getText()
-      display:setText(newCalText)
+      display.setText(newCalText)
     end)
   end
 end
 
 buttonMap["="]:onClick(function()
   local expression = eval(display:getText())
-  display:setText(tostring(expression))
+  display.setText(tostring(expression))
 end)
 buttonMap["C"]:onClick(function()
-  display:setText("")
+  display.setText("")
 end)
 
 -- Setting the layout and showing the window

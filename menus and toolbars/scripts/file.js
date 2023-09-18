@@ -7,12 +7,12 @@ sep1 = MenuItem('-')
 openfile = MenuItem("Open File");
 
 openfolder = MenuItem("Open Folder");
-openfolder.setImage(images("menu/openfolder.png"));
+openfolder:setImage(images("menu/openfolder.png"));
 openrecent = MenuItem("Open Recent");
 sep2 = MenuItem('-');
 
 save = MenuItem("Save");
-save.setImage(images("save.png"));
+save:setImage(images("save.png"));
 saveas = MenuItem("Save As");
 sep3 = MenuItem('-');
 

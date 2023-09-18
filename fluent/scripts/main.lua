@@ -1,18 +1,25 @@
-window = FluentWindow("Fluent UI - Limekit")
+window = FramelessWindow("Fluent UI - Limekit",'light')
 window:setIcon(images("lua.png"))
 window:setOnShown(function()
 end)
-window:setSize(580, 680)
+-- window:setSize(580, 200)
 
 -- theme = Theme("material")
 -- theme:setTheme("light_blue")
 
 
+function showImgPop(title,content,image, sender, window)
+    pop = ImagePopup(title,content, image)
+    pop:show(sender, window)
+end
+
+
 mainLay = FlowLayout()
-mainLay.setContentsMargins(30, 60, 30, 30)
--- mainLay:setContentAlignment('vcenter')
-mainLay.setSpacing(6)
-mainLay.setContentsMargins(30, 60, 30, 30)
+-- window:addMenu('Search', FluentIcon.VPN, mainLay)
+-- mainLay.setContentsMargins(30, 60, 30, 30)
+-- -- mainLay:setContentAlignment('vcenter')
+-- mainLay.setSpacing(6)
+-- mainLay.setContentsMargins(30, 60, 30, 30)
 
 function addCard(icon, title, content)
     card = Card(icon,title,title)
@@ -24,8 +31,8 @@ end
 
 function addEmojiCard(icon, title, content)
     card = EmojiCard(icon,title)
-    card:onClick(function()
-        print(title)
+    card:onClick(function(sender)
+        showImgPop(title,'This is the content for '..content,icon,sender)
     end)
     mainLay.addChild(card)
 end
@@ -36,12 +43,15 @@ emojis = {
     ['World'] = 'globe_showing_americas_3d.png',
     ['Smilling'] = 'smiling_face_with_heart-eyes_3d.png',
     ['Hotel'] = 'love_hotel_3d.png',
-    ['Hot face'] = 'sunrise_3d.png',
+    ['Sunrise'] = 'sunrise_3d.png',
     ['Files'] = 'card_index_dividers_3d.png',
-    ['Hearts'] = 'Smiling face with hearts.png',
+    ['Camping'] = 'camping_3d.png',
     ['Gift'] = 'wrapped gift.png',
 }
 
+
+-- p=InfoCard(images('emoji/Chicken.png'),'Chicken','Chickens are a perfect source of proteins')
+-- mainLay:addChild(p)
 
 for key, value in pairs(emojis) do
     addEmojiCard(images("emoji/"..value),key,key)
@@ -49,8 +59,10 @@ end
 
 f = Button('Tooltip')
 f:onClick(function(sender)
-    tip= PopupTooltip(f, 'Title', 'Content goes here', images('tooltip.jpg'))
-    tip:show()
+    -- tip= PopupTooltip(f, 'Title', 'Content goes here', images('tooltip.jpg'))
+    -- tip:show()
+
+    SnackBar(window,'Telegram','Lua now has a UI framework that fits!',images('teleg.png'),5000):show()
 end)
 mainLay:addChild(f)
 
@@ -62,22 +74,26 @@ b:onClick(function(sender)
 end)
 mainLay:addChild(b)
 
+-- FluentFlyout: class
 function makeFlyout(sender)
     command = CommandBar(window)
 
-    laptop = MenuItem('Developer')
+    laptop = MenuItem()
     laptop.setImage(images('laptop.png'))
 
-    windows = MenuItem('Windows')
+    windows = MenuItem()
     windows.setImage(images('windows.png'))
 
-    linux = MenuItem('Linux')
+    linux = MenuItem()
     linux.setImage(images('bash.png'))
 
-    apple = MenuItem('MacOS')
+    apple = MenuItem()
     apple.setImage(images('apple.png'))
 
     command.addAction(laptop)
+
+    command.addSeparator()
+
     command.addAction(windows)
     command.addAction(linux)
     command.addAction(apple)
@@ -102,13 +118,20 @@ function makeFlyout(sender)
     fly:show(sender, anim)
 end
 
+c = Button('img pop')
+c:onClick(function(sender)
+    pop=ImagePopup('Title here','Some random content goes here', images('0.png'))
+    pop:show(sender, window)
+end)
+
+
 co = ComboBox({"dropdown", "fadein", "pullup", "slideleft", "slideright"})
 co:onItemSelected(function(sender, item)
     anim = item
     print(anim)
 end)
 
-
+mainLay:addChild(c)
 mainLay:addChild(co)
 
 window.setLayout(mainLay)
