@@ -1,20 +1,20 @@
-//Project started on 20 September, 2020
-//Algorithms tested and worked on 24 September, 2020 21:55 PM
-//Added animations on 25 September, 2020 00:05 AM, stopped at 00:17 AM
+-- Project started on 20 September, 2020
+-- Algorithms tested and worked on 24 September, 2020 21:55 PM
+-- Added animations on 25 September, 2020 00:05 AM, stopped at 00:17 AM
 
 theme = Theme('material')
-theme.setTheme('light_blue')
+theme:setTheme('light_blue')
 
 window = Window("Magic Game - Miranda")
-window.setSize(500, 350)
+window:setSize(500, 350)
 
 var peopleData = "Edina,Noah,Juliet,Peter,Dan,Chrissy,Jack,Emmie,Rick,Mary,Sofia,Ezelina,Ronald,Bill,Amanda,Steve,Kate,Rose,Timmy,Ben,Anny";
 var animalsData = "Elephant,Hare,Lion,Cheetah,Buffalo,Chicken,Panda,Monkey,Panther,Zebra,Hippo,Giraffe,Beetle,Hyena,Duck,Frog,Cat,Dog,Lizard,Mouse,Bird";
-//var font = "Fonts/CeraPro.ttf";
+-- var font = "Fonts/CeraPro.ttf";
 
-var gameData = {
-	people: peopleData,
-	animals: animalsData
+gameData = {
+	people = peopleData,
+	animals =animalsData
 };
 
 var categoryUse = gameData.people;
@@ -30,15 +30,15 @@ list1 = ListBox();
 list2 = ListBox()
 list3 = ListBox();
 
-hlay.addChildren(list1, list2, list3)
-mainLay.addLayout(hlay)
+hlay:addChildren(list1, list2, list3)
+mainLay:addLayout(hlay)
 
 btnLay = HLayout()
 
 dev = Label("Developed by -- Omega Msiska --");
 
 b = Button("Play Game");
-b.onClick(dealToPlace)
+b:seOnClick(dealToPlace)
 
 sort = Button("How to play");
 

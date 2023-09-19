@@ -9,7 +9,8 @@
     "url": "",
     "routes": {
       "single": {
-        "app_icon": "images:lua.png",
+        "cursor":"images:pointer.png",
+        "app_icon": "images:calc.png",
         "alarm": "misc:Alarm03.wav",
         "font": "misc:Oakle.ttf"
       },
@@ -18,7 +19,7 @@
           "group_label": "",
           "Harry Potter": "misc:Harry Potter.txt",
           "Rings": "misc:Lord of the rings.txt",
-          "Tom Clancy": "misc:Tom Clancy.txt"
+          "Tom Clancy": "Tom Clancy.txt"
         },
         "cities": {
           "Zomba": "misc:zomba.txt",

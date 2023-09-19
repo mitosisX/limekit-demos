@@ -1,6 +1,6 @@
 {
   "project": {
-    "name": "Simple",
+    "name": "Button Group",
     "author": "Limekit",
     "description": "Brief project description",
     "copyright": "© 2023 Limekit. All Rights Reserved",
@@ -10,7 +10,7 @@
     "routes": {
       "single": {
         "app_icon": "images:lua.png",
-        "alarm": "misc:Alarm03.wav",
+        "cursor": "images:pointer.png",
         "font": "misc:Oakle.ttf"
       },
       "group": {

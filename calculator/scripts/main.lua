@@ -1,6 +1,6 @@
 -- Creating the window
 window = Window("Calculator - Limekit")
-window:setIcon(images("calc.png"))
+window:setIcon(route('app_icon'))
 window:setSize(280, 80)
 
 -- Setting the theme
@@ -47,7 +47,7 @@ end
 -- Handling button clicks
 for keySymbol, button in pairs(buttonMap) do
   if keySymbol ~= "=" and keySymbol ~= "C" then
-    button:onClick(function(obj)
+    button:setOnClick(function(obj)
       local calText = display:getText()
       local newCalText = calText .. obj:getText()
       display.setText(newCalText)
@@ -55,11 +55,11 @@ for keySymbol, button in pairs(buttonMap) do
   end
 end
 
-buttonMap["="]:onClick(function()
+buttonMap["="]:setOnClick(function()
   local expression = eval(display:getText())
   display.setText(tostring(expression))
 end)
-buttonMap["C"]:onClick(function()
+buttonMap["C"]:setOnClick(function()
   display.setText("")
 end)
 
