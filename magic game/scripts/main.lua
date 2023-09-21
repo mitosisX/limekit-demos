@@ -2,312 +2,303 @@
 -- Algorithms tested and worked on 24 September, 2020 21:55 PM
 -- Added animations on 25 September, 2020 00:05 AM, stopped at 00:17 AM
 
+print(zip({'Omega','Mitosis'},{'90%','100%'})[0])
+
+function dealToPlace()
+
+    splitData = shuffleArray(categoryUse)
+    sevensList = splitSevens(splitData)
+
+    assignColumns(sevensList) -- arrange the data into columns, each column to each list
+
+    mainList = sevensList -- globally store the filtered data
+    sevensAllocateLists(sevensList)
+end
+
+function sevensAllocateLists(data)
+    lists = {list1, list2, list3}
+    for countLists, eachList in ipairs(data) do
+        for listItem, getItem in ipairs(eachList) do
+            lists[countLists]:setItem(getItem)
+        end
+    end
+end
+
+function shuffleArray(array)
+	local result = {}  -- Create an empty table to store the split parts
+
+	-- Iterate over each substring separated by ','
+	for substring in array:gmatch("[^,]+") do
+	    table.insert(result, substring)
+	end
+
+	array = result
+
+    currentIndex = #array
+    while currentIndex ~= 0 do
+        randomIndex = math.random(currentIndex)
+        currentIndex = currentIndex - 1
+
+        temporaryValue = array[currentIndex]
+        array[currentIndex] = array[randomIndex]
+        array[randomIndex] = temporaryValue
+    end
+    return array
+end
+
+-- Responsible for generating the 3 columns of 7 rows
+function splitSevens(tokens)
+    holdTokens = tokens -- just hold the argument
+    sevensList = {} -- the main list for the [[], [], []]
+    counter = 7 --
+
+    for list = 1, 3 do
+        sevensList[list] = {} -- add a blank list at position
+        tempCounter = counter - 7 -- make sure the list from pos 1 and after 7, then + 7
+        for b = 1, 7 do -- run loop 7 times each time
+            table.insert(sevensList[list], holdTokens[tempCounter])
+            tempCounter = tempCounter + 1 -- now keep on increasing after the subtraction
+        end
+        counter = counter + 7 -- skip to the next 7th position of the last position
+    end
+
+    return sevensList
+end
+
+function tryAssign()
+    assignColumns(mainList)
+end
+
+-- Assign each column received from splitSevens to each column varible, in order;
+function assignColumns(input)
+    allColumns = getColumnsList()
+
+    for columns = 1, 3 do
+        eachList = input[columns]
+        for item, _ in ipairs(eachList) do
+            table.insert(allColumns[columns], eachList[item])
+        end
+    end
+    -- alert(JSON.stringify(allColumns));
+end
+
+function getColumnsList()
+    allColumns = {columnOne, columnTwo, columnThree}
+    return allColumns
+end
+
+colPicked = 0 -- 1,2,3 to represent each column
+
+function pickLeft()
+    colPicked = 0
+    reOrderColumns()
+end
+
+function pickMiddle()
+    colPicked = 1
+    reOrderColumns()
+end
+
+function pickRight()
+    colPicked = 2
+    reOrderColumns()
+end
+
+-- Keep the data consindering that it will be cleared through time. Code will be reused often
+function tempHoldColumns()
+    -- Hold here for a while to avoid loosing all data after reinitializing originals to empties
+    tempColOne = columnOne
+    tempColTwo = columnTwo
+    tempColThree = columnThree
+
+    columnOne = {}
+    columnTwo = {}
+    columnThree = {}
+
+    reordering = {tempColOne, tempColTwo, tempColThree}
+end
+
+function reOrderColumns()
+    tempHoldColumns()
+
+    checks = {0, 1, 2} -- Used to check if remaining number is yet in the below list
+    randColSelect = randNotColumn() -- get the column that needs to be in front
+    orderly = {randColSelect, colPicked} -- random picked, column selected
+
+    for a = 1, 3 do
+        num = checks[a]
+        if not (orderly.indexOf(num)) then -- Yay, it wasn't found
+            table.insert(orderly, num)
+            break
+        end
+    end
+
+    columnOne = reordering[orderly[1]]
+    columnTwo = reordering[orderly[2]]
+    columnThree = reordering[orderly[3]]
+
+    shareToColumns()
+end
+
+dealTimes = 1 -- Each column will share it's data to other columns, one after another
+
+function shareToColumns()
+    list1:clearItems()
+    list2:clearItems()
+    list3:clearItems()
+
+    -- alert(json(getColumnsList()))
+
+    if dealTimes <= 2 then
+        counterT = 0
+        tempHoldColumns()
+        realColumns = {columnOne, columnTwo, columnThree}
+
+        onColumn = 0 -- for alternating columns
+        for a = 1, 3 do
+            for b = 1, 7 do
+                if onColumn == 3 then
+                    onColumn = 0
+                end
+
+                table.insert(realColumns[onColumn], reordering[a][b])
+
+                onColumn = onColumn + 1
+            end
+        end
+
+        sevensAllocateLists(getColumnsList())
+        dealTimes = dealTimes + 1
+    else
+        app.Message("I know you chose " .. columnTwo[3])
+        dealTimes = 1
+        tempHoldColumns()
+    end
+end
+
+ignorePicked = nil -- Any random number but the colPicked
+
+function randNotColumn()
+    randInt = 0
+    while true do
+        gen = rand(0, 2)
+        if gen ~= colPicked then
+            randInt = gen
+            break
+        end
+    end
+    return randInt
+end
+
+function rand(min, max)
+    ra = math.random(min, max)
+    return ra
+end
+
+
 theme = Theme('material')
 theme:setTheme('light_blue')
 
-window = Window("Magic Game - Miranda")
+window = Window("Magic Game - Limekit")
 window:setSize(500, 350)
+window:setIcon(route('app_icon'))
 
-var peopleData = "Edina,Noah,Juliet,Peter,Dan,Chrissy,Jack,Emmie,Rick,Mary,Sofia,Ezelina,Ronald,Bill,Amanda,Steve,Kate,Rose,Timmy,Ben,Anny";
-var animalsData = "Elephant,Hare,Lion,Cheetah,Buffalo,Chicken,Panda,Monkey,Panther,Zebra,Hippo,Giraffe,Beetle,Hyena,Duck,Frog,Cat,Dog,Lizard,Mouse,Bird";
--- var font = "Fonts/CeraPro.ttf";
+peopleData = "Edina,Noah,Juliet,Peter,Dan,Chrissy,Jack,Emmie,Rick,Mary,Sofia,Ezelina,Ronald,Bill,Amanda,Steve,Kate,Rose,Timmy,Ben,Anny"
+animalsData = "Elephant,Hare,Lion,Cheetah,Buffalo,Chicken,Panda,Monkey,Panther,Zebra,Hippo,Giraffe,Beetle,Hyena,Duck,Frog,Cat,Dog,Lizard,Mouse,Bird"
 
 gameData = {
-	people = peopleData,
-	animals =animalsData
-};
+    people = peopleData,
+    animals = animalsData
+}
 
-var categoryUse = gameData.people;
+categoryUse = gameData.people
 
-var bg = "#6236FF";
+bg = "#6236FF"
 
-top1 = Label("Pick something");
+top1 = Label("Pick something")
 
 mainLay = VLayout()
 
 hlay = HLayout()
-list1 = ListBox();
+list1 = ListBox()
 list2 = ListBox()
-list3 = ListBox();
+list3 = ListBox()
 
 hlay:addChildren(list1, list2, list3)
 mainLay:addLayout(hlay)
 
 btnLay = HLayout()
 
-dev = Label("Developed by -- Omega Msiska --");
+dev = Label("Developed by -- Omega Msiska --")
 
-b = Button("Play Game");
-b:seOnClick(dealToPlace)
+b = Button("Play Game")
+b:setOnClick(dealToPlace)
 
-sort = Button("How to play");
+sort = Button("How to play")
 
-sort.onClick(function () {
-	app.Message("Game rules are simple, pick something with your eyes "+
-		"without touching the screen, just keep it to"+ 
-		"yourself. After that click one of the three " +
-		"bottons to tell the app where your choice is and my app will "+
-		"predict your choice");
-});
+sort.setOnClick(function()
+    app.Message("Game rules are simple, pick something with your eyes " ..
+    "without touching the screen, just keep it to" ..
+    "yourself. After that click one of the three " ..
+    "bottons to tell the app where your choice is and my app will " ..
+    "predict your choice")
+end)
 
 btnLay.addChild(b)
 mainLay.addLayout(btnLay)
 
-left = Button("Left");
-left.onClick(pickLeft);
+left = Button("Left")
+left.setOnClick(pickLeft)
 
-middle = Button("Middle");
-middle.onClick(pickMiddle);
+middle = Button("Middle")
+middle:setOnClick(pickMiddle)
 
-right = Button("Right");
-right.onClick(pickRight);
+right = Button("Right")
+right.setOnClick(pickRight)
 
-// app.Message("If you tell me the truth I will always be correct, if you lie, I will lie too!\n\nThis isn't magic but just the power of algorithms. Ok, let's play");
-//chooseCategory();
+-- app.Message("If you tell me the truth I will always be correct, if you lie, I will lie too!\n\nThis isn't magic but just the power of algorithms. Ok, let's play");
+-- chooseCategory();
 
-//Called when user touches our button.
-function chooseCategory() {
-	//Create dialog window.
-	dlgTxt = app.CreateDialog("Choose a Category", "NoCancel");
+-- Called when user touches our button.
+function chooseCategory()
+    -- Create dialog window.
+    dlgTxt = app.CreateDialog("Choose a Category", "NoCancel")
 
-	//Create a layout for dialog.
-	layDlg = app.CreateLayout("linear", "vertical,vcenter");
-	//   layDlg.SetPadding( 0.02, 0, 0.02, 0.02 );
-	dlgTxt.AddLayout(layDlg);
+    -- Create a layout for dialog.
+    layDlg = app.CreateLayout("linear", "vertical,vcenter")
+    --   layDlg.SetPadding( 0.02, 0, 0.02, 0.02 );
+    dlgTxt.AddLayout(layDlg)
 
-	//Create a list control.
-	var list = "Names of People,Names of Animals";
-	lstDlg = app.CreateList(list, null, 0.2);
-	lstDlg.SetTextSize(22);
-	lstDlg.SetTextColor("black");
-	lstDlg.SetOnTouch(lst_OnTouch);
-	layDlg.AddChild(lstDlg);
+    -- Create a list control.
+    list = "Names of People,Names of Animals"
+    lstDlg = app.CreateList(list, nil, 0.2)
+    lstDlg:SetTextSize(22)
+    lstDlg:SetTextColor("black")
+    lstDlg:SetOnTouch(lst_OnTouch)
+    layDlg.AddChild(lstDlg)
 
-	//Show dialog.
-	dlgTxt.Show();
-}
+    -- Show dialog.
+    dlgTxt.Show()
+end
 
-//Handle list item selection.
-function lst_OnTouch(item, b, t, index) {
-	//Hide the dialog window.
-	dlgTxt.Hide();
+-- Handle list item selection.
+function lst_OnTouch(item, b, t, index)
+    -- Hide the dialog window.
+    dlgTxt.Hide()
 
-	if (index == 0) {
-		categoryUse = gameData.people;
-	}
-	else {
-		categoryUse = gameData.animals;
-	}
-}
+    if index == 0 then
+        categoryUse = gameData.people
+    else
+        categoryUse = gameData.animals
+    end
+end
 
+-- each colums represents an array of names
+columnOne = {}
+columnTwo = {}
+columnThree = {}
 
-//each colums represents an array of names
-var columnOne = [];
-var columnTwo = [];
-var columnThree = [];
+mainList = nil
 
-var mainList = null;
-
-function dealToPlace() {
-
-	var splitData = shuffleArray(categoryUse.split(','));
-	var sevensList = splitSevens(splitData);
-
-	assignColumns(sevensList);      //arrange the data into columns, each column to each list
-
-	mainList = sevensList; //globally store the filtered data
-	sevensAllocateLists(sevensList);
-}
-
-function sevensAllocateLists(data) {
-
-	var lists = [list1, list2, list3];
-	for (countLists in data) {
-		var eachList = data[countLists];   //countList is simply an int, this holds the list
-
-		for (listItem in eachList) {    //iterate the current list now
-			var getItem = eachList[listItem]
-			lists[countLists].addItem(getItem);
-		}
-	}
-}
-
-
-function shuffleArray(array) {
-	var currentIndex = array.length, temporaryValue, randomIndex;
-
-	while (0 !== currentIndex) {
-		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex -= 1;
-
-		temporaryValue = array[currentIndex];
-		array[currentIndex] = array[randomIndex];
-		array[randomIndex] = temporaryValue;
-	}
-
-	return array;
-}
-
-
-//Responsible for generating the 3 columns of 7 rows
-function splitSevens(tokens) {
-	var holdTokens = tokens;        // just hold the argument
-	var sevensList = [];                 // the main list for the [[], [], []]
-	var counter = 7;                      //
-
-	for (var list = 0; list < 3; list++) {
-		sevensList.push([]);        // add a blank list at position 
-		var tempCounter = counter - 7;  //make sure the list from pos 1 and after 7, then + 7
-		for (b = 0; b < 7; b++) {     //run loop 7 times each time
-			sevensList[list].push(holdTokens[tempCounter]);
-			tempCounter++;           // now keep on increasing after the subtraction
-		}
-		counter += 7;                    //skip to the next 7th position of the last position
-	}
-
-	return sevensList;
-}
-
-function tryAssign() {
-	assignColumns(mainList);
-}
-
-
-//Assign each column received from splitSevens to each column varible, in order;
-function assignColumns(input) {
-	var allColumns = getColumnsList();
-
-	for (var columns = 0; columns < 3; columns++) {
-		var eachList = input[columns];
-		for (var item in eachList) {
-			allColumns[columns].push(eachList[item]);
-		}
-	}
-	//alert(JSON.stringify(allColumns));
-}
-
-function getColumnsList() {
-	var allColumns = [columnOne, columnTwo, columnThree];
-	return allColumns;
-}
-
-
-var colPicked = 0;   //1,2,3 to represent each column
-function pickLeft() {
-	colPicked = 0;
-	reOrderColumns()
-}
-
-function pickMiddle() {
-	colPicked = 1;
-	reOrderColumns()
-}
-
-function pickRight() {
-	colPicked = 2;
-	reOrderColumns();
-}
-
-//Keep the data consindering that it will be cleared through time. Code will be reused often
-function tempHoldColumns() {
-
-	//Hold here for a while to avoid loosing all data after reinitializing originals to empties
-	var tempColOne = columnOne;
-	var tempColTwo = columnTwo;
-	var tempColThree = columnThree;
-
-	columnOne = [];
-	columnTwo = [];
-	columnThree = [];
-
-	reordering = [tempColOne, tempColTwo, tempColThree];
-}
-
-
-function reOrderColumns() {
-
-	tempHoldColumns();
-
-	var checks = [0, 1, 2];     //Used to check if remaining number is yet in the below list
-	var randColSelect = randNotColumn();   //get the column that needs to be in front
-	var orderly = [randColSelect, colPicked];  //random picked, column selected
-
-	for (a = 0; a < 3; a++) {
-		var num = checks[a]
-		if (orderly.indexOf(num) == -1) {   //Yay,it wasn't found
-			orderly.push(num);
-			break;
-		}
-	}
-
-	columnOne = reordering[orderly[0]];
-	columnTwo = reordering[orderly[1]];
-	columnThree = reordering[orderly[2]];
-
-	shareToColumns();
-}
-
-var dealTimes = 1;
-//Each column will share it's data to other columns, one after another
-function shareToColumns() {
-	list1.clearItems();
-	list2.clearItems();
-	list3.clearItems();
-
-	//alert(json(getColumnsList()))
-
-	if (dealTimes <= 2) {
-		var counterT = 0;
-		tempHoldColumns();
-		var realColumns = [columnOne, columnTwo, columnThree];
-
-		var onColumn = 0;   //for alternating columns
-		for (a = 0; a < 3; a++) {
-			for (var b = 0; b < 7; b++) {
-				if (onColumn == 3) {
-					onColumn = 0;
-				}
-
-				realColumns[onColumn].push(reordering[a][b]);
-
-				onColumn++;
-			}
-		}
-
-		sevensAllocateLists(getColumnsList());
-		dealTimes++;
-	}
-	else {
-		app.Message("I know you chose " + columnTwo[3]);
-		dealTimes = 1;
-		tempHoldColumns();
-	}
-}
-
-
-var ignorePicked = null;
-//Any random number but the colPicked
-function randNotColumn() {
-	var randInt = 0;
-	while (true) {
-		var gen = rand(0, 2);
-		if (gen != colPicked) {
-
-			randInt = gen;
-			break;
-		}
-	}
-	return randInt;
-}
-
-function rand(min, max) {
-	var ra = Math.floor(Math.random() * max) + min
-	return ra
-}
-
-function json(val) {
-	return JSON.stringify(val);
-}
-
-window.setLayout(mainLay)
-window.show()
+window:setLayout(mainLay)
+window:show()
