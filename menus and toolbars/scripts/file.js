@@ -26,14 +26,14 @@ settings = MenuItem("Settings");
 themes = Menu("Theme");
 light = MenuItem("Light");
 dark = MenuItem("Dark");
-themes.addMenuItems(light, dark)
+themes:addMenuItems(light, dark)
 
-preferences.addMenuItems(settings, themes)
+preferences:addMenuItems(settings, themes)
 
 sep3 = MenuItem('-');
 exit = MenuItem("Exit");
 
-filemenu.addMenuItems(
+filemenu:addMenuItems(
   newfile,
   newwindow,
   sep1,

@@ -2,8 +2,6 @@ window = Window("Calculator - Miranda")
 window:setIcon(route('app_icon'))
 window:setSize(280, 150)
 
-
-
 -- site = requests.get('https://webscraper.io/test-sites/e-commerce/allinone')
 -- soup = BeautifulSoup(site.text, "html.parser")
 -- local divs = py_getatrr(soup).findAll('div','col-sm-4 col-lg-4 col-md-4')
@@ -22,13 +20,7 @@ mainLay = VLayout()
 
 button = Button('Hello')
 button:setOnClick(function()
-    quest = app.questionPopup(window, 'Limekit','Oy! You lads heard of Limekit yet?', {'ok','cancel'})
-    
-    if quest.getSelectedButton() == "yes" then
-        print('Yes')
-    elseif quest.getSelectedButton() == 'no' then
-        print('cancel')
-    end
+    alert = app.alert(window,'Hello','I am from Limekit','question', {'ok','open','save','ignore','rety'})
 end)
 
 mainLay:addChild(button)

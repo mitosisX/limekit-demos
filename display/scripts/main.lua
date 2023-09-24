@@ -73,7 +73,7 @@ mainLay1 = VLayout();
 button = Button();
 button.setText("Click me");
 button.setToolTip("I am a tooltip");
-button:onClick(function (x) 
+button:setOnClick(function (x) 
   -- app.setClipboardText("Clipboard text!");
    -- app.qPopup(window, 'title', 'message', ['yes', 'apply', 'discard', 'retry'])
    -- alert(window, "Alert title", app.getClipboardText());
