@@ -1,4 +1,4 @@
-window = FramelessWindow("Fluent UI - Limekit",'light')
+window = Window("Fluent UI - Limekit")
 window:setIcon(images("lua.png"))
 window:setOnShown(function()
 end)
@@ -23,7 +23,7 @@ mainLay = FlowLayout()
 
 function addCard(icon, title, content)
     card = Card(icon,title,title)
-    card:onClick(function(sender)
+    card:setOnClick(function(sender)
         makeFlyout(sender)
     end)
     mainLay.addChild(card)
@@ -58,7 +58,7 @@ for key, value in pairs(emojis) do
 end
 
 f = Button('Tooltip')
-f:onClick(function(sender)
+f:setOnClick(function(sender)
     -- tip= PopupTooltip(f, 'Title', 'Content goes here', images('tooltip.jpg'))
     -- tip:show()
 
@@ -69,7 +69,7 @@ mainLay:addChild(f)
 local anim = "pullup"
 
 b = Button('Hello')
-b:onClick(function(sender)
+b:setOnClick(function(sender)
     makeFlyout(sender)
 end)
 mainLay:addChild(b)
@@ -119,7 +119,7 @@ function makeFlyout(sender)
 end
 
 c = Button('img pop')
-c:onClick(function(sender)
+c:setOnClick(function(sender)
     pop=ImagePopup('Title here','Some random content goes here', images('0.png'))
     pop:show(sender, window)
 end)

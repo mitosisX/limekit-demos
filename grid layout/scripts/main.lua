@@ -61,11 +61,11 @@ header_label:setTextAlign('left')
 
 today_label = Label("· Today's Focus")
 today_label:setFont('Arial', 14)
-today_tedit = TextEdit()
+today_tedit = TextField()
 
 notes_label = Label("· Notes")
 notes_label:setFont('Arial', 14)
-notes_tedit = TextEdit()
+notes_tedit = TextField()
 
 main_grid:addChild(header_label, 0, 0)
 main_grid:addChild(today_label, 1, 0)

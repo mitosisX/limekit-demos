@@ -1,6 +1,20 @@
 window = Window("Calculator - Miranda")
 window:setIcon(route('app_icon'))
 window:setSize(280, 150)
+window:setOnClose(function(obj, event)
+    event.ignore()
+    question = app.questionPopup(window,'Quit?','Are you sure you want to quit?')
+    res = question:getSelectedButton()
+
+    if res == 'yes' then
+        event.accept()
+    end
+end)
+
+shortcut = ShortcutKeys(window, 'Ctrl+Q')
+shortcut.setOnKeyPress(function()
+    app.quit()
+end)
 
 -- site = requests.get('https://webscraper.io/test-sites/e-commerce/allinone')
 -- soup = BeautifulSoup(site.text, "html.parser")
