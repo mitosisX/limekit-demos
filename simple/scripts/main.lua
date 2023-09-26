@@ -1,6 +1,6 @@
-window = Window("Calculator - Miranda")
+window = Window("Simple App - Liemkit")
 window:setIcon(route('app_icon'))
-window:setSize(280, 150)
+window:setSize(280, 170)
 window:setOnClose(function(obj, event)
     event.ignore()
     question = app.questionPopup(window,'Quit?','Are you sure you want to quit?')
@@ -12,7 +12,7 @@ window:setOnClose(function(obj, event)
 end)
 
 shortcut = ShortcutKeys(window, 'Ctrl+Q')
-shortcut.setOnKeyPress(function()
+shortcut:setOnKeyPress(function()
     app.quit()
 end)
 

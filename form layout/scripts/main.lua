@@ -4,6 +4,10 @@ window:setSize(500, 400)
 
 main_grid = FormLayout()
 
+
+theme = Theme("material")
+theme:setTheme("light_blue")
+
 header_label = Label("Appointment Form")
 header_label:setFont('Arial', 18)
 header_label:setTextAlign('center')
