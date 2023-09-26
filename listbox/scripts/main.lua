@@ -22,7 +22,7 @@ add_button:setOnClick(function()
 		row = list_widget:getCurrentRow()
 		row = row + 1
 
-		list_widget:addItemAt(row, text)
+		list_widget:insertItemAt(row, text)
 	end
 end)
 

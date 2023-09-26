@@ -44,7 +44,7 @@ item2_h_box:addChild(price_sb2)
 
 mainLay:addLayouts(item1_h_box, item2_h_box)
 
-totals_label = Label("Total Spent: $")
+totals_label = Label("Total Spent on {1+1}: $")
 totals_label.setTextAlign('right')
 
 mainLay:addChild(totals_label)

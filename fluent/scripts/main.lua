@@ -1,8 +1,6 @@
 window = Window("Fluent UI - Limekit")
 window:setIcon(images("lua.png"))
-window:setOnShown(function()
-end)
--- window:setSize(580, 200)
+window:setSize(750, 600)
 
 -- theme = Theme("material")
 -- theme:setTheme("light_blue")

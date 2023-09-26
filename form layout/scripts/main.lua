@@ -4,7 +4,6 @@ window:setSize(500, 400)
 
 main_grid = FormLayout()
 
-
 theme = Theme("material")
 theme:setTheme("light_blue")
 
@@ -19,7 +18,8 @@ last_name_edit = LineEdit()
 last_name_edit:setHint('Last')
 
 name_h_box = HLayout()
-name_h_box:addChild(first_name_edit, last_name_edit)
+name_h_box:addChild(first_name_edit)
+name_h_box:addChild(last_name_edit)
 
 gender_combo = ComboBox({"Male","Female"})
 
