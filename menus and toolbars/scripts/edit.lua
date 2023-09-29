@@ -24,7 +24,7 @@ findfiles = MenuItem("Find in Files");
 replacefiles = MenuItem("Replace in Files");
 sep4 = MenuItem('-');
 
-comment = Menu("Comment");
+comment = DropMenu("Comment");
 
 togglecomment = MenuItem("Toggle Comment");
 toggleblockcomment = MenuItem("Toggle Block Comment");

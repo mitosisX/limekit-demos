@@ -1,7 +1,6 @@
 window = Window()
 window:center()
 window:setIcon(images("lua.png"))
-window:setCustomCursor(route('cursor'))
 
 -- app.readFile(misc('sample.txt'))
 
@@ -64,7 +63,7 @@ window.addToolbar(toolbar);
 -- menu = Menu(window);
 
 -- Theme to be used
-theme = Theme("material");
+theme = Theme("misc");
  -- theme.setTheme("light_blue");
 mainLayout = HLayout();
 
@@ -97,7 +96,7 @@ mainLay1:addChild(button);
  -- label = Label("Hello World");
 combo = ComboBox();
  -- combo.addItems(["Omega", "Msiska", "Mitosis", "X"]);
-combo:addDataItems(theme.getThemes());
+combo:addItems(theme.getThemes());
 combo:onItemSelected(function (sender, data) 
   theme:setTheme(data);
 end);
@@ -108,7 +107,7 @@ progress.setValue(20);
 spin = Spinner();
 spin.setPrefix("%");
 spin.setToolTip("Progressbar percentage");
-spin:onValueChange(function (sender, value) 
+spin:setOnValueChange(function (sender, value) 
   progress.setValue(value);
 end);
 spin.setRange(10, 50);
@@ -116,7 +115,7 @@ spin.setRange(10, 50);
 slider = Slider();
 slider.setSingleStep(3);
 slider.setMaximum(100);
-slider.onValueChange(function (sender, value) 
+slider:setOnValueChange(function (sender, value) 
   progress.setProgress(value);
 end);
 
@@ -131,10 +130,10 @@ end);
 
 timer.start();
 
-edit = TextEdit();
+edit = LineEdit();
 -- edit.setInputMask('000.000.000.000;_');
-edit.setPlaceholderText("Hello");
-edit.onTextChange(function (sender, text) 
+edit:setHint("Hello");
+edit:onTextChange(function (sender, text) 
   console.log(text);
 end);
 
@@ -151,7 +150,8 @@ spin1.setPrefix("$");
 spin1.setRange(1, 100);
 combo1.addItems(lunch_list);
 
-lay1.addChildren(combo1, spin1);
+lay1:addChild(combo1);
+lay1:addChild(spin1);
 
 lay2 = HLayout();
 
@@ -161,10 +161,11 @@ combo2.addImageItems({{'heart', images('heart.png') }, {'malawi', images('malawi
 spin2 = Spinner();
 spin2.setPrefix("$");
 spin2.setRange(1, 100);
-lay2.addChildren(combo2, spin2);
+lay2.addChild(combo2);
+lay2.addChild(spin2);
 
-spin1:onValueChange(calculateTotal);
-spin2:onValueChange(calculateTotal);
+spin1:setOnValueChange(calculateTotal);
+spin2:setOnValueChange(calculateTotal);
 
 function calculateTotal(sender)
   total = spin1.getValue() + spin2.getValue();
@@ -172,13 +173,20 @@ function calculateTotal(sender)
 end
 
 styles = ComboBox();
-styles.addDataItems(window.getStyles());
+styles.addItems(window.getStyles());
 styles.onItemSelected(function (sender, style)
   window.setStyle(style);
 end);
 
-mainLay1.addChildren(combo, spin, progress, slider, edit, styles);
-mainLay1.addLayouts(lay1, lay2);
+mainLay1.addChild(combo);
+mainLay1.addChild(spin);
+mainLay1.addChild(progress);
+mainLay1.addChild(slider);
+mainLay1.addChild(edit);
+mainLay1.addChild(styles);
+
+mainLay1:addLayout(lay1);
+mainLay1:addLayout(lay2);
 mainLay1.addChild(totalLabel);
 
 mainLay2 = VLayout();
@@ -186,37 +194,37 @@ mainLay2 = VLayout();
 tab = Tab();
 tabitem1 = TabItem();
 
-tab.addTabitem(tabitem1, "Cas&h");
+tab:addTabItem(tabitem1, "Cas&h");
 
 tabitem2 = TabItem();
 
 grid1 = GridLayout();
 label1 = Label("Ch&eck No.:");
-tedit1 = TextEdit();
+tedit1 = LineEdit();
 grid1.addChild(label1, 0, 0);
 grid1.addChild(tedit1, 0, 1);
 
 label2 = Label("Bank:");
-tedit2 = TextEdit();
+tedit2 = LineEdit();
 grid1.addChild(label2, 0, 2);
 grid1.addChild(tedit2, 0, 3);
 
 label3 = Label("Account No.:");
-tedit3 = TextEdit();
+tedit3 = LineEdit();
 grid1.addChild(label3, 1, 0);
 grid1.addChild(tedit3, 1, 1);
 
 label4 = Label("Sort Code:");
-tedit4 = TextEdit();
+tedit4 = LineEdit();
 grid1.addChild(label4, 1, 2);
 grid1.addChild(tedit4, 1, 3);
 
-tabitem2.addChild(grid1);
+tabitem2:setLayout(grid1);
 
-tab.addTabitem(tabitem2, "Chec&k");
+tab.addTabItem(tabitem2, "Chec&k");
 
 tabitem3 = TabItem();
-tab.addTabitem(tabitem3, "Credit &Card");
+tab.addTabItem(tabitem3, "Credit &Card");
 
 mainLay1.addChild(tab);
 

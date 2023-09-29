@@ -2,23 +2,36 @@
 window = Window("Table - Limekit")
 window:setSize(558, 363)
 window:setIcon(route('app_icon'))
-window:setCustomCursor(images('pointer.png'))
+-- window:setCustomCursor(images('pointer.png'))
 
 -- app.setFont(misc('Oakle.ttf'), 10)
 
 -- Creating a main horizontal layout
 mainLay = VLayout()
 
-theme = Theme("material")
-theme:setTheme("light_blue")
+-- theme = Theme("material")
+-- theme:setTheme("light_blue")
 
 -- Creating a table with dimensions 10x10
 table = Table(10, 10)
-table:setOnCellDoubleClicked(function(obj, row, column)
-    item = TableItem(table:getItemAt(row, column))
-    item:setText("400")
+table:setAltRowColors(true)
+
+table:setOnCellSelection(function()
+    table:getSelectedCell()
 end)
+
+table:setOnCellDoubleClicked(function(obj, row, column)
+    item = table:getItemAt(row, column)
+    if item then
+        item:setText("400")
+        item:setBackgroundHex('#ff0076')
+    else
+        print('false')
+    end
+end)
+
 table:setColumnSorting(false)
+
 table:setTableData({
     ['text'] = 'Emoji ' .. app.emoji(':thumbs_up:'),
     ['row'] = 0,
@@ -33,6 +46,17 @@ table:setCellChild(0, 2, combo)
 table:setImageData(images('down.png'), '23.19%', 1, 2)
 table:setImageData(images('up.png'), '56.29%', 2, 2)
 table:setImageData(images('down.png'), '12.75%', 3, 2)
+
+knob = Knob()
+knob:setMinValue(0)
+knob:setMaxValue(100)
+knob:setIndicators(true)
+knob:setOnValueChanged(function(obj, value)
+    table:addData(4, 0, value)
+end)
+
+table:setCellChild(4, 2, knob)
+
 -- table.setGridVisible(false) -- Hides the grid lines
 -- table:setHeaderToolTip(1, 'Names go here')
 table:setMaxColumns(4)
@@ -45,14 +69,18 @@ table:setRowHeaders({'Biology', 'Physics', 'Mathematics', 'English', 'Geography'
 table:setColumnHeaderToolTip(0, 'Holds names')
 
 -- Setting data in the table at row 1, column 0
-table:setDataItem(9, 0, "200")
--- Adding an event handler for when a cell edit is finished
-table:setOnCellEditFinished(function(obj, row, column)
-    -- Your code for handling cell edit finish goes here
-    print('done at' .. row .. ', ' .. column)
-end)
+table:addData(9, 0, "200")
+-- Implementing an Event Handler for Cell Edit Completio
+-- table:setOnCellEditFinished(function(obj, row, column)
+--     -- Your code for handling cell edit finish goes here
+--     print('done at' .. row .. ', ' .. column)
+-- end)
 table:setOnCellClicked(function(obj, row, column)
-    print(row, column)
+    -- print(row, column)
+    item = obj:getSelectedCell()
+    if item then
+        item:setTextColorHex('#ff0076')
+    end
 end)
 
 

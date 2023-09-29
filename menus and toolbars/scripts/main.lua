@@ -25,15 +25,13 @@ window.addToolbar(toolbar);
 menu = Menubar();
 
 -- The menu to be used in the below file.
-app.execute(scripts('file.js'))
-app.execute(scripts('edit.js'))
+app.execute(scripts('file.lua'))
+-- app.execute(scripts('edit.lua'))
 
-editMenu = Menu("Edit");
-viewMenu = Menu("View");
-helpMenu = Menu("Help");
+menu:addMenuItems(filemenu) -- editMenu, viewMenu, helpMenu);
 
-menu:addMenuItems(filemenu, editmenu) -- editMenu, viewMenu, helpMenu);
+-- menu:addMenuItems(filemenu, editmenu) -- editMenu, viewMenu, helpMenu);
 -- menu.addItems(a, b, c);
 window:setMenubar(menu);
 
-window.show();
+window:show();
