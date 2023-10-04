@@ -2,18 +2,18 @@ window = Window("Simple App - Liemkit")
 window:setIcon(route('app_icon'))
 window:setSize(280, 170)
 window:setOnClose(function(obj, event)
-    event.ignore()
-    question = app.questionPopup(window,'Quit?','Are you sure you want to quit?')
-    res = question:getSelectedButton()
+    -- event.ignore()
+    -- question = app.questionPopup(window,'Quit?','Are you sure you want to quit?')
+    -- res = question:getButton()
 
-    if res == 'yes' then
-        event.accept()
-    end
+    -- if res == 'yes' then
+    --     event.accept()
+    -- end
 end)
 
 shortcut = ShortcutKeys(window, 'Ctrl+Q')
 shortcut:setOnKeyPress(function()
-    app.quit()
+    print('Ctrl+Q')
 end)
 
 -- site = requests.get('https://webscraper.io/test-sites/e-commerce/allinone')
@@ -37,7 +37,21 @@ button:setOnClick(function()
     alert = app.alert(window,'Hello','I am from Limekit','question', {'ok','open','save','ignore','rety'})
 end)
 
+openButton = Button('Open')
+openButton:setOnClick(function()
+    f = app.getFont(window)
+    print(f.get())
+
+    -- name = app.openFile(window)
+    -- if name then
+    --     print(app.readFile(route('books::Ringsf')))
+        -- print(name)
+    -- end
+end)
+
 mainLay:addChild(button)
+mainLay:addChild(FontComboBox())
+mainLay:addChild(openButton)
 
 cal = Calendar();
 cal.setOnDateChaged(function(obj, date)

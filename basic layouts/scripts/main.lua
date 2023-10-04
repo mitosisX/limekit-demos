@@ -1,7 +1,7 @@
 numButtons = 4
 numGridRows = 3
 
-Theme('material'):setTheme('dark_blue')
+-- Theme('material'):setTheme('dark_blue')
 
 window = Window("Basic Layouts - Limekit", false)
 window:setIcon(route('app_icon'))

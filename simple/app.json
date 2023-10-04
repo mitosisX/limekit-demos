@@ -9,22 +9,22 @@
     "url": "",
     "routes": {
       "single": {
-        "app_icon": "images:lua.png",
-        "alarm": "misc:Alarm03.wav",
-        "font": "misc:Oakle.ttf"
+        "app_icon": "images::lua.png",
+        "alarm": "misc::Alarm03.wav",
+        "font": "misc::Oakle.ttf"
       },
       "group": {
         "books": {
           "group_label": "",
-          "Harry Potter": "misc:Harry Potter.txt",
-          "Rings": "misc:Lord of the rings.txt",
-          "Tom Clancy": "misc:Tom Clancy.txt"
+          "Harry Potter": "misc::Harry Potter.txt",
+          "Rings": "misc::Lord of the rings.txt",
+          "Tom Clancy": "misc::Tom Clancy.txt"
         },
         "cities": {
-          "Zomba": "misc:zomba.txt",
-          "Blantyre": "misc:Blantyre.txt",
-          "Mzuzu": "misc:Mzuzu.txt",
-          "Lilongwe": "misc:Lilongwe.txt"
+          "Zomba": "misc::zomba.txt",
+          "Blantyre": "misc::Blantyre.txt",
+          "Mzuzu": "misc::Mzuzu.txt",
+          "Lilongwe": "misc::Lilongwe.txt"
         }
       }
     },

@@ -9,7 +9,7 @@ theme:setTheme("light_blue")
 
 -- Creating the main layout
 mainLay = VLayout()
-display = TextEdit()
+display = TextField()
 display.setReadOnly(true)
 display.setFixedHeight(35)
 
