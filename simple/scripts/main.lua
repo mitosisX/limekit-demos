@@ -38,9 +38,12 @@ button:setOnClick(function()
 end)
 
 openButton = Button('Open')
-openButton:setOnClick(function()
-    f = app.getFont(window)
-    print(f.get())
+openButton:setOnClick(function(obj)
+    filters= {['Text Files']={'lua', 'js','txt'}, 
+    ['Compressed']={'zip', 'tar','iso'}}
+    -- name = app.openFile(window, 'Open Project', '', filters)
+    name = app.getFont(window)
+    l:setFont('Jokerman', 12)
 
     -- name = app.openFile(window)
     -- if name then
@@ -50,16 +53,12 @@ openButton:setOnClick(function()
 end)
 
 mainLay:addChild(button)
-mainLay:addChild(FontComboBox())
 mainLay:addChild(openButton)
 
-cal = Calendar();
-cal.setOnDateChaged(function(obj, date)
-    print(date)
-end)
+l = Label("Hello There")
 -- cal:setDate("12/13/1996");
 
-mainLay:addChild(cal)
+mainLay:addChild(l)
 
 -- window:setMainWidget(button)
 
