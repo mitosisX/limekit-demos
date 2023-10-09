@@ -4,7 +4,8 @@ window:setIcon(route('app_icon'))
 
 mainLayout = GridLayout()
 
-styleComboBox = ComboBox(window:getStyles())
+styles= window:getStyles()
+styleComboBox = ComboBox(styles)
 styleComboBox.onItemSelected(function(obj, style)
 	window:setStyle(style)
 end)

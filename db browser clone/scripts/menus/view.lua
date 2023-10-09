@@ -1,0 +1,1 @@
+viewMenu = Menu('View')
