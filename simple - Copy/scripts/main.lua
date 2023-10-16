@@ -1,5 +1,5 @@
-window = Window{title='Simple - Limekit', size={280, 170}}
-window:setIcon(route('app_icon'))
+window = Window{title='Simple - Limekit', size={280, 170}, icon=route('app_icon')}
+-- window:setIcon(route('app_icon'))
 window:setSize(280, 170)
 
 mainLay = VLayout()
@@ -12,17 +12,20 @@ struct = {
             {
                 label = "New",
                 accelerator = "Ctrl+N",
-                click = "self.new_file"
+                click = function()
+                    print('New clicked')
+                end,
+                icon = images('paste.png')
             },
+            {label = '-'},
             {
                 label = "Open",
                 accelerator = "Ctrl+O",
-                click = "self.open_file"
+                icon = images('paste.png')
             },
             {
                 label = "Save",
                 accelerator = "Ctrl+S",
-                click = "self.save_file"
             }
         }
     },
@@ -32,12 +35,13 @@ struct = {
             {
                 label = "Cut",
                 accelerator = "Ctrl+X",
-                click = "self.cut"
+                click = function()
+                    print('Cut clicked')
+                end
             },
             {
                 label = "Copy",
                 accelerator = "Ctrl+C",
-                click = "self.copy"
             },
             {
                 label = "Paste",
@@ -47,7 +51,6 @@ struct = {
                         submenu = {
                             {
                                 label = "Yes",
-                                click = "elf.paste_formatted_yes",
                                 submenu = {
                                     {label = 'Gender',
                                         submenu = {
@@ -58,20 +61,22 @@ struct = {
                             },
                             {
                                 label = "No",
-                                click = "self.paste_formatted_no"
                             }
                         }
                     },
                     {
                         label = "Not Formatted",
-                        click = "self.paste_not_formatted"
                     }
                 }
             }
         }
     },
     {
-        label = 'Help'
+        label = 'Help',
+        submenu= {
+            {label ='Documentation'},
+            {label ='About Limekit'}
+        }
     }
 }
 
