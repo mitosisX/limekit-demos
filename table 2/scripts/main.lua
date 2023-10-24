@@ -2,9 +2,7 @@
 window = Window("Table - Limekit")
 window:setSize(558, 363)
 window:setIcon(route('app_icon'))
--- window:setCustomCursor(images('pointer.png'))
 
-print(py.str_split("He,llo,the,re", ",")[1])
 
 -- app.setFont(misc('Oakle.ttf'), 10)
 
@@ -19,13 +17,14 @@ table = Table(10, 10)
 table:setAltRowColors(true)
 
 table:setOnCellSelection(function()
-    table:getSelectedCells()
+    -- table:getSelectedCells()
+    print('Cell selection')
 end)
 
 table:setOnCellDoubleClicked(function(obj, row, column)
     item = table:getItemAt(row, column)
     if item then
-        item:setText("400")
+        -- item:setText("400")
         item:setBackgroundHex('#ff0076')
     else
         print('false')
@@ -42,12 +41,41 @@ table:setTableData({
 -- table.setAltRowColors(true)
 -- table.setCellsEditable(false)
 combo = ComboBox()
-combo:addImageItems({{'lua', images('lua.png')}, {'malawi', images('malawi.png')}, {'heart', images('heart.png')}});
+combo:addImageItems({{'lua', images('lua.png')}, {'malawi', images('lua.png')}, {'heart', images('lua.png')}});
 
 table:setCellChild(0, 2, combo)
-table:setImageData(images('down.png'), '23.19%', 1, 2)
-table:setImageData(images('up.png'), '56.29%', 2, 2)
-table:setImageData(images('down.png'), '12.75%', 3, 2)
+
+for x=1, 5 do
+    local edit = Button("")
+    edit:setIcon(images('edit.png'))
+    edit:setOnClick(function()
+        dat = table:getSelectedCells()
+        row = dat[1]
+        column = dat[2]
+
+        print(table:getItemAt(row, 0):getText())
+        print(table:getItemAt(row, 1):getText())
+    end)
+
+    local delete = Button("")
+    delete:setIcon(images('remove.png'))
+    delete:setOnClick(function()
+        dat = table:getSelectedCells()
+        row = dat[1]
+
+        table:deleteRow(row)        
+    end)
+
+    table:addData(x, 0, 'First '..x*2)
+    table:addData(x, 1, 'Second '..x*10)
+
+    table:setCellChild(x, 2, edit)
+    table:setCellChild(x, 3, delete)
+end
+
+-- table:setCellChild(1, 3, Button('Edit'))
+-- table:setCellChild(2, 3, Button('Edit'))
+-- table:setCellChild(3, 3, Button('Edit'))
 
 knob = Knob()
 knob:setMinValue(0)
@@ -57,7 +85,7 @@ knob:setOnValueChanged(function(obj, value)
     table:addData(4, 0, value)
 end)
 
-table:setCellChild(4, 2, knob)
+-- table:setCellChild(4, 2, knob)
 
 -- table.setGridVisible(false) -- Hides the grid lines
 -- table:setHeaderToolTip(1, 'Names go here')
@@ -77,13 +105,13 @@ table:addData(9, 0, "200")
 --     -- Your code for handling cell edit finish goes here
 --     print('done at' .. row .. ', ' .. column)
 -- end)
-table:setOnCellClicked(function(obj, row, column)
-    -- print(row, column)
-    item = obj:getSelectedCell()
-    if item then
-        item:setTextColorHex('#ff0076')
-    end
-end)
+-- table:setOnCellClicked(function(obj, row, column)
+--     -- print(row, column)
+--     item = obj:getSelectedCell()
+--     if item then
+--         item:setTextColorHex('#ff0076')
+--     end
+-- end)
 
 
 -- Creating a dock on the right side with title "Employees"

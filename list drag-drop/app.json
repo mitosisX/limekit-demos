@@ -9,7 +9,7 @@
     "url": "",
     "routes": {
       "single": {
-        "app_icon": "images:lua.png",
+        "app_icon": "images::lua.png",
         "cursor": "images:pointer.png",
         "font": "misc:Oakle.ttf"
       },

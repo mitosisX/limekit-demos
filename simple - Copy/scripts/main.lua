@@ -11,6 +11,7 @@ struct = {
         submenu = {
             {
                 label = "New",
+                name = 'new_item',
                 accelerator = "Ctrl+N",
                 click = function()
                     print('New clicked')
@@ -36,7 +37,8 @@ struct = {
                 label = "Cut",
                 accelerator = "Ctrl+X",
                 click = function()
-                    print('Cut clicked')
+                    child = menu:findChild('new_item')
+                    child:setText('Changed')
                 end
             },
             {

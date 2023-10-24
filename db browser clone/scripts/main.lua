@@ -7,11 +7,11 @@ end
 
 database = nil
 
-app.execute(scripts('menus/file.lua'))
-app.execute(scripts('menus/edit.lua'))
-app.execute(scripts('menus/view.lua'))
-app.execute(scripts('menus/tools.lua'))
-app.execute(scripts('menus/help.lua'))
+-- app.execute(scripts('menus/file.lua'))
+-- app.execute(scripts('menus/edit.lua'))
+-- app.execute(scripts('menus/view.lua'))
+-- app.execute(scripts('menus/tools.lua'))
+-- app.execute(scripts('menus/help.lua'))
 
 app.execute(scripts('toolbar/main.lua'))
 app.execute(scripts('tab/main.lua'))
@@ -33,9 +33,11 @@ function getTables()
 	end
 end
 
-window = Window("DB Browser for SQLite - Limekit")
+window = Window{title = "DB Browser for SQLite - Limekit"}
 window:setIcon(route('app_icon'))
 window:setSize(1000, 600)
+
+Theme('darklight'):setTheme('light')
 
 mainLay = VLayout()
 childMainLayout = HLayout()
@@ -45,11 +47,56 @@ segmentation = Segmenter('horizontal')
 db = Sqlite3('D:/sandbox/limekit.db')
 
 menubar = Menubar()
-menubar:addMenuItem(fileMenu)
-menubar:addMenuItem(editMenu)
-menubar:addMenuItem(viewMenu)
-menubar:addMenuItem(toolsMenu)
-menubar:addMenuItem(helpMenu)
+menubar:buildFromTemplate({
+	{label = 'File',
+		submenu={
+			{label='New Database...',
+			icon=images('database_add.png'),
+			shortcut="Ctrl+N"},
+
+			{label='New Database...',
+			icon=images('database_add.png'),
+
+			shortcut="Ctrl+N"},{label='New Database...',
+			icon=images('database_add.png'),
+
+			shortcut="Ctrl+N"},{label='New Database...',
+			icon=images('database_add.png'),
+
+			shortcut="Ctrl+N"},{label='New Database...',
+			icon=images('database_add.png'),
+
+			shortcut="Ctrl+N"},{label='-'},{label='New Database...',
+			icon=images('database_add.png'),
+
+			shortcut="Ctrl+N"},{label='New Database...',
+			icon=images('database_add.png'),
+
+			shortcut="Ctrl+N"},{label='New Database...',
+			icon=images('database_add.png'),
+
+			shortcut="Ctrl+N"},{label='New Database...',
+			icon=images('database_add.png'),
+
+			shortcut="Ctrl+N"},{label='New Database...',
+			icon=images('database_add.png'),
+
+			shortcut="Ctrl+N"},{label='New Database...',
+			icon=images('database_add.png'),
+
+			shortcut="Ctrl+N"},{label='New Database...',
+			icon=images('database_add.png'),
+
+			shortcut="Ctrl+N"},{label='New Database...',
+			icon=images('database_add.png'),
+			shortcut="Ctrl+N"},
+		}}
+})
+-- menubar:addMenuItem(fileMenu)
+-- menubar:addMenuItem(editMenu)
+-- menubar:addMenuItem(viewMenu)
+-- menubar:addMenuItem(toolsMenu)
+-- menubar:addMenuItem(helpMenu)
 
 window:setMenubar(menubar)
 
