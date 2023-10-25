@@ -37,7 +37,7 @@ window = Window{title = "DB Browser for SQLite - Limekit"}
 window:setIcon(route('app_icon'))
 window:setSize(1000, 600)
 
-Theme('darklight'):setTheme('light')
+-- Theme('darklight'):setTheme('light')
 
 mainLay = VLayout()
 childMainLayout = HLayout()

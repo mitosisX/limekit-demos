@@ -5,10 +5,6 @@ app.setStyle('Fusion')
 window = Window{title="Hash Checker - Limekit", size={408, 270}}
 window:setIcon(route('icon'))
 
-window:setOnResize(function()
-  window:setTitle('Width: '.. window:getSize()[0] .. ' Height: ' .. window:getSize()[1])
-end)
-
 -- Creating a main horizontal layout
 mainLay = VLayout()
 
@@ -17,24 +13,96 @@ tab = Tab()
 homeTab = TabItem()
 homeVLay = VLayout()
 
+homeVLay:addChild(Label('Hash Calculation'))
+
+group1 = GroupBox("")
+groupVLay = VLayout()
+
+-- Lay 1
 hLay1 = HLayout()
-check = Label("")
-check:setImage(images('check.png'))
+
+folder = Label("")
+folder:setImage(images('folder.png'))
 
 text1 = LineEdit()
+text1:setHint('Select a file to begin')
 
-selectButton = Button("Select file")
-selectButton:setIcon(images("copy.png"))
+select = Button("Select file")
+select:setIcon(images("file.png"))
 
-hLay1:addChild(check)
+hLay1:addChild(folder)
 hLay1:addChild(text1)
-hLay1:addChild(selectButton)
+hLay1:addChild(select)
 
-homeVLay:addLayout(hLay1)
+groupVLay:addLayout(hLay1)
+group1:setLayout(groupVLay)
+
+-- Lay 2
+hLay2 = HLayout()
+
+clear = Button("Clear")
+clear:setIcon(images('erase.png'))
+
+text2 = LineEdit()
+text2:setHint('Hash will be displayed here')
+
+copy = Button("Copy")
+copy:setIcon(images("copy.png"))
+
+hLay2:addChild(clear)
+hLay2:addChild(text2)
+hLay2:addChild(copy)
+groupVLay:addLayout(hLay2)
+
+-- Lay 3
+hLay3 = HLayout()
+
+hashTypes = ComboBox()
+hashTypes:addImageItems({
+    {'MD5', images('type.png')}, 
+    {'SHA1', images('type.png')}, 
+    {'SHA224', images('type.png')}, 
+    {'SHA256', images('type.png')}, 
+    {'SHA384', images('type.png')}, 
+    {'SHA512', images('type.png')}})
+
+text3 = LineEdit()
+
+calculate = Button("Calculate")
+calculate:setIcon(images("calculate.png"))
+
+hLay3:addChild(hashTypes)
+hLay3:addChild(text3)
+hLay3:addChild(calculate)
+
+groupVLay:addLayout(hLay3)
+
+homeVLay:addChild(group1)
+
+homeVLay:addChild(CheckBox('Hash Matcher'))
+
+-- GroupBox 2
+group2 = GroupBox("")
+hLay4 = HLayout()
+
+folder = Button("Clear")
+folder:setIcon(images('erase.png'))
+
+text4 = LineEdit()
+
+search = Button("Check")
+search:setIcon(images("find.png"))
+
+hLay4:addChild(folder)
+hLay4:addChild(text4)
+hLay4:addChild(search)
+group2:setLayout(hLay4)
+
+homeVLay:addChild(group2)
+
 homeTab:setLayout(homeVLay)
 
 aboutTab = TabItem()
-
 
 tab:addTab(homeTab,'Home', images('home.png'))
 tab:addTab(aboutTab,'About',images('info.png'))
