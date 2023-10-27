@@ -1,13 +1,13 @@
-window = Window("Widgets - Limekit", false)
+window = Window{title="Widgets - Limekit"}
 window:setIcon(route('app_icon'))
 -- window:setSize(200, 200)
 
 mainLayout = GridLayout()
 
-styles= window:getStyles()
+styles= app.getStyles()
 styleComboBox = ComboBox(styles)
 styleComboBox.onItemSelected(function(obj, style)
-	window:setStyle(style)
+	app.setStyle(style)
 end)
 styleLabel = Label("&Style:")
 styleLabel.setBuddy(styleComboBox)
@@ -95,8 +95,8 @@ tab2hbox:setMargins(5, 5, 5, 5)
 tab2hbox:addChild(textEdit)
 tab2:setLayout(tab2hbox)
 
-bottomLeftTabWidget:addTabItem(tab1, "&Table")
-bottomLeftTabWidget:addTabItem(tab2, "Text &Edit")
+bottomLeftTabWidget:addTab(tab1, "&Table")
+bottomLeftTabWidget:addTab(tab2, "Text &Edit")
 
 -- ######################################
 

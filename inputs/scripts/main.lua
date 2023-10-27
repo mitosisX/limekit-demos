@@ -21,7 +21,7 @@ items:setOnClick(function()
     print(text)
 end)
 
-integer = Button('Intger')
+integer = Button('Integer')
 integer:setOnClick(function()
     value = app.integerInput(window, 'Double Input', 'Enter Amount: ', 1, 1, 100)
     print('Value: ',value)
