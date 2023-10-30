@@ -63,7 +63,7 @@ window.addToolbar(toolbar)
 -- menu = Menu(window)
 
 -- Theme to be used
-theme = Theme("material")
+theme = Theme("misc")
  -- theme.setTheme("dark")
 mainLayout = HLayout()
 

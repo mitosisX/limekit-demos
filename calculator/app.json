@@ -9,10 +9,7 @@
     "url": "",
     "routes": {
       "single": {
-        "cursor":"images:pointer.png",
-        "app_icon": "images:calc.png",
-        "alarm": "misc:Alarm03.wav",
-        "font": "misc:Oakle.ttf"
+        "app_icon": "images::calc.png",
       },
       "group": {
         "books": {

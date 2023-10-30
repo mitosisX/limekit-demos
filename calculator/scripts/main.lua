@@ -1,6 +1,5 @@
 -- Creating the window
-window = Window("Calculator - Limekit")
-window:setIcon(route('app_icon'))
+window = Window{title="Calculator - Limekit", icon=route('app_icon')}
 window:setSize(280, 80)
 
 -- Setting the theme
