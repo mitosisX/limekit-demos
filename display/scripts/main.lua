@@ -1,6 +1,5 @@
-window = Window{title="Widgets - Limekit"}
-window:center()
-window:setIcon(images("lua.png"))
+window = Window{title="Widgets - Limekit", icon=route('app_icon')}
+-- window:setIcon(images("lua.png"))
 
 window:setOnShown(function()
   window:center()
@@ -14,7 +13,8 @@ window:setOnShown(function()
 
 end)
 window:setOnResize(function()
-  window:setTitle('Width: '.. window:getSize()[0] .. ' Height: ' .. window:getSize()[1])
+  width, height = window:getSize()
+  window:setTitle('Width: '.. width .. ' Height: ' .. height)
 end)
 window:setOnClose(function(sender, event)
   -- event.ignore()
@@ -24,8 +24,8 @@ window:setSize(400, 100)
 
 toolbar = Toolbar()
 
-tray = SysTray()
-tray:setImage(images("heart.png"))
+tray = SysTray(images("heart.png"))
+-- tray:setImage(images("heart.png"))
 tray:setVisibility(true)
 
 menubar = Menubar()

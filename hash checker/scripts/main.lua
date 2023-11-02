@@ -1,6 +1,6 @@
 -- theme = Theme("darklight")
--- theme:setTheme("light")
-app.setStyle('Fusion')
+-- theme:setTheme("dark")
+-- app.setStyle('Fusion')
 -- Creating a window
 window = Window{title="Hash Checker - Limekit", size={408, 270}}
 window:setIcon(route('icon'))
@@ -104,8 +104,8 @@ homeTab:setLayout(homeVLay)
 
 aboutTab = TabItem()
 
-tab:addTab(homeTab,'Home', images('home.png'))
-tab:addTab(aboutTab,'About',images('info.png'))
+tab:addTab(homeTab,'Home')
+tab:addTab(aboutTab,'About')
 
 mainLay:addChild(tab)
 

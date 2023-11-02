@@ -13,12 +13,6 @@ datePicker = DatePicker()
 -- datePicker:setDate(1996, 12, 13, 21, 30)
 mainLay:addChild(datePicker)
 
-for a,b in pairs(app.listFolder('C:\\Users\\OMEGA\\Documents\\limekit demos\\date and time')) do
-	if app.checkFileEmpty(b) then
-		print(b)
-	end
-end
-
 timePicker = TimePicker()
 timePicker:setOnTimePicked(function(obj, time)
 	print(time)
