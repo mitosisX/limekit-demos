@@ -4,11 +4,11 @@ window:setSize(280, 170)
 
 mainLay = VLayout()
 
-theme = Theme('darklight')
+theme = Theme('misc')
 getThemes = theme:getThemes()
 
 combo = ComboBox(getThemes)
-combo:onItemSelected(function(obj, theme_)
+combo:setOnItemSelected(function(obj, theme_)
     theme:setTheme(theme_)
 end)
 

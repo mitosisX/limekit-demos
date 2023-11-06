@@ -1,12 +1,13 @@
-window = Window{title="Widgets - Limekit"}
-window:setIcon(route('app_icon'))
+window = Window{title="Widgets - Limekit", icon=route('app_icon')}
 -- window:setSize(200, 200)
+
+print(py.str_format("Hello {1}! I am {0} {2}", 'World', 'Omega','Msiska'))
 
 mainLayout = GridLayout()
 
 styles= app.getStyles()
 styleComboBox = ComboBox(styles)
-styleComboBox.onItemSelected(function(obj, style)
+styleComboBox.setOnItemSelected(function(obj, style)
 	app.setStyle(style)
 end)
 styleLabel = Label("&Style:")
