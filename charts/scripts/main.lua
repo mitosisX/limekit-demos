@@ -1,14 +1,23 @@
 window = Window{title='Charts - Limekit', size={400, 300}, icon=route('app_icon')}
+Theme('darklight'):setTheme('dark')
+mainLay = GridLayout()
 
-mainLay = VLayout()
+combo = ComboBox()
+combo:setOnItemSelected(function(obj, item)
+	canvas:setTheme(item)
+end)
 
-chart = Chart{title="Simple barchat Example"}
+mainLay:addChild(combo, 0, 0)
 
-canvas = ChartCanvas(chart)
+barChart = Chart{title="Simple barchat Example", animation=nil}
+
+canvas = ChartCanvas(barChart)
+combo:addItems(canvas:getThemes())
 
 line_chart = BarChart()
-chart:setLegendVisibility(true)
-chart:setLegendAlignment('bottom')
+category = CategoryAxis({"Jan", "Feb", "Mar", "Apr", "May", "Jun"})
+barChart:setLegendVisibility(true)
+barChart:setLegendAlignment('bottom')
 
 set_0 = BarSet("Jane")
 set_1 = BarSet("John")
@@ -16,25 +25,28 @@ set_2 = BarSet("Axel")
 set_3 = BarSet("Mary")
 set_4 = BarSet("Samantha")
 
-set_0:addData({1, 2, 3, 4, 5, 6})
-set_1:addData({5, 0, 0, 4, 0, 7})
-set_2:addData({3, 5, 8, 13, 8, 5})
-set_3:addData({5, 6, 7, 3, 4, 5})
-set_4:addData({9, 7, 5, 3, 1, 2})
+set_0:append({1, 2, 3, 4, 5, 6})
+set_1:append({5, 0, 0, 4, 0, 7})
+set_2:append({3, 5, 8, 13, 8, 5})
+set_3:append({5, 6, 7, 3, 4, 5})
+set_4:append({9, 7, 5, 3, 1, 2})
 
-line_chart:addData(set_0)
-line_chart:addData(set_1)
-line_chart:addData(set_2)
-line_chart:addData(set_3)
-line_chart:addData(set_4)
+line_chart:append(set_0)
+line_chart:append(set_1)
+line_chart:append(set_2)
+line_chart:append(set_3)
+line_chart:append(set_4)
 
 axis_x = ValueAxis()
 axis_x:setRange(0, 15)
-chart:addAxis(axis_x, 'left')
+barChart:addAxis(axis_x, 'left')
 
-chart:addSeries(line_chart)
+barChart:addSeries(line_chart)
 
-mainLay:addChild(canvas)
+barChart:addAxis(category, 'bottom')
+line_chart:attachAxis(category)
+
+mainLay:addChild(canvas,1, 0)
 
 window:setLayout(mainLay)
 window:show()

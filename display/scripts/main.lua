@@ -3,15 +3,15 @@ window = Window{title="Widgets - Limekit", icon=route('app_icon')}
 
 window:setOnShown(function()
   window:center()
-  noti = SysNotification(images('furniture.png'))
+  noti = SysNotification(images('furniture.png'), window)
   noti:setMessage{message='First ever top-notch lua GUI framework!', 
     icon='warning', duration=1000}
   
   noti:setOnClick(function()
     print("clicked Notification")
   end)
-
 end)
+
 window:setOnResize(function()
   width, height = window:getSize()
   window:setTitle('Width: '.. width .. ' Height: ' .. height)
@@ -99,7 +99,7 @@ mainLay1:addChild(button)
 combo = ComboBox(theme.getThemes())
  -- combo.addItems(["Omega", "Msiska", "Mitosis", "X"])
 -- combo:addItems()
-combo:onItemSelected(function (sender, data) 
+combo:setOnItemSelected(function (sender, data) 
   theme:setTheme(data)
 end)
 
@@ -179,7 +179,7 @@ end
 
 styles = ComboBox()
 styles:addItems(app.getStyles())
-styles:onItemSelected(function (sender, style)
+styles:setOnItemSelected(function (sender, style)
   app.setStyle(style)
 end)
 
