@@ -1,3 +1,7 @@
+
+theme = Theme("modern")
+ -- theme.setTheme("dark")
+
 window = Window{title="Widgets - Limekit", icon=route('app_icon')}
 -- window:setIcon(images("lua.png"))
 
@@ -63,8 +67,6 @@ window.addToolbar(toolbar)
 -- menu = Menu(window)
 
 -- Theme to be used
-theme = Theme("misc")
- -- theme.setTheme("dark")
 mainLayout = HLayout()
 
 mainLay1 = VLayout()
