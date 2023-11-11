@@ -2,14 +2,17 @@
 toolbar1 = Toolbar()
 toolbar1:setImageStyle('textbesideicon')
 
-newDBToolbarButton = ToolbarButton('New Database')
-newDBToolbarButton:setImage(images('database_add.png'))
+newDBToolbarButton = ToolbarButton('New Project')
+newDBToolbarButton:setOnClick(function()
+    window:minimize()
+end)
+newDBToolbarButton:setImage(images('backpack_3d.png'))
 
-openDBToolbarButton = ToolbarButton('Open Database')
-openDBToolbarButton:setImage(images('database_go.png'))
+openDBToolbarButton = ToolbarButton('Open Project')
+openDBToolbarButton:setImage(images('card_index_dividers_3d.png'))
 
-writeChangesToolbar = ToolbarButton('Write Changes')
-writeChangesToolbar:setImage(images('database_save.png'))
+writeChangesToolbar = ToolbarButton('Save Changes')
+writeChangesToolbar:setImage(images('card_file_box_3d.png'))
 
 revertChangesToolbar = ToolbarButton('Revert Changes')
 revertChangesToolbar:setImage(images('database_refresh.png'))

@@ -1,10 +1,10 @@
 Theme('darklight'):setTheme('light')
 
 function fectchData()
-	db:execute('SELECT * FROM Fruits;')
-	data = db:fetchAll()
+    db:execute('SELECT * FROM Fruits;')
+    data = db:fetchAll()
 
-	return data
+    return data
 end
 
 database = nil
@@ -22,24 +22,30 @@ app.execute(scripts('views/tab/main.lua'))
 app.execute(scripts('views/docks/main.lua'))
 
 function openDBFile()
-	file = app.openFile(window, "Choose a database file", "D:/sandbox", {["SQLite database files"] = {".db", ".sqlite",".sqlite3", ".db3"}})
-	database = Sqlite3(file)
+    file = app.openFile(window, "Choose a database file", "D:/sandbox", {
+        ["SQLite database files"] = {".db", ".sqlite", ".sqlite3", ".db3"}
+    })
+    database = Sqlite3(file)
 
-	getTables()
+    getTables()
 end
 
 function getTables()
-	tables = database:fetchTables()
-	
-	for index = 1, #tables do
-		item = tables[index]
-		tablesCombo:addItem(item)
-	end
+    tables = database:fetchTables()
+
+    for index = 1, #tables do
+        item = tables[index]
+        tablesCombo:addItem(item)
+    end
 end
 
-window = Window{title = "Limekit IDE"}
-window:setIcon(route('app_icon'))
-window:setSize(1000, 600)
+window = Window {
+    title = "Limekit IDE",
+    icon = route('app_icon'),
+    size = {1000, 600}
+}
+
+window:maximize()
 
 mainLay = VLayout()
 childMainLayout = HLayout()
@@ -49,51 +55,18 @@ segmentation = Segmenter('horizontal')
 db = Sqlite3('D:/sandbox/limekit.db')
 
 menubar = Menubar()
-menubar:buildFromTemplate({
-	{label = 'File',
-		submenu={
-			{label='New Database...',
-			icon=images('database_add.png'),
-			shortcut="Ctrl+N"},
+menubar:buildFromTemplate({{
+    label = 'File',
+    submenu = {{
+        label = 'New Database...',
+        icon = images('database_add.png'),
+        shortcut = "Ctrl+N"
+    }}
+}, {
+    label = 'View',
+    name = 'View'
+}})
 
-			{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='-'},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-			shortcut="Ctrl+N"},
-		}}
-})
 -- menubar:addMenuItem(fileMenu)
 -- menubar:addMenuItem(editMenu)
 -- menubar:addMenuItem(viewMenu)
