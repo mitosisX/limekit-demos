@@ -2,11 +2,6 @@
 window = Window("Table - Limekit")
 window:setSize(558, 363)
 window:setIcon(route('app_icon'))
--- window:setCustomCursor(images('pointer.png'))
-
-print(py.str_split("He,llo,the,re", ",")[1])
-
--- app.setFont(misc('Oakle.ttf'), 10)
 
 -- Creating a main horizontal layout
 mainLay = VLayout()

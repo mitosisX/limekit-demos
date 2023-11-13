@@ -1,3 +1,17 @@
+--[[
+				Limekit IDE
+
+			Copyright: 
+			Author:
+
+			(Note: This source code is provided unobfuscated and commented
+			in the hope that it is useful for educational purposes. It remains
+		the copyright of )
+
+		v 1.0
+		Development Time: 10 November, 2023
+
+]] --
 Theme('darklight'):setTheme('light')
 
 function fectchData()
@@ -17,6 +31,8 @@ database = nil
 -- app.execute(scripts('menus/tools.lua'))
 -- app.execute(scripts('menus/help.lua'))
 
+app.execute(scripts('commons/functions/main.lua'))
+app.execute(scripts('commons/menus.lua'))
 app.execute(scripts('views/toolbar/main.lua'))
 app.execute(scripts('views/tab/main.lua'))
 app.execute(scripts('views/docks/main.lua'))
@@ -45,27 +61,29 @@ window = Window {
     size = {1000, 600}
 }
 
+app.setFontFile(misc('brandon.otf'), 8)
+
 window:maximize()
 
-mainLay = VLayout()
-childMainLayout = HLayout()
+mainLay = VLayout() -- The master layout for the whole app
 
-segmentation = Segmenter('horizontal')
+segmentation = Splitter('horizontal')
 
 db = Sqlite3('D:/sandbox/limekit.db')
 
+function changeTheme(obj)
+
+    print(obj)
+    -- theme = obj:getText()
+    -- if theme == 'Light' then
+    --     print('light')
+    -- elseif theme == 'Dark' then
+    --     print('dark')
+    -- end
+end
+
 menubar = Menubar()
-menubar:buildFromTemplate({{
-    label = 'File',
-    submenu = {{
-        label = 'New Database...',
-        icon = images('database_add.png'),
-        shortcut = "Ctrl+N"
-    }}
-}, {
-    label = 'View',
-    name = 'View'
-}})
+menubar:buildFromTemplate(appMenubarItems) -- derived from commons/menus.lua
 
 -- menubar:addMenuItem(fileMenu)
 -- menubar:addMenuItem(editMenu)
@@ -81,7 +99,7 @@ window:addToolbar(toolbar3)
 
 segmentation:addChild(toolboxDock)
 
-seg = Segmenter('vertical')
+seg = Splitter('vertical')
 
 vLay = VLayout()
 

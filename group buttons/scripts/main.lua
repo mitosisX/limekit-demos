@@ -2,8 +2,8 @@ window = Window("Group Buttons - Limekit")
 window:setIcon(route('app_icon'))
 window:setSize(350, 200)
 
-theme = Theme("material")
-theme:setTheme("light_blue")
+-- theme = Theme("material")
+-- theme:setTheme("light_blue")
 
 mainLay = VLayout()
 
@@ -13,7 +13,8 @@ headerLabel.setTextAlign('center')
 questionLabel = Label("How would you rate Limekit?")
 questionLabel.setTextAlign('center')
 
-mainLay:addChild(headerLabel, questionLabel)
+mainLay:addChild(headerLabel)
+mainLay:addChild(questionLabel)
 
 ratings = {"Brilliant", "Average", "Not Satisfied"}
 
@@ -25,7 +26,7 @@ end)
 confirm = Button("Confirm")
 
 for key,value in ipairs(ratings) do
-    check = CheckBox(value)
+    check = RadioButton(value)
     ratingGroup:addChild(check)
     mainLay:addChild(check)
 end

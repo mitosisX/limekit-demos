@@ -3,13 +3,10 @@ toolbar1 = Toolbar()
 toolbar1:setImageStyle('textbesideicon')
 
 newDBToolbarButton = ToolbarButton('New Project')
-newDBToolbarButton:setOnClick(function()
-    window:minimize()
-end)
-newDBToolbarButton:setImage(images('backpack_3d.png'))
+newDBToolbarButton:setImage(images('toolbar/new_project.png'))
 
 openDBToolbarButton = ToolbarButton('Open Project')
-openDBToolbarButton:setImage(images('card_index_dividers_3d.png'))
+openDBToolbarButton:setImage(images('toolbar/open_project.png'))
 
 writeChangesToolbar = ToolbarButton('Save Changes')
 writeChangesToolbar:setImage(images('card_file_box_3d.png'))
