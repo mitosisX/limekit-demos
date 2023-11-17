@@ -38,7 +38,7 @@ allWidgetUtils = {
     VerticalLine = images('widgets/line.png'),
     HorizontalLine = images('widgets/line.png'),
     Knob = images('widgets/Button.png'),
-    Label = images('widgets/dislay.png'),
+    Label = images('widgets/label.png'),
     LCDNumber = images('widgets/LCD.png'),
     LineEdit = images('widgets/Button.png'),
     ListBox = images('widgets/ListBox.png'),
@@ -52,6 +52,9 @@ allWidgetUtils = {
     Table = images('widgets/Table.png'),
     TextField = images('widgets/TextField.png'),
     Window = images('widgets/window.png'),
+    SlidingStackedWidget = images('widgets/StackedLayout.png'),
+    StackedLayout = images('widgets/StackedLayout.png'),
+    FormLayout = images('widgets/FormLayout.png'),
     GridLayout = images('widgets/gridlayout.png'),
     HLayout = images('widgets/HLayout.png'),
     VLayout = images('widgets/VLayout.png'),
@@ -60,7 +63,7 @@ allWidgetUtils = {
     DatePicker = images('widgets/DateTimePicker.png'),
     TimePicker = images('widgets/TimePicker.png'),
     Docker = images('widgets/menu.png'),
-    Menu = images('widgets/Button.png'),
+    Menu = images('widgets/Menu.png'),
     MenuBar = images('widgets/menubar.png')
 }
 
@@ -69,16 +72,16 @@ widgetsList:addImageItems(app.sortTable(allWidgetUtils))
 -- ######### App utils listing
 appUtilsList = ListBox() -- List for all app utils
 
-allAppUtils = {'splitString', 'range', 'joinTables', 'sleep', 'weightedGraph', 'getStyles', 'setStyle', 'quickSort',
-               'makeHash', 'hexToRGB', 'readFileLines', 'toBase64', 'fromBase64', 'emoji', 'extractZip',
-               'checkIfFolder', 'checkExists', 'checkFileEmpty', 'checkDirEmpty', 'getFileSize', 'readFile',
-               'writeFile', 'createFile', 'appendFile', 'readJSON', 'writeJSON', 'getFont', 'openFile', 'colorPicker',
-               'textInput', 'multilineInput', 'comboBoxInput', 'integerInput', 'doubleInput', 'alert', 'errorDialog',
-               'aboutAlert', 'criticalAlert', 'infoAlert', 'warningAlert', 'getClipboardText', 'setClipboarText',
-               'listFolder', 'createFolder', 'playSound', 'getProcesses', 'killProcess', 'getCPUCount', 'getUsers',
-               'getBatteryInfo', 'getDiskPartitions', 'getDiskInfo', 'getBootTime', 'getMachineType',
-               'getNetworkNodeName', 'getProcessorName', 'getPlatformName', 'getSystemRelease', 'getOSName',
-               'getOSRelease', 'getOSVersion' -- 'checkUniqueChars'
+allAppUtils = {'sortArray', 'sortTable', 'randomChoice', 'splitString', 'range', 'joinTables', 'sleep', 'weightedGraph',
+               'getStyles', 'setStyle', 'quickSort', 'makeHash', 'hexToRGB', 'readFileLines', 'toBase64', 'fromBase64',
+               'emoji', 'extractZip', 'checkIfFolder', 'checkExists', 'checkFileEmpty', 'checkDirEmpty', 'getFileSize',
+               'readFile', 'writeFile', 'createFile', 'appendFile', 'readJSON', 'writeJSON', 'getFont', 'openFile',
+               'colorPicker', 'textInput', 'multilineInput', 'comboBoxInput', 'integerInput', 'doubleInput', 'alert',
+               'errorDialog', 'aboutAlert', 'criticalAlert', 'infoAlert', 'warningAlert', 'getClipboardText',
+               'setClipboarText', 'listFolder', 'createFolder', 'playSound', 'getProcesses', 'killProcess',
+               'getCPUCount', 'getUsers', 'getBatteryInfo', 'getDiskPartitions', 'getDiskInfo', 'getBootTime',
+               'getMachineType', 'getNetworkNodeName', 'getProcessorName', 'getPlatformName', 'getSystemRelease',
+               'getOSName', 'getOSRelease', 'getOSVersion' -- 'checkUniqueChars'
 }
 
 -- ######### App utils listing
@@ -102,7 +105,7 @@ pyAccordion:addChild(pyUtilsList, 'Python utils')
 
 toolboxDock:setChild(scroller)
 
-editDBDocks = Dock("Edit Database Cell")
+editDBDocks = Dock("App directory")
 
 appLog = Dock("Application Log")
 appLog:setProperties(nil)

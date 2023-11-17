@@ -42,7 +42,7 @@ window:setSize(1000, 600)
 mainLay = VLayout()
 childMainLayout = HLayout()
 
-segmentation = Segmenter('horizontal')
+segmentation = Splitter('horizontal')
 
 db = Sqlite3('D:/sandbox/limekit.db')
 

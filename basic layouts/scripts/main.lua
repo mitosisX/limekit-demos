@@ -3,8 +3,7 @@ numGridRows = 3
 
 -- Theme('material'):setTheme('dark_blue')
 
-window = Window("Basic Layouts - Limekit", false)
-window:setIcon(route('app_icon'))
+window = Window{title="Basic Layouts - Limekit", icon=route('app_icon')}
 
 mainLayout = VLayout()
 

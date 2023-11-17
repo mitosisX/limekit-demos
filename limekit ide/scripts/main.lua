@@ -31,6 +31,7 @@ database = nil
 -- app.execute(scripts('menus/tools.lua'))
 -- app.execute(scripts('menus/help.lua'))
 
+-- app.execute(scripts('views/homepage/welcome.lua'))
 app.execute(scripts('commons/functions/main.lua'))
 app.execute(scripts('commons/menus.lua'))
 app.execute(scripts('views/toolbar/main.lua'))
@@ -61,7 +62,7 @@ window = Window {
     size = {1000, 600}
 }
 
-app.setFontFile(misc('brandon.otf'), 8)
+app.setFontFile(misc('CeraPro-Regular.ttf'), 8)
 
 window:maximize()
 
@@ -85,12 +86,6 @@ end
 menubar = Menubar()
 menubar:buildFromTemplate(appMenubarItems) -- derived from commons/menus.lua
 
--- menubar:addMenuItem(fileMenu)
--- menubar:addMenuItem(editMenu)
--- menubar:addMenuItem(viewMenu)
--- menubar:addMenuItem(toolsMenu)
--- menubar:addMenuItem(helpMenu)
-
 window:setMenubar(menubar)
 
 window:addToolbar(toolbar1)
@@ -101,16 +96,19 @@ segmentation:addChild(toolboxDock)
 
 seg = Splitter('vertical')
 
-vLay = VLayout()
+stackLay = SlidingStackedWidget()
+stackLay:setOrientation('vertical')
+stackLay:setAnimation('OutExpo')
+-- stackLay.autoStart() -- should comment out this one
 
-vLay:addChild(dbTab)
-seg:addLayout(vLay)
+stackLay:addChild(dbTab)
+stackLay:addChild(Label('Something'))
+
+seg:addChild(stackLay) -- welcome page - from components
 seg:addChild(appLog)
 
 segmentation:addChild(seg)
 segmentation:addLayout(docksLay)
-
-openDBToolbarButton:setOnClick(openDBFile)
 
 mainLay:addChild(segmentation)
 

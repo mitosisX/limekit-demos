@@ -1,15 +1,25 @@
+app.execute(scripts('views/homepage/create_project.lua'))
+
 -- ##### Toolbar 1
 toolbar1 = Toolbar()
 toolbar1:setImageStyle('textbesideicon')
 
 newDBToolbarButton = ToolbarButton('New Project')
 newDBToolbarButton:setImage(images('toolbar/new_project.png'))
+newDBToolbarButton:setOnClick(function()
+
+end)
 
 openDBToolbarButton = ToolbarButton('Open Project')
 openDBToolbarButton:setImage(images('toolbar/open_project.png'))
+openDBToolbarButton:setOnClick(openProject)
 
 writeChangesToolbar = ToolbarButton('Save Changes')
 writeChangesToolbar:setImage(images('card_file_box_3d.png'))
+writeChangesToolbar:setOnClick(function()
+    out = app.runProject()
+    logConsole:appendText(out)
+end)
 
 revertChangesToolbar = ToolbarButton('Revert Changes')
 revertChangesToolbar:setImage(images('database_refresh.png'))

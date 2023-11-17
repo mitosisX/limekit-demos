@@ -9,21 +9,7 @@
     "url": "",
     "routes": {
       "single": {
-        "app_icon": "images::calc.png",
-      },
-      "group": {
-        "books": {
-          "group_label": "",
-          "Harry Potter": "misc:Harry Potter.txt",
-          "Rings": "misc:Lord of the rings.txt",
-          "Tom Clancy": "Tom Clancy.txt"
-        },
-        "cities": {
-          "Zomba": "misc:zomba.txt",
-          "Blantyre": "misc:Blantyre.txt",
-          "Mzuzu": "misc:Mzuzu.txt",
-          "Lilongwe": "misc:Lilongwe.txt"
-        }
+        "app_icon": "images::calc.png"
       }
     },
     "lua_require": ""

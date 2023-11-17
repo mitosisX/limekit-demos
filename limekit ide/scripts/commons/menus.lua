@@ -2,11 +2,11 @@ appMenubarItems = {{
     label = 'File',
     submenu = {{
         label = 'New Project',
-        icon = images('database_add.png'),
+        icon = images('toolbar/new_project.png'),
         shortcut = "Ctrl+N"
     }, {
         label = 'Open Project',
-        icon = images('database_add.png'),
+        icon = images('toolbar/open_project.png'),
         shortcut = "Ctrl+N"
     }, {
         label = '-'

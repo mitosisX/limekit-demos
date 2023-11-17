@@ -15,24 +15,22 @@ end
 
 add_button = Button("Add")
 add_button:setOnClick(function()
-	input = app.textInput(window, "Insert Item", "Insert item:")
-	
-	if input:isDone() then
-		text = input:getText()
-		row = list_widget:getCurrentRow()
-		row = row + 1
-
-		list_widget:insertItemAt(row, text)
+	if text ~= "" then
+		text = app.textInput(window, "New Item", "Add item:")
+		
+		list_widget:addItem(text)
 	end
 end)
 
 insert_button = Button("Insert")
 insert_button:setOnClick(function()
-	input = app.textInput(window, "New Item", "Add item:")
+	text = app.textInput(window, "Insert Item", "Insert item:")
 	
-	if input:isDone() then
-		text = input:getText()
-		list_widget:insertItem(text)
+	if text ~= "" then
+		row = list_widget:getCurrentRow()
+		row = row + 1
+
+		list_widget:insertItemAt(row, text)
 	end
 end)
 

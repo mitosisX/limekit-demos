@@ -11,7 +11,7 @@ window:setOnClose(function(obj, event)
     -- end
 end)
 
-shortcut = ShortcutKeys(window, 'Ctrl+Q')
+shortcut = KeyboardShortcut(window, 'Ctrl+Q')
 shortcut:setOnKeyPress(function()
     print('Ctrl+Q')
 end)
@@ -34,7 +34,7 @@ mainLay = VLayout()
 
 button = Button('Hello')
 button:setOnClick(function()
-    alert = app.alert(window,'Hello','I am from Limekit','question', {'ok','open','save','ignore','rety'})
+    
 end)
 
 openButton = Button('Open')
