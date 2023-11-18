@@ -2,8 +2,8 @@ window = Window{title="Input Dialogs - Limekit", icon = route('app_icon'), size=
 
 mainLay = HLayout()
 
-print('Hello to CLI 1')
-print('Hello to CLI 2')
+-- print('Hello to CLI 1')
+-- print('Hello to CLI 2')
 
 input = Button('Text')
 input:setMatProperty('danger')

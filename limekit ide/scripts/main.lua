@@ -13,7 +13,6 @@
 
 ]] --
 Theme('darklight'):setTheme('light')
-
 function fectchData()
     db:execute('SELECT * FROM Fruits;')
     data = db:fetchAll()
@@ -23,13 +22,7 @@ end
 
 database = nil
 
--- app.joinTables({a = 1,b = 2},{c = 3},{d = 4,e = 5},{f = 6})
-
--- app.execute(scripts('menus/file.lua'))
--- app.execute(scripts('menus/edit.lua'))
--- app.execute(scripts('menus/view.lua'))
--- app.execute(scripts('menus/tools.lua'))
--- app.execute(scripts('menus/help.lua'))
+json = require 'json'
 
 -- app.execute(scripts('views/homepage/welcome.lua'))
 app.execute(scripts('commons/functions/main.lua'))
@@ -56,13 +49,22 @@ function getTables()
     end
 end
 
+-- Paths
+documentsFolder = app.getStandardPath('documents')
+
+limekitProjectsFolder = app.joinPaths(documentsFolder, 'limekit projects/')
+
+if not app.checkExists(limekitProjectsFolder) then
+    app.createFolder(limekitProjectsFolder)
+end
+
 window = Window {
     title = "Limekit IDE",
     icon = route('app_icon'),
     size = {1000, 600}
 }
 
-app.setFontFile(misc('CeraPro-Regular.ttf'), 8)
+app.setFontFile(misc('Comfortaa-Regular.ttf'), 8)
 
 window:maximize()
 

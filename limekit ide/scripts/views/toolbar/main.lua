@@ -1,4 +1,4 @@
-app.execute(scripts('views/homepage/create_project.lua'))
+app.execute(scripts('views/dialogs/create_project.lua'))
 
 -- ##### Toolbar 1
 toolbar1 = Toolbar()
@@ -6,9 +6,7 @@ toolbar1:setImageStyle('textbesideicon')
 
 newDBToolbarButton = ToolbarButton('New Project')
 newDBToolbarButton:setImage(images('toolbar/new_project.png'))
-newDBToolbarButton:setOnClick(function()
-
-end)
+newDBToolbarButton:setOnClick(projectCreator)
 
 openDBToolbarButton = ToolbarButton('Open Project')
 openDBToolbarButton:setImage(images('toolbar/open_project.png'))
