@@ -3,12 +3,9 @@ function writeToConsole(content)
 end
 
 function openProject()
-    -- file = app.openFile(window, "Open a project", "", {
-    --     ["Limekit app"] = {".json"}
-    -- })
-
-    alert = app.alert(window, 'Information', 'THis is a popup yshujdiko lpsid jsidk jsdjks kdj')
-    -- print(alert)
+    file = app.openFile(window, "Open a project", limekitProjectsFolder, {
+        ["Limekit app"] = {".json"}
+    })
 
     -- worker = Worker()
     -- worker:setOnThreadRun(function()

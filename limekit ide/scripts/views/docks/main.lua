@@ -72,16 +72,16 @@ widgetsList:addImageItems(app.sortTable(allWidgetUtils))
 -- ######### App utils listing
 appUtilsList = ListBox() -- List for all app utils
 
-allAppUtils = {'sortArray', 'getStandardPath', 'sortTable', 'randomChoice', 'splitString', 'range', 'joinTables',
-               'sleep', 'weightedGraph', 'getStyles', 'setStyle', 'quickSort', 'makeHash', 'hexToRGB', 'readFileLines',
-               'toBase64', 'fromBase64', 'emoji', 'extractZip', 'checkIfFolder', 'checkExists', 'checkFileEmpty',
-               'checkDirEmpty', 'getFileSize', 'readFile', 'writeFile', 'createFile', 'appendFile', 'readJSON',
-               'writeJSON', 'getFont', 'openFile', 'colorPicker', 'textInput', 'multilineInput', 'comboBoxInput',
-               'integerInput', 'doubleInput', 'alert', 'errorDialog', 'aboutAlert', 'criticalAlert', 'infoAlert',
-               'warningAlert', 'getClipboardText', 'setClipboarText', 'listFolder', 'createFolder', 'playSound',
-               'getProcesses', 'killProcess', 'getCPUCount', 'getUsers', 'getBatteryInfo', 'getDiskPartitions',
-               'getDiskInfo', 'getBootTime', 'getMachineType', 'getNetworkNodeName', 'getProcessorName',
-               'getPlatformName', 'getSystemRelease', 'getOSName', 'getOSRelease', 'getOSVersion' -- 'checkUniqueChars'
+allAppUtils = {'copyFile', 'getFileExt', 'sortArray', 'getStandardPath', 'sortTable', 'randomChoice', 'splitString',
+               'range', 'joinTables', 'sleep', 'weightedGraph', 'getStyles', 'setStyle', 'quickSort', 'makeHash',
+               'hexToRGB', 'readFileLines', 'toBase64', 'fromBase64', 'emoji', 'extractZip', 'checkIfFolder',
+               'checkExists', 'checkFileEmpty', 'checkDirEmpty', 'getFileSize', 'readFile', 'writeFile', 'createFile',
+               'appendFile', 'readJSON', 'writeJSON', 'getFont', 'openFile', 'colorPicker', 'textInput',
+               'multilineInput', 'comboBoxInput', 'integerInput', 'doubleInput', 'alert', 'errorDialog', 'aboutAlert',
+               'criticalAlert', 'infoAlert', 'warningAlert', 'getClipboardText', 'setClipboarText', 'listFolder',
+               'createFolder', 'playSound', 'getProcesses', 'killProcess', 'getCPUCount', 'getUsers', 'getBatteryInfo',
+               'getDiskPartitions', 'getDiskInfo', 'getBootTime', 'getMachineType', 'getNetworkNodeName',
+               'getProcessorName', 'getPlatformName', 'getSystemRelease', 'getOSName', 'getOSRelease', 'getOSVersion' -- 'checkUniqueChars'
 }
 
 -- ######### App utils listing
@@ -100,7 +100,7 @@ for x in ipairs(allPythonUtils) do
 end
 
 widgetsAccordion:addChild(widgetsList, 'Widgets')
-appAccordion:addChild(appUtilsList, 'app.')
+appAccordion:addChild(appUtilsList, 'app utils')
 pyAccordion:addChild(pyUtilsList, 'Python utils')
 
 toolboxDock:setChild(scroller)

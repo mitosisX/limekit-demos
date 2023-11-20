@@ -1,8 +1,3 @@
-dbTab = Tab()
-
-dbStructureTab = TabItem()
-
-browseDataTab = TabItem()
 browseLay = VLayout()
 browseOptionsLay = HLayout()
 
@@ -58,13 +53,3 @@ browseDataTable = Table(10, 10)
 browseDataTable:setColumnHeaders({"One", "Two", "Three"})
 
 browseLay:addChild(browseDataTable)
-
-browseDataTab:setLayout(browseLay)
-
-editPragramsTab = TabItem()
-executeSQLTab = TabItem()
-
-dbTab:addTab(dbStructureTab, "App", images('tabs/app.png'))
-dbTab:addTab(editPragramsTab, "Assets", images('widgets/resources.png'))
-dbTab:addTab(executeSQLTab, "Properties", images('tabs/properties.png'))
-dbTab:addTab(browseDataTab, "Sqlite Browser", images('tabs/Database.png'))

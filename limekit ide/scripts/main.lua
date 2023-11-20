@@ -1,18 +1,18 @@
 --[[
-				Limekit IDE
+				Limekit Runner
 
 			Copyright: 
-			Author:
+			Author: Omega Msiska
 
 			(Note: This source code is provided unobfuscated and commented
-			in the hope that it is useful for educational purposes. It remains
-		the copyright of )
+			in the hope that it is useful for educational purposes. It remains the copyright of )
 
 		v 1.0
 		Development Time: 10 November, 2023
 
 ]] --
 Theme('darklight'):setTheme('light')
+
 function fectchData()
     db:execute('SELECT * FROM Fruits;')
     data = db:fetchAll()
@@ -28,13 +28,14 @@ json = require 'json'
 app.execute(scripts('commons/functions/main.lua'))
 app.execute(scripts('commons/menus.lua'))
 app.execute(scripts('views/toolbar/main.lua'))
-app.execute(scripts('views/tab/main.lua'))
+app.execute(scripts('views/tabs/main.lua'))
 app.execute(scripts('views/docks/main.lua'))
 
 function openDBFile()
     file = app.openFile(window, "Choose a database file", "D:/sandbox", {
         ["SQLite database files"] = {".db", ".sqlite", ".sqlite3", ".db3"}
     })
+
     database = Sqlite3(file)
 
     getTables()
@@ -49,9 +50,8 @@ function getTables()
     end
 end
 
--- Paths
+-- Path to documents
 documentsFolder = app.getStandardPath('documents')
-
 limekitProjectsFolder = app.joinPaths(documentsFolder, 'limekit projects/')
 
 if not app.checkExists(limekitProjectsFolder) then
@@ -59,14 +59,14 @@ if not app.checkExists(limekitProjectsFolder) then
 end
 
 window = Window {
-    title = "Limekit IDE",
+    title = "Limekit Runner",
     icon = route('app_icon'),
     size = {1000, 600}
 }
 
-app.setFontFile(misc('Comfortaa-Regular.ttf'), 8)
+-- window:maximize()
 
-window:maximize()
+app.setFontFile(misc('Comfortaa-Regular.ttf'), 8)
 
 mainLay = VLayout() -- The master layout for the whole app
 
@@ -91,8 +91,8 @@ menubar:buildFromTemplate(appMenubarItems) -- derived from commons/menus.lua
 window:setMenubar(menubar)
 
 window:addToolbar(toolbar1)
-window:addToolbar(toolbar2)
-window:addToolbar(toolbar3)
+-- window:addToolbar(toolbar2)
+-- window:addToolbar(toolbar3)
 
 segmentation:addChild(toolboxDock)
 
@@ -103,7 +103,7 @@ stackLay:setOrientation('vertical')
 stackLay:setAnimation('OutExpo')
 -- stackLay.autoStart() -- should comment out this one
 
-stackLay:addChild(dbTab)
+stackLay:addChild(allAppTabs) -- The Tab holding App, Assets, Properties..
 stackLay:addChild(Label('Something'))
 
 seg:addChild(stackLay) -- welcome page - from components
