@@ -42,8 +42,6 @@ appMenubarItems = {{
     submenu = {{
         label = "Run"
     }, {
-        label = "Stop"
-    }, {
         label = "-"
     }, {
         label = "Run"

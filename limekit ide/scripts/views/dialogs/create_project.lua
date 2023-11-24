@@ -2,7 +2,7 @@ selIconPath = "" -- The path for the app icon, the user selected
 
 function projectCreator()
     modal = Modal(window, "Let's get you started - Limekit")
-    modal:setSize(550, 350)
+    modal:setSize(550, 400)
 
     createMainLayout = HLayout()
 
@@ -23,7 +23,7 @@ function projectCreator()
 
     title2 = Label('<strong>Cross-platform solution</strong>')
     title2:setTextColor('white')
-    subTitle2 = Label('Same code for Window, Linux and macOS\n')
+    subTitle2 = Label('Same code for Windows, Linux and macOS\n')
     subTitle2:setTextColor('white')
 
     gBLayo:addChild(title2)
@@ -66,7 +66,9 @@ function projectCreator()
     createVersionLineEdit = LineEdit()
     createVersionLineEdit:setText('1.0.0')
 
-    createIcon = Label('Icon')
+    createIcon = Label('Window icon')
+    createIcon:setWhatsThis('The icon that shows on your window') -- Right click to show the 'Whats This'
+
     createIconImage = Label()
     createIconImage:setImage(images('homepage/create_project/pick_image.png'))
     createIconImage:setCursor('pointinghand')
@@ -133,7 +135,7 @@ function processProjectCreation()
         if selIconPath ~= "" then
             createUserProject(userProjectNamePicked, userProjectVersionPicked)
         else
-            app.warningAlert(window, 'Not complete', 'Please select an image for your app')
+            app.warningAlert(window, 'Not complete', 'Please select an image for your window')
         end
     else
         app.warningAlert(window, 'Not complete', 'Make sure all fields are filled')
@@ -146,8 +148,8 @@ function createUserProject(userProjectNamePicked, userProjectVersionPicked)
     createdUserProjectFolder = app.joinPaths(limekitProjectsFolder, userProjectNamePicked)
 
     if not app.checkExists(createdUserProjectFolder) then
-        projectJsonStruct.name = userProjectNamePicked
-        projectJsonStruct.version = userProjectVersionPicked
+        projectJsonStruct.project.name = userProjectNamePicked
+        projectJsonStruct.project.version = userProjectVersionPicked
 
         app.createFolder(createdUserProjectFolder) -- create the folder for the new project
 
@@ -161,15 +163,17 @@ function createUserProject(userProjectNamePicked, userProjectVersionPicked)
         app.createFolder(miscFolder)
 
         mainLuaStruct =
-            "-- Welcome to the new era for modern lua gui development\nwindow = Window{title='New app - Limekit', icon = images('app.png'), size={400, 200}}\nwindow:show()"
+            "-- Welcome to the new era for modern lua gui development\nwindow = Window{title='New app - Limekit', icon = images('window.png'), size={400, 200}}\nwindow:show()"
 
         -- Now write to the main.lua
         app.writeFile(app.joinPaths(scriptsFolder, 'main.lua'), mainLuaStruct)
         app.writeFile(app.joinPaths(createdUserProjectFolder, 'app.json'), json.stringify(projectJsonStruct))
 
-        app.copyFile(selIconPath, app.joinPaths(imagesFolder, 'app.png'))
+        app.copyFile(selIconPath, app.joinPaths(imagesFolder, 'window.png'))
 
         modal:dismiss()
+
+        app.alert(window, 'Success!', 'Project has been created')
     else
         app.criticalAlert(window, 'Error!', 'Could not create the project. Project already exists.')
     end

@@ -2,54 +2,53 @@ app.execute(scripts('views/dialogs/create_project.lua'))
 
 -- ##### Toolbar 1
 toolbar1 = Toolbar()
-toolbar1:setImageStyle('textbesideicon')
+toolbar1:setIconStyle('textbesideicon')
 
 newDBToolbarButton = ToolbarButton('New Project')
-newDBToolbarButton:setImage(images('toolbar/new_project.png'))
+newDBToolbarButton:setIcon(images('toolbar/new_project.png'))
 newDBToolbarButton:setOnClick(projectCreator)
 
 openDBToolbarButton = ToolbarButton('Open Project')
-openDBToolbarButton:setImage(images('toolbar/open_project.png'))
+openDBToolbarButton:setIcon(images('toolbar/open_project.png'))
 openDBToolbarButton:setOnClick(openProject)
 
-writeChangesToolbar = ToolbarButton('Save Changes')
-writeChangesToolbar:setImage(images('card_file_box_3d.png'))
-writeChangesToolbar:setOnClick(function()
-    out = app.runProject()
-    logConsole:appendText(out)
+welcomePageToolbar = ToolbarButton('Welcome Page')
+welcomePageToolbar:setIcon(images('card_file_box_3d.png'))
+welcomePageToolbar:setOnClick(function()
+    homeStackedWidget:slidePrev()
 end)
 
 revertChangesToolbar = ToolbarButton('Revert Changes')
-revertChangesToolbar:setImage(images('database_refresh.png'))
+revertChangesToolbar:setIcon(images('database_refresh.png'))
 
 toolbar1:addButton(newDBToolbarButton)
 toolbar1:addButton(openDBToolbarButton)
 toolbar1:addButton(ToolbarButton('-'))
-toolbar1:addButton(writeChangesToolbar)
+toolbar1:addButton(welcomePageToolbar)
 toolbar1:addButton(revertChangesToolbar)
 
 -- ##### Toolbar 2
 toolbar2 = Toolbar()
-toolbar2:setImageStyle('textbesideicon')
+toolbar2:setIconStyle('textundericon')
 
 openProjectToolbar = ToolbarButton('Open Project')
-openProjectToolbar:setImage(images('package_go.png'))
+openProjectToolbar:setIcon(images('package_go.png'))
 
-saveProjectToolbar = ToolbarButton('Save Project')
-saveProjectToolbar:setImage(images('package_save.png'))
+saveProjectToolbar = ToolbarButton('Welcome Page')
+saveProjectToolbar:setIcon(images('package_save.png'))
 
 toolbar2:addButton(openProjectToolbar)
 toolbar2:addButton(saveProjectToolbar)
 
 -- ##### Toolbar 3
 toolbar3 = Toolbar()
-toolbar3:setImageStyle('textbesideicon')
+toolbar3:setIconStyle('textbesideicon')
 
 openProjectToolbar = ToolbarButton('Attach Database')
-openProjectToolbar:setImage(images('database_link.png'))
+openProjectToolbar:setIcon(images('database_link.png'))
 
 closeDBToolbar = ToolbarButton('Close Database')
-closeDBToolbar:setImage(images('cross.png'))
+closeDBToolbar:setIcon(images('cross.png'))
 
 toolbar3:addButton(openProjectToolbar)
 toolbar3:addButton(closeDBToolbar)

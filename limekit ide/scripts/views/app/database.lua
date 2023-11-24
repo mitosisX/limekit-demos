@@ -1,3 +1,30 @@
+function fectchData()
+    db:execute('SELECT * FROM Fruits;')
+    data = db:fetchAll()
+
+    return data
+end
+
+database = nil
+function openDBFile()
+    file = app.openFile(window, "Choose a database file", "D:/sandbox", {
+        ["SQLite database files"] = {".db", ".sqlite", ".sqlite3", ".db3"}
+    })
+
+    database = Sqlite3(file)
+
+    getTables()
+end
+
+function getTables()
+    tables = database:fetchTables()
+
+    for index = 1, #tables do
+        item = tables[index]
+        tablesCombo:addItem(item)
+    end
+end
+
 browseLay = VLayout()
 browseOptionsLay = HLayout()
 

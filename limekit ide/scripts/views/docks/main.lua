@@ -67,7 +67,7 @@ allWidgetUtils = {
     MenuBar = images('widgets/menubar.png')
 }
 
-widgetsList:addImageItems(app.sortTable(allWidgetUtils))
+widgetsList:addImageItems(allWidgetUtils)
 
 -- ######### App utils listing
 appUtilsList = ListBox() -- List for all app utils

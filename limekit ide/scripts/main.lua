@@ -11,18 +11,21 @@
 		Development Time: 10 November, 2023
 
 ]] --
-Theme('darklight'):setTheme('light')
-
-function fectchData()
-    db:execute('SELECT * FROM Fruits;')
-    data = db:fetchAll()
-
-    return data
-end
-
-database = nil
+theme = Theme('darklight')
+theme:setTheme('light')
 
 json = require 'json'
+
+-- Path to documents
+documentsFolder = app.getStandardPath('documents')
+limekitProjectsFolder = app.joinPaths(documentsFolder, 'limekit projects/')
+userProjectJSON = None -- The app.json for each projects
+createdUserProjectFolder = "" -- The folder for the current project
+
+-- Folders for user project
+scriptsFolder = ""
+imagesFolder = ""
+miscFolder = ""
 
 -- app.execute(scripts('views/homepage/welcome.lua'))
 app.execute(scripts('commons/functions/main.lua'))
@@ -30,29 +33,6 @@ app.execute(scripts('commons/menus.lua'))
 app.execute(scripts('views/toolbar/main.lua'))
 app.execute(scripts('views/tabs/main.lua'))
 app.execute(scripts('views/docks/main.lua'))
-
-function openDBFile()
-    file = app.openFile(window, "Choose a database file", "D:/sandbox", {
-        ["SQLite database files"] = {".db", ".sqlite", ".sqlite3", ".db3"}
-    })
-
-    database = Sqlite3(file)
-
-    getTables()
-end
-
-function getTables()
-    tables = database:fetchTables()
-
-    for index = 1, #tables do
-        item = tables[index]
-        tablesCombo:addItem(item)
-    end
-end
-
--- Path to documents
-documentsFolder = app.getStandardPath('documents')
-limekitProjectsFolder = app.joinPaths(documentsFolder, 'limekit projects/')
 
 if not app.checkExists(limekitProjectsFolder) then
     app.createFolder(limekitProjectsFolder)
@@ -64,7 +44,9 @@ window = Window {
     size = {1000, 600}
 }
 
--- window:maximize()
+window:setOnShown(function()
+    window:maximize()
+end)
 
 app.setFontFile(misc('Comfortaa-Regular.ttf'), 8)
 
@@ -98,15 +80,15 @@ segmentation:addChild(toolboxDock)
 
 seg = Splitter('vertical')
 
-stackLay = SlidingStackedWidget()
-stackLay:setOrientation('vertical')
-stackLay:setAnimation('OutExpo')
--- stackLay.autoStart() -- should comment out this one
+homeStackedWidget = SlidingStackedWidget() -- Holds the welcome page and app's page
+homeStackedWidget:setOrientation('vertical')
+homeStackedWidget:setAnimation('OutExpo')
+-- homeStackedWidget.autoStart() -- should comment out this one
 
-stackLay:addChild(allAppTabs) -- The Tab holding App, Assets, Properties..
-stackLay:addChild(Label('Something'))
+homeStackedWidget:addChild(allAppTabs) -- The Tab holding App, Assets, Properties..
+homeStackedWidget:addChild(Label('Something'))
 
-seg:addChild(stackLay) -- welcome page - from components
+seg:addChild(homeStackedWidget) -- welcome page - from components
 seg:addChild(appLog)
 
 segmentation:addChild(seg)
