@@ -16,6 +16,9 @@ theme:setTheme('light')
 
 json = require 'json'
 
+-- System related
+projectRunnerProcess = None -- The process handling the execution of user program
+
 -- Path to documents
 documentsFolder = app.getStandardPath('documents')
 limekitProjectsFolder = app.joinPaths(documentsFolder, 'limekit projects/')
@@ -27,7 +30,7 @@ scriptsFolder = ""
 imagesFolder = ""
 miscFolder = ""
 
--- app.execute(scripts('views/homepage/welcome.lua'))
+app.execute(scripts('views/homepage/welcome.lua'))
 app.execute(scripts('commons/functions/main.lua'))
 app.execute(scripts('commons/menus.lua'))
 app.execute(scripts('views/toolbar/main.lua'))
@@ -58,7 +61,7 @@ db = Sqlite3('D:/sandbox/limekit.db')
 
 function changeTheme(obj)
 
-    print(obj)
+    -- print(obj)
     -- theme = obj:getText()
     -- if theme == 'Light' then
     --     print('light')
@@ -69,8 +72,9 @@ end
 
 menubar = Menubar()
 menubar:buildFromTemplate(appMenubarItems) -- derived from commons/menus.lua
-
 window:setMenubar(menubar)
+
+menubar:getChild('light_theme'):setIcon(route('app_icon'))
 
 window:addToolbar(toolbar1)
 -- window:addToolbar(toolbar2)
@@ -85,8 +89,8 @@ homeStackedWidget:setOrientation('vertical')
 homeStackedWidget:setAnimation('OutExpo')
 -- homeStackedWidget.autoStart() -- should comment out this one
 
+homeStackedWidget:addLayout(welcomeView)
 homeStackedWidget:addChild(allAppTabs) -- The Tab holding App, Assets, Properties..
-homeStackedWidget:addChild(Label('Something'))
 
 seg:addChild(homeStackedWidget) -- welcome page - from components
 seg:addChild(appLog)

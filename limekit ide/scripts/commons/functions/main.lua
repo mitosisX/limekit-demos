@@ -13,7 +13,7 @@ function openProject()
     })
 
     if file ~= "" then
-        -- homeStackedWidget:slideNext() -- switch from welcome page to app's page
+        homeStackedWidget:slideNext() -- switch from welcome page to app's page
 
         createdUserProjectFolder = string.match(file, '.*/') -- This gets the folder for the selected project
 
@@ -42,19 +42,21 @@ end
 -- This is where all the magic happens
 
 function runProject()
+    clearConsole()
+
     writeToConsole('Please wait while running your app')
 
-    runner = app.runProject(createdUserProjectFolder)
+    projectRunnerProcess = app.runProject(createdUserProjectFolder) -- Setting the global var in main.lua
 
-    runner:setOnProcessReadyRead(function(data)
-        if string.find(data, 'Error:') then
-            print(2)
+    projectRunnerProcess:setOnProcessReadyRead(function(data)
+        if string.find(data, 'Error:') or string.find(data, 'ython>"]') then
+            writeToConsole("<span style='color:red;'>" .. data .. '</span>')
+        else
+            writeToConsole(data)
         end
-
-        writeToConsole(data)
     end)
 
-    runner:setOnProcessStarted(function()
+    projectRunnerProcess:setOnProcessStarted(function()
         writeToConsole('<strong>Starting app</strong>')
 
         runAppButton:disable()
@@ -63,7 +65,7 @@ function runProject()
 
     end)
 
-    runner:setOnProcessFinished(function()
+    projectRunnerProcess:setOnProcessFinished(function()
         writeToConsole('<strong>App closed</strong>')
 
         runAppButton:enable()
@@ -72,7 +74,7 @@ function runProject()
 
     end)
 
-    runner:run()
+    projectRunnerProcess:run()
 end
 
 -- function runProject_()

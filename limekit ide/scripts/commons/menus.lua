@@ -1,19 +1,21 @@
 appMenubarItems = {{
     label = 'File',
     submenu = {{
+        name = 'create_project',
         label = 'New Project',
         icon = images('toolbar/new_project.png'),
-        shortcut = "Ctrl+N"
+        shortcut = "Ctrl+N",
+        click = projectCreator
     }, {
         label = 'Open Project',
-        icon = images('toolbar/open_project.png'),
-        shortcut = "Ctrl+N"
+        icon = images('toolbar/open_project.png')
+        -- shortcut = "Ctrl+N"
     }, {
         label = '-'
     }, {
         label = 'New Database...',
-        icon = images('database_add.png'),
-        shortcut = "Ctrl+N"
+        icon = images('database_add.png')
+        -- shortcut = "Ctrl+N"
     }, {
         label = 'Exit',
         icon = images('exit.png')
@@ -28,12 +30,15 @@ appMenubarItems = {{
     }, {
         label = "Themes",
         submenu = {{
-            label = 'Light',
-            click = changeTheme
+            name = 'light_theme',
+            label = 'Light'
+            -- click = changeTheme,
+
         }, {
+            name = 'dark_theme',
             label = 'Dark',
             click = function(o)
-                print(o)
+                print('Its not dark')
             end
         }}
     }}
@@ -44,7 +49,14 @@ appMenubarItems = {{
     }, {
         label = "-"
     }, {
-        label = "Run"
+        label = "Stop",
+        shortcut = "Ctrl+X",
+        click = function(obj)
+            if projectRunnerProcess then
+                projectRunnerProcess:stop()
+            end
+        end
+
     }}
 }, {
     label = "Tools",
@@ -58,4 +70,6 @@ appMenubarItems = {{
     }, {
         label = "About Limekit"
     }}
+}, {
+    label = 'Final'
 }}
