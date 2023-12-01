@@ -1,4 +1,4 @@
-window = Window{title="Input Dialogs - Limekit", icon = route('app_icon'), size={350, 170}}
+window = Window{title="System Try menu - Limekit", icon = route('app_icon'), size={350, 170}}
 
 mainLay = VLayout()
 
@@ -7,24 +7,41 @@ menu = Menu()
 menu:buildFromTemplate({
 	{label = 'File',
 		submenu={
-			{label='New Database...',
-			icon=images('database_add.png'),
-			shortcut="Ctrl+N"},
+			{label='File 1',
+			icon=images('database.png'),
+			click=function()
+				print('File 1')
+			end
+			},
 
-			{label='New Database...',
-			icon=images('database_add.png'),
+			{label='File 2',
+			icon=images('database.png'),
+			click=function()
+				print('File 2')
+			end
 			}
 		}
 	},
-	{label = 'Edit',click=function()print('Clicked Edit') end, icon=route('app_icon')},
+	{label = 'Edit',
+		click=function()
+			print('Edit')
+		end, 
+		icon=route('app_icon')
+	},
 	{label = 'View',
 		submenu={
-			{label='New Database...',
-			icon=images('database_add.png'),
-			shortcut="Ctrl+N"},
+			{label='View this',
+			icon=images('database.png'),
+			click=function()
+				print('View this')
+			end
+			},
 
-			{label='New Database...',
-			icon=images('database_add.png'),
+			{label='View that',
+			icon=images('database.png'),
+			click=function()
+				print('View that')
+			end
 			}
 		}
 	}

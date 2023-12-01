@@ -76,16 +76,3 @@ function runProject()
 
     projectRunnerProcess:run()
 end
-
--- function runProject_()
-
---     worker = Worker()
---     worker:setOnThreadRun(function()
---         -- dir = string.match(file, '.*/')
---         output = app.runProject(createdUserProjectFolder)
---         -- print(output)
---         -- writeToConsole(output)
---     end)
---     worker:start()
-
--- end

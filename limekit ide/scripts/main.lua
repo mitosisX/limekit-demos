@@ -59,26 +59,11 @@ segmentation = Splitter('horizontal')
 
 db = Sqlite3('D:/sandbox/limekit.db')
 
-function changeTheme(obj)
-
-    -- print(obj)
-    -- theme = obj:getText()
-    -- if theme == 'Light' then
-    --     print('light')
-    -- elseif theme == 'Dark' then
-    --     print('dark')
-    -- end
-end
-
 menubar = Menubar()
 menubar:buildFromTemplate(appMenubarItems) -- derived from commons/menus.lua
 window:setMenubar(menubar)
 
-menubar:getChild('light_theme'):setIcon(route('app_icon'))
-
-window:addToolbar(toolbar1)
--- window:addToolbar(toolbar2)
--- window:addToolbar(toolbar3)
+window:addToolbar(toolbar)
 
 segmentation:addChild(toolboxDock)
 

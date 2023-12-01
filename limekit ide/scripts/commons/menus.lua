@@ -1,3 +1,20 @@
+function changeTheme(obj)
+    theme_ = obj:getText()
+
+    if theme_ == 'Light' then
+        theme:setTheme('light')
+        obj:setText('Dark')
+        obj:setIcon(images('app/dark.png'))
+
+    elseif theme_ == 'Dark' then
+        theme:setTheme('dark')
+        obj:setText('Light')
+        obj:setIcon(images('app/light.png'))
+
+    end
+
+end
+
 appMenubarItems = {{
     label = 'File',
     submenu = {{
@@ -28,18 +45,13 @@ appMenubarItems = {{
     }, {
         label = "Application Log"
     }, {
-        label = "Themes",
+        label = "Theme",
         submenu = {{
             name = 'light_theme',
-            label = 'Light'
-            -- click = changeTheme,
-
-        }, {
-            name = 'dark_theme',
             label = 'Dark',
-            click = function(o)
-                print('Its not dark')
-            end
+            icon = images('app/dark.png'),
+            click = changeTheme
+
         }}
     }}
 }, {

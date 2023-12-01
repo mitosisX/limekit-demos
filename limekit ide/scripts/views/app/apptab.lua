@@ -59,6 +59,8 @@ appDetailsGroup:setLayout(appDetailsLay)
 
 appContentLay:addChild(appDetailsGroup)
 
+-- appContentLay:addChild(runProgress)
+
 -- Layouts to hold all details for the app
 appDetailsGridLayout = GridLayout()
 appDetailsGridLayout:setMargins(0, 40, 0, 0)
