@@ -41,7 +41,7 @@ appMenubarItems = {{
     label = 'View',
     name = 'view',
     submenu = {{
-        label = "Welcome Message"
+        label = "Welcome Page"
     }, {
         label = "Application Log"
     }, {
@@ -82,6 +82,4 @@ appMenubarItems = {{
     }, {
         label = "About Limekit"
     }}
-}, {
-    label = 'Final'
 }}

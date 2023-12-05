@@ -8,20 +8,22 @@ end
 
 -- This is where all edit fields are provided with values from the 
 function openProject()
-    file = app.openFile(window, "Open a project", limekitProjectsFolder, {
+    file = app.openFileDialog(window, "Open a project", limekitProjectsFolder, {
         ["Limekit app"] = {".json"}
     })
 
     if file ~= "" then
         homeStackedWidget:slideNext() -- switch from welcome page to app's page
 
-        createdUserProjectFolder = string.match(file, '.*/') -- This gets the folder for the selected project
+        userProjectFolder = string.match(file, '.*/') -- This gets the folder for the selected project
+
+        readPackagePaths()
 
         userProjectJSON = app.readJSON(file) -- the app.json
 
-        scriptsFolder = app.joinPaths(createdUserProjectFolder, 'scripts')
-        imagesFolder = app.joinPaths(createdUserProjectFolder, 'images')
-        miscFolder = app.joinPaths(createdUserProjectFolder, 'misc')
+        scriptsFolder = app.joinPaths(userProjectFolder, 'scripts')
+        imagesFolder = app.joinPaths(userProjectFolder, 'images')
+        miscFolder = app.joinPaths(userProjectFolder, 'misc')
 
         local appName = userProjectJSON.project.name -- will be used in multiple location
 
@@ -39,14 +41,14 @@ function openProject()
 end
 
 -- 24 November, 2023 (12:29 PM)
--- This is where all the magic happens
+-- This is where all the magic happens ;-)
 
 function runProject()
     clearConsole()
 
     writeToConsole('Please wait while running your app')
 
-    projectRunnerProcess = app.runProject(createdUserProjectFolder) -- Setting the global var in main.lua
+    projectRunnerProcess = app.runProject(userProjectFolder) -- Setting the global var in main.lua
 
     projectRunnerProcess:setOnProcessReadyRead(function(data)
         if string.find(data, 'Error:') or string.find(data, 'ython>"]') then
@@ -75,4 +77,16 @@ function runProject()
     end)
 
     projectRunnerProcess:run()
+end
+
+-- The .require file in the user folder
+function readPackagePaths()
+    requirePathsFile = app.joinPaths(userProjectFolder, '.require')
+
+    if app.exists(requirePathsFile) then
+        local readTheFile = app.readFile(requirePathsFile)
+        local splitted = app.splitString(readTheFile, '\n')
+
+        pathsList:setItems(splitted)
+    end
 end

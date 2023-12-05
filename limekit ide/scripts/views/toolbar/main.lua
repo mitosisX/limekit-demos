@@ -18,8 +18,23 @@ welcomePageToolbar:setOnClick(function()
     homeStackedWidget:slidePrev()
 end)
 
-revertChangesToolbar = ToolbarButton('Revert Changes')
+revertChangesToolbar = ToolbarButton('Open Projects')
 revertChangesToolbar:setIcon(images('database_refresh.png'))
+
+menu2 = Menu()
+menu2:buildFromTemplate({{
+    label = 'File'
+}, {
+    label = 'sdsdsd'
+}, {
+    label = 'sdsdsd'
+}, {
+    label = 'sdsdsd'
+}, {
+    label = 'sdsdsd'
+}})
+
+revertChangesToolbar:setMenu(menu2)
 
 toolbar:addButton(newDBToolbarButton)
 toolbar:addButton(openDBToolbarButton)

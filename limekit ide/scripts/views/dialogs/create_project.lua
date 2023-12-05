@@ -73,7 +73,7 @@ function projectCreator()
     createIconImage:setImage(images('homepage/create_project/pick_image.png'))
     createIconImage:setCursor('pointinghand')
     createIconImage:setOnClick(function(obj)
-        selIcon = app.openFile(window, "Pick and image for the app", "", {
+        selIcon = app.openFileDialog(window, "Pick and image for the app", "", {
             ["App Icon"] = {".png"}
         })
 
@@ -135,27 +135,27 @@ function processProjectCreation()
         if selIconPath ~= "" then
             createUserProject(userProjectNamePicked, userProjectVersionPicked)
         else
-            app.warningAlert(window, 'Not complete', 'Please select an image for your window')
+            app.warningAlertDialog(window, 'Not complete', 'Please select an image for your window')
         end
     else
-        app.warningAlert(window, 'Not complete', 'Make sure all fields are filled')
+        app.warningAlertDialog(window, 'Not complete', 'Make sure all fields are filled')
     end
 end
 
 -- This handles all the user project creation
 function createUserProject(userProjectNamePicked, userProjectVersionPicked)
 
-    createdUserProjectFolder = app.joinPaths(limekitProjectsFolder, userProjectNamePicked)
+    userProjectFolder = app.joinPaths(limekitProjectsFolder, userProjectNamePicked)
 
-    if not app.checkExists(createdUserProjectFolder) then
+    if not app.exists(userProjectFolder) then
         projectJsonStruct.project.name = userProjectNamePicked
         projectJsonStruct.project.version = userProjectVersionPicked
 
-        app.createFolder(createdUserProjectFolder) -- create the folder for the new project
+        app.createFolder(userProjectFolder) -- create the folder for the new project
 
-        scriptsFolder = app.joinPaths(createdUserProjectFolder, 'scripts')
-        imagesFolder = app.joinPaths(createdUserProjectFolder, 'images')
-        miscFolder = app.joinPaths(createdUserProjectFolder, 'misc')
+        scriptsFolder = app.joinPaths(userProjectFolder, 'scripts')
+        imagesFolder = app.joinPaths(userProjectFolder, 'images')
+        miscFolder = app.joinPaths(userProjectFolder, 'misc')
 
         -- Create all requir project folders
         app.createFolder(scriptsFolder)
@@ -167,7 +167,7 @@ function createUserProject(userProjectNamePicked, userProjectVersionPicked)
 
         -- Now write to the main.lua
         app.writeFile(app.joinPaths(scriptsFolder, 'main.lua'), mainLuaStruct)
-        app.writeFile(app.joinPaths(createdUserProjectFolder, 'app.json'), json.stringify(projectJsonStruct))
+        app.writeFile(app.joinPaths(userProjectFolder, 'app.json'), json.stringify(projectJsonStruct))
 
         app.copyFile(selIconPath, app.joinPaths(imagesFolder, 'window.png'))
 

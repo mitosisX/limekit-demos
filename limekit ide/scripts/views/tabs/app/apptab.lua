@@ -1,14 +1,6 @@
 appTabMainLay = VLayout()
 appTabMainLay:setContentAlignment('vcenter', 'center')
 
--- arc = Label()
--- arc:setImage(images('arc.png'))
--- arc:setTextAlign('center')
--- arc:setMargins(0, -90, 0, 0)
--- arc:resizeImage(70, 30)
-
--- appTabMainLay:addChild(arc)
-
 appTabGroup = GroupBox()
 appTabGroup:setMinWidth(500)
 appTabGroup:setMaxWidth(500)

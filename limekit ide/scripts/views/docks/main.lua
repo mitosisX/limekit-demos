@@ -72,11 +72,11 @@ widgetsList:addImageItems(allWidgetUtils)
 -- ######### App utils listing
 appUtilsList = ListBox() -- List for all app utils
 
-allAppUtils = {'copyFile', 'getFileExt', 'sortArray', 'getStandardPath', 'sortTable', 'randomChoice', 'splitString',
-               'range', 'joinTables', 'sleep', 'weightedGraph', 'getStyles', 'setStyle', 'quickSort', 'makeHash',
-               'hexToRGB', 'readFileLines', 'toBase64', 'fromBase64', 'emoji', 'extractZip', 'checkIfFolder',
-               'checkExists', 'checkFileEmpty', 'checkDirEmpty', 'getFileSize', 'readFile', 'writeFile', 'createFile',
-               'appendFile', 'readJSON', 'writeJSON', 'getFont', 'openFile', 'colorPicker', 'textInput',
+allAppUtils = {'copyFile', 'isIDE', 'renameFolder', 'getFileExt', 'sortArray', 'getStandardPath', 'sortTable',
+               'randomChoice', 'splitString', 'range', 'joinTables', 'sleep', 'weightedGraph', 'getStyles', 'setStyle',
+               'quickSort', 'makeHash', 'hexToRGB', 'readFileLines', 'toBase64', 'fromBase64', 'emoji', 'extractZip',
+               'checkIfFolder', 'exists', 'checkFileEmpty', 'checkDirEmpty', 'getFileSize', 'readFile', 'writeFile',
+               'createFile', 'appendFile', 'readJSON', 'writeJSON', 'getFont', 'openFile', 'colorPicker', 'textInput',
                'multilineInput', 'comboBoxInput', 'integerInput', 'doubleInput', 'alert', 'errorDialog', 'aboutAlert',
                'criticalAlert', 'infoAlert', 'warningAlert', 'getClipboardText', 'setClipboarText', 'listFolder',
                'createFolder', 'playSound', 'getProcesses', 'killProcess', 'getCPUCount', 'getUsers', 'getBatteryInfo',
@@ -93,7 +93,8 @@ end
 
 -- ######### Python utils listing
 
-allPythonUtils = {'str_index', 'method_kwargs', 'getattr', 'getitem', 'table_to_list', 'table_to_dict', 'str_format'}
+allPythonUtils = {'str_index', 'import_module', 'method_kwargs', 'getattr', 'getitem', 'table_to_list', 'table_to_dict',
+                  'str_format'}
 
 for x in ipairs(allPythonUtils) do
     pyUtilsList:addImageItem(allPythonUtils[x], images('py.png'))
@@ -106,8 +107,10 @@ pyAccordion:addChild(pyUtilsList, 'Python utils')
 toolboxDock:setChild(scroller)
 
 editDBDocks = Dock("App directory")
+editDBDocks:setMagneticAreas({'right'})
 
 appLog = Dock("Application Log")
+appLog:setMagneticAreas(nil)
 appLog:setProperties(nil)
 
 logConsole = TextField()

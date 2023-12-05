@@ -1,14 +1,14 @@
 --[[
-				Limekit Runner
+							Limekit Runner
 
 			Copyright: 
 			Author: Omega Msiska
 
-			(Note: This source code is provided unobfuscated and commented
-			in the hope that it is useful for educational purposes. It remains the copyright of )
+			(Note: This source code is provided unobfuscated, commented and written in the simplest lua syntax
+			possible in the hope that it is useful for educational purposes. It remains the copyright of the author)
 
 		v 1.0
-		Development Time: 10 November, 2023
+		Development Started: 10 November, 2023
 
 ]] --
 theme = Theme('darklight')
@@ -23,7 +23,7 @@ projectRunnerProcess = None -- The process handling the execution of user progra
 documentsFolder = app.getStandardPath('documents')
 limekitProjectsFolder = app.joinPaths(documentsFolder, 'limekit projects/')
 userProjectJSON = None -- The app.json for each projects
-createdUserProjectFolder = "" -- The folder for the current project
+userProjectFolder = "" -- The folder for the current project
 
 -- Folders for user project
 scriptsFolder = ""
@@ -37,7 +37,7 @@ app.execute(scripts('views/toolbar/main.lua'))
 app.execute(scripts('views/tabs/main.lua'))
 app.execute(scripts('views/docks/main.lua'))
 
-if not app.checkExists(limekitProjectsFolder) then
+if not app.exists(limekitProjectsFolder) then
     app.createFolder(limekitProjectsFolder)
 end
 
@@ -74,7 +74,7 @@ homeStackedWidget:setOrientation('vertical')
 homeStackedWidget:setAnimation('OutExpo')
 -- homeStackedWidget.autoStart() -- should comment out this one
 
-homeStackedWidget:addLayout(welcomeView)
+-- homeStackedWidget:addLayout(welcomeView)
 homeStackedWidget:addChild(allAppTabs) -- The Tab holding App, Assets, Properties..
 
 seg:addChild(homeStackedWidget) -- welcome page - from components

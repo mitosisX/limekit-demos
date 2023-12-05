@@ -7,7 +7,7 @@ end
 
 database = nil
 function openDBFile()
-    file = app.openFile(window, "Choose a database file", "D:/sandbox", {
+    file = app.openFileDialog(window, "Choose a database file", "D:/sandbox", {
         ["SQLite database files"] = {".db", ".sqlite", ".sqlite3", ".db3"}
     })
 
