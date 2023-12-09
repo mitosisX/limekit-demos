@@ -42,7 +42,7 @@ end)
 
 clear_button = Button("Clear")
 clear_button:setOnClick(function()
-	list_widget:clearItems()
+	list_widget:clear()
 end)
 
 

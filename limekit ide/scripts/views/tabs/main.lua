@@ -4,6 +4,8 @@ app.execute(scripts('views/app/database.lua'))
 
 allAppTabs = Tab() -- The tab holding all tab items
 
+-- DropShadow(allAppTabs) -- Drop shadow
+
 appTab = TabItem()
 appTab:setLayout(appTabMainLay)
 

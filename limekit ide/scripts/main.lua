@@ -19,24 +19,27 @@ json = require 'json'
 -- System related
 projectRunnerProcess = None -- The process handling the execution of user program
 
--- Path to documents
+-- User files and folders
 documentsFolder = app.getStandardPath('documents')
 limekitProjectsFolder = app.joinPaths(documentsFolder, 'limekit projects/')
 userProjectJSON = None -- The app.json for each projects
 userProjectFolder = "" -- The folder for the current project
+requirePathFile = "" -- Path to the .require file
+allRequirePathsTable = {} -- All paths obtained from the .require file
 
--- Folders for user project
 scriptsFolder = ""
 imagesFolder = ""
 miscFolder = ""
+--- END: User files and folders
 
-app.execute(scripts('views/homepage/welcome.lua'))
 app.execute(scripts('commons/functions/main.lua'))
+app.execute(scripts('views/homepage/welcome.lua'))
 app.execute(scripts('commons/menus.lua'))
 app.execute(scripts('views/toolbar/main.lua'))
 app.execute(scripts('views/tabs/main.lua'))
 app.execute(scripts('views/docks/main.lua'))
 
+-- Create the user projects folder if it doesn't exist yet
 if not app.exists(limekitProjectsFolder) then
     app.createFolder(limekitProjectsFolder)
 end
@@ -57,7 +60,7 @@ mainLay = VLayout() -- The master layout for the whole app
 
 segmentation = Splitter('horizontal')
 
-db = Sqlite3('D:/sandbox/limekit.db')
+-- db = Sqlite3('D:/sandbox/limekit.db')
 
 menubar = Menubar()
 menubar:buildFromTemplate(appMenubarItems) -- derived from commons/menus.lua
@@ -69,7 +72,7 @@ segmentation:addChild(toolboxDock)
 
 seg = Splitter('vertical')
 
-homeStackedWidget = SlidingStackedWidget() -- Holds the welcome page and app's page
+homeStackedWidget = SlidingStackedWidget() -- Holds the home page and app's page
 homeStackedWidget:setOrientation('vertical')
 homeStackedWidget:setAnimation('OutExpo')
 -- homeStackedWidget.autoStart() -- should comment out this one
@@ -77,8 +80,8 @@ homeStackedWidget:setAnimation('OutExpo')
 -- homeStackedWidget:addLayout(welcomeView)
 homeStackedWidget:addChild(allAppTabs) -- The Tab holding App, Assets, Properties..
 
-seg:addChild(homeStackedWidget) -- welcome page - from components
-seg:addChild(appLog)
+seg:addChild(homeStackedWidget) -- home page - from components
+seg:addChild(appLogDock)
 
 segmentation:addChild(seg)
 segmentation:addLayout(docksLay)

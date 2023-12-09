@@ -25,8 +25,9 @@ appMenubarItems = {{
         click = projectCreator
     }, {
         label = 'Open Project',
-        icon = images('toolbar/open_project.png')
-        -- shortcut = "Ctrl+N"
+        icon = images('toolbar/open_project.png'),
+        shortcut = "Ctrl+O",
+        click = projectOpener
     }, {
         label = '-'
     }, {
@@ -41,7 +42,9 @@ appMenubarItems = {{
     label = 'View',
     name = 'view',
     submenu = {{
-        label = "Welcome Page"
+        label = "Home Page",
+        click = returnHomePage,
+        shortcut = "Ctrl+H"
     }, {
         label = "Application Log"
     }, {
@@ -51,7 +54,6 @@ appMenubarItems = {{
             label = 'Dark',
             icon = images('app/dark.png'),
             click = changeTheme
-
         }}
     }}
 }, {
@@ -68,7 +70,6 @@ appMenubarItems = {{
                 projectRunnerProcess:stop()
             end
         end
-
     }}
 }, {
     label = "Tools",

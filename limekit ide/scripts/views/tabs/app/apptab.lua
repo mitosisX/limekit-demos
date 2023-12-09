@@ -2,12 +2,16 @@ appTabMainLay = VLayout()
 appTabMainLay:setContentAlignment('vcenter', 'center')
 
 appTabGroup = GroupBox()
+
+DropShadow(appTabGroup)
+
 appTabGroup:setMinWidth(500)
 appTabGroup:setMaxWidth(500)
 
 appContentLay = VLayout() -- This is where everything inside the GroupBox will reside
 
 appDetailsGroup = GroupBox() -- Holds the layout that holds the icon, run button, location
+
 appDetailsLay = HLayout() -- The above mentioned layout
 
 loadedAppIcon = Label()
@@ -92,7 +96,7 @@ editAppButtonLay:setContentAlignment('right')
 saveEditButton = Button('Save')
 saveEditButton:setIcon(images('homepage/create_project/done2.png'))
 saveEditButton:setOnClick(function()
-    ask = app.questionAlert(window, 'Confirm', 'Are you sure you want to save the modification?')
+    ask = app.questionAlertDialog(window, 'Confirm', 'Are you sure you want to save the modification?')
     if ask then
         writeToConsole('saving now')
     else

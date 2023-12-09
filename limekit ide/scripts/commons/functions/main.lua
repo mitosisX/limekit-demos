@@ -6,14 +6,133 @@ function clearConsole()
     logConsole:setText("")
 end
 
+function returnHomePage()
+    homeStackedWidget:slidePrev()
+end
+
+function projectCreator()
+    modal = Modal(window, "Let's get you started - Limekit")
+    modal:setSize(550, 400)
+
+    createMainLayout = HLayout()
+
+    groupB = GroupBox()
+    groupB:setBackgroundColor('#307DE1')
+
+    gBLayo = VLayout()
+    gBLayo:setContentAlignment('center')
+
+    title1 = Label('<strong>Quick setup</strong>')
+    title1:setTextColor('white')
+
+    subTitle1 = Label('Takes seconds to get an app running\n')
+    subTitle1:setTextColor('white')
+
+    gBLayo:addChild(title1)
+    gBLayo:addChild(subTitle1)
+
+    title2 = Label('<strong>Cross-platform solution</strong>')
+    title2:setTextColor('white')
+    subTitle2 = Label('Same code for Windows, Linux and macOS\n')
+    subTitle2:setTextColor('white')
+
+    gBLayo:addChild(title2)
+    gBLayo:addChild(subTitle2)
+
+    title3 = Label('<strong>Intuitive API</strong>')
+    title3:setTextColor('white')
+    subTitle3 = Label('Our API is friendly even to newbies\n')
+    subTitle3:setTextColor('white')
+
+    gBLayo:addChild(title3)
+    gBLayo:addChild(subTitle3)
+
+    title4 = Label('<strong>Modern GUI</strong>')
+    title4:setTextColor('white')
+    subTitle4 = Label('Develop modern looking programs in no time')
+    subTitle4:setTextColor('white')
+
+    gBLayo:addChild(title4)
+    gBLayo:addChild(subTitle4)
+
+    groupB:setLayout(gBLayo)
+    createMainLayout:addChild(groupB)
+
+    createLayout = VLayout()
+    createLayout:setMargins(10, 0, 0, 0)
+    createMainLayout:addLayout(createLayout)
+
+    createImage = Label()
+    createImage:setImage(images('homepage/create_project/package.png'))
+    createImage:setTextAlign('center')
+
+    createHeader = Label('<strong>Create your project</strong>')
+    createHeader:setTextAlign('center')
+
+    createName = Label('Name')
+    createNameLineEdit = LineEdit()
+
+    createVersion = Label('Version')
+    createVersionLineEdit = LineEdit()
+    createVersionLineEdit:setText('1.0.0')
+
+    createIcon = Label('Window icon')
+    createIcon:setWhatsThis('The icon that shows on your window') -- Right click to show the 'Whats This'
+
+    createIconImage = Label()
+    createIconImage:setImage(images('homepage/create_project/pick_image.png'))
+    createIconImage:setCursor('pointinghand')
+    createIconImage:setOnClick(function(obj)
+        selIcon = app.openFileDialog(window, "Pick and image for the app", "", {
+            ["App Icon"] = {".png"}
+        })
+
+        if selIcon ~= "" then
+            selIconPath = selIcon
+
+            -- set the image picked and do some resize
+            if selIconPath then
+                obj:setImage(selIconPath)
+                obj:resizeImage(50, 50)
+            end
+        end
+    end)
+
+    createButton = Button('Create')
+    createButton:setIcon(images('homepage/create_project/done.png'))
+    createButton:setOnClick(processProjectCreation)
+
+    -- Now, display everything all together
+    createLayout:addChild(createImage)
+    createLayout:addChild(createHeader)
+
+    createLayout:addChild(createName)
+    createLayout:addChild(createNameLineEdit)
+
+    createLayout:addChild(createVersion)
+    createLayout:addChild(createVersionLineEdit)
+
+    createLayout:addChild(createIcon)
+    createLayout:addChild(createIconImage)
+
+    createLayout:addChild(createButton)
+
+    -- buttons = modal:getButtons({'ok', 'cancel'})
+    -- v:addChild(buttons)
+
+    modal:setLayout(createMainLayout)
+
+    modal:show()
+end
+
 -- This is where all edit fields are provided with values from the 
-function openProject()
+function projectOpener()
     file = app.openFileDialog(window, "Open a project", limekitProjectsFolder, {
         ["Limekit app"] = {".json"}
     })
 
     if file ~= "" then
-        homeStackedWidget:slideNext() -- switch from welcome page to app's page
+        homeStackedWidget:slideNext() -- switch from home page to app's page
 
         userProjectFolder = string.match(file, '.*/') -- This gets the folder for the selected project
 
@@ -37,6 +156,7 @@ function openProject()
         editAppEmail:setText(userProjectJSON.project.email)
 
         loadedAppIcon:setImage(app.joinPaths(imagesFolder, 'window.png'))
+        loadedAppIcon:resizeImage(50, 50) -- maintain our initial 50x50 size when switching between user app images
     end
 end
 
@@ -81,12 +201,23 @@ end
 
 -- The .require file in the user folder
 function readPackagePaths()
-    requirePathsFile = app.joinPaths(userProjectFolder, '.require')
+    requirePathFile = app.joinPaths(userProjectFolder, '.require')
 
-    if app.exists(requirePathsFile) then
-        local readTheFile = app.readFile(requirePathsFile)
-        local splitted = app.splitString(readTheFile, '\n')
+    if app.exists(requirePathFile) then
+        pathsList:clear()
 
-        pathsList:setItems(splitted)
+        pathsList:addItem('default: misc')
+
+        local readTheFile = app.readFile(requirePathFile)
+        allRequirePathsTable = app.splitString(readTheFile, '\n')
+
+        pathsList:setItems(allRequirePathsTable)
     end
+end
+
+function packagePathsWriter()
+    local concatPaths = table.concat(allRequirePathsTable, '\n')
+
+    app.writeFile(requirePathFile, concatPaths)
+
 end

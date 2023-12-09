@@ -3,6 +3,7 @@ app.execute(scripts('commons/functions/main.lua'))
 docksLay = VLayout()
 
 toolboxDock = Dock("Toolbox")
+
 toolboxDock:setMaxWidth(250)
 -- toolboxDock:setMinWidth(250)
 
@@ -106,18 +107,19 @@ pyAccordion:addChild(pyUtilsList, 'Python utils')
 
 toolboxDock:setChild(scroller)
 
-editDBDocks = Dock("App directory")
-editDBDocks:setMagneticAreas({'right'})
+appFolderDock = Dock("App directory")
+appFolderDock:setMagneticAreas({'right'})
 
-appLog = Dock("Application Log")
-appLog:setMagneticAreas(nil)
-appLog:setProperties(nil)
+appLogDock = Dock("Application Log")
+appLogDock:setMagneticAreas(nil)
+appLogDock:setProperties(nil)
 
 logConsole = TextField()
 logConsole:setReadOnly(true) -- console shouldn't be edited
 
 logConsole:setMaxHeight(150)
 
-appLog:setChild(logConsole)
+appLogDock:setChild(logConsole)
 
-docksLay:addChild(editDBDocks)
+docksLay:addChild(appFolderDock)
+

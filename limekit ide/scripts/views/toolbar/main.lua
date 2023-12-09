@@ -4,40 +4,41 @@ app.execute(scripts('views/dialogs/create_project.lua'))
 toolbar = Toolbar()
 toolbar:setIconStyle('textbesideicon')
 
-newDBToolbarButton = ToolbarButton('New Project')
-newDBToolbarButton:setIcon(images('toolbar/new_project.png'))
-newDBToolbarButton:setOnClick(projectCreator)
+newProjectToolbarButton = ToolbarButton('New Project')
+newProjectToolbarButton:setIcon(images('toolbar/new_project.png'))
+newProjectToolbarButton:setOnClick(projectCreator)
 
-openDBToolbarButton = ToolbarButton('Open Project')
-openDBToolbarButton:setIcon(images('toolbar/open_project.png'))
-openDBToolbarButton:setOnClick(openProject)
+openProjectToolbarButton = ToolbarButton('Open Project')
+openProjectToolbarButton:setIcon(images('toolbar/open_project.png'))
+openProjectToolbarButton:setOnClick(projectOpener)
 
-welcomePageToolbar = ToolbarButton('Welcome Page')
-welcomePageToolbar:setIcon(images('card_file_box_3d.png'))
-welcomePageToolbar:setOnClick(function()
-    homeStackedWidget:slidePrev()
-end)
+homePageToolbarButton = ToolbarButton('Home Page')
+homePageToolbarButton:setIcon(images('card_file_box_3d.png'))
+homePageToolbarButton:setOnClick(returnHomePage)
 
-revertChangesToolbar = ToolbarButton('Open Projects')
-revertChangesToolbar:setIcon(images('database_refresh.png'))
+recentlyOpenedToolbarButton = ToolbarButton('Recent Projects')
+recentlyOpenedToolbarButton:setIcon(images('database_refresh.png'))
 
-menu2 = Menu()
-menu2:buildFromTemplate({{
-    label = 'File'
-}, {
-    label = 'sdsdsd'
-}, {
-    label = 'sdsdsd'
-}, {
-    label = 'sdsdsd'
-}, {
-    label = 'sdsdsd'
-}})
+recentProjectsMenu = Menu()
 
-revertChangesToolbar:setMenu(menu2)
+-- recentProjectsMenu:buildFromTemplate({{
+--     label = 'File'
+-- }, {
+--     label = 'sdsdsd'
+-- }, {
+--     label = 'sdsdsd'
+-- }, {
+--     label = 'sdsdsd'
+-- }, {
+--     label = 'sdsdsd'
+-- }})
 
-toolbar:addButton(newDBToolbarButton)
-toolbar:addButton(openDBToolbarButton)
+recentProjectsMenu:addMenuItem(MenuItem('Hello'))
+
+recentlyOpenedToolbarButton:setMenu(recentProjectsMenu)
+
+toolbar:addButton(newProjectToolbarButton)
+toolbar:addButton(openProjectToolbarButton)
 toolbar:addButton(ToolbarButton('-'))
-toolbar:addButton(welcomePageToolbar)
-toolbar:addButton(revertChangesToolbar)
+toolbar:addButton(homePageToolbarButton)
+toolbar:addButton(recentlyOpenedToolbarButton)
