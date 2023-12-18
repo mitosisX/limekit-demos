@@ -12,7 +12,8 @@ end
 
 function projectCreator()
     modal = Modal(window, "Let's get you started - Limekit")
-    modal:setSize(550, 400)
+    modal:setMinSize(550, 400)
+    modal:setMaxSize(550, 400)
 
     createMainLayout = HLayout()
 
@@ -220,4 +221,12 @@ function packagePathsWriter()
 
     app.writeFile(requirePathFile, concatPaths)
 
+end
+
+function runApp()
+    -- color = app.colorPicker(window, 'rgb')
+    -- print(color.r)
+    -- runProgress:setVisibility(true)
+    runAppButton:setResizeRule('fixed', 'fixed')
+    runProject()
 end

@@ -16,7 +16,7 @@ function changeTheme(obj)
 end
 
 appMenubarItems = {{
-    label = 'File',
+    label = '&File',
     submenu = {{
         name = 'create_project',
         label = 'New Project',
@@ -39,7 +39,7 @@ appMenubarItems = {{
         icon = images('exit.png')
     }}
 }, {
-    label = 'View',
+    label = '&View',
     name = 'view',
     submenu = {{
         label = "Home Page",
@@ -57,11 +57,11 @@ appMenubarItems = {{
         }}
     }}
 }, {
-    label = "App",
+    label = "&App",
     submenu = {{
-        label = "Run"
-    }, {
-        label = "-"
+        label = "Run",
+        shortcut = "Ctrl+R",
+        click = runApp
     }, {
         label = "Stop",
         shortcut = "Ctrl+X",
@@ -70,14 +70,14 @@ appMenubarItems = {{
                 projectRunnerProcess:stop()
             end
         end
+    }, {
+        label = "-"
+    }, {
+        label = "Build",
+        shortcut = 'Ctrl+B'
     }}
 }, {
-    label = "Tools",
-    submenu = {{
-        label = "Many"
-    }}
-}, {
-    label = "Help",
+    label = "&Help",
     submenu = {{
         label = 'Register'
     }, {

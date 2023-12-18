@@ -77,7 +77,7 @@ homeStackedWidget:setOrientation('vertical')
 homeStackedWidget:setAnimation('OutExpo')
 -- homeStackedWidget.autoStart() -- should comment out this one
 
--- homeStackedWidget:addLayout(welcomeView)
+homeStackedWidget:addLayout(welcomeView)
 homeStackedWidget:addChild(allAppTabs) -- The Tab holding App, Assets, Properties..
 
 seg:addChild(homeStackedWidget) -- home page - from components
