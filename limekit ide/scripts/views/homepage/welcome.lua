@@ -8,7 +8,7 @@ welcomeView:addChild(welcomeText)
 
 welcomeContentLay = HLayout()
 
-function makeHomepageCards(image_path, text)
+function makeHomepageCards(image_path, text, blue)
     local group = GroupBox()
 
     local lay = VLayout()
@@ -19,6 +19,9 @@ function makeHomepageCards(image_path, text)
     image:resizeImage(80, 80)
 
     local label = Label(text)
+    if blue then
+        label:setTextColor('#307DE1')
+    end
     label:setTextAlign('center')
 
     lay:addChild(image)
@@ -28,11 +31,14 @@ function makeHomepageCards(image_path, text)
     welcomeContentLay:addChild(group)
 end
 
+-- welcomeView:addChild(GifPlayer(images('homepage/mo.GIF')))
+
 makeHomepageCards(images('homepage/national_park_3d.png'), 'Develop modern UI')
-makeHomepageCards(images('homepage/hundred.png'), 'Free to all users')
+makeHomepageCards(images('homepage/hundred.png'), 'Free for all users')
 makeHomepageCards(images('homepage/battery.png'), 'Batteries Included')
 makeHomepageCards(images('homepage/bug.png'), 'Please report bugs')
-makeHomepageCards(images('homepage/support.png'), '<strong>Support the project<br>by puchasing a license</strong>')
+makeHomepageCards(images('homepage/support.png'), '<strong>Support this project<br>by puchasing a license</strong>',
+    true)
 
 welcomeView:addLayout(welcomeContentLay)
 

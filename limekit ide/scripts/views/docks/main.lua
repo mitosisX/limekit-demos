@@ -108,6 +108,8 @@ pyAccordion:addChild(pyUtilsList, 'Python utils')
 toolboxDock:setChild(scroller)
 
 appFolderDock = Dock("App directory")
+appFolderDock:setChild(Label('Coming soon'))
+
 appFolderDock:setMagneticAreas({'right'})
 
 appLogDock = Dock("Application Log")
