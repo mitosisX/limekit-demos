@@ -42,9 +42,10 @@ item2_h_box = HLayout()
 item2_h_box:addChild(food_combo2)
 item2_h_box:addChild(price_sb2)
 
-mainLay:addLayouts(item1_h_box, item2_h_box)
+mainLay:addLayout(item1_h_box)
+mainLay:addLayout(item2_h_box)
 
-totals_label = Label("Total Spent on {1+1}: $")
+totals_label = Label("Total Spent: $0")
 totals_label.setTextAlign('right')
 
 mainLay:addChild(totals_label)

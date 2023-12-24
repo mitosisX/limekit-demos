@@ -50,13 +50,13 @@ function createUserProject(userProjectNamePicked, userProjectVersionPicked)
         app.createFolder(miscFolder)
 
         mainLuaStruct =
-            "-- Welcome to the new era for modern lua gui development\nwindow = Window{title='New app - Limekit', icon = images('window.png'), size={400, 200}}\nwindow:show()"
+            "-- Welcome to the new era for modern lua gui development\nwindow = Window{title='New app - Limekit', icon = images('app.png'), size={400, 200}}\nwindow:show()"
 
         -- Now write to the main.lua
         app.writeFile(app.joinPaths(scriptsFolder, 'main.lua'), mainLuaStruct)
         app.writeFile(app.joinPaths(userProjectFolder, 'app.json'), json.stringify(projectJsonStruct))
 
-        app.copyFile(selIconPath, app.joinPaths(imagesFolder, 'window.png'))
+        app.copyFile(selIconPath, app.joinPaths(imagesFolder, 'app.png'))
 
         modal:dismiss()
 

@@ -1,7 +1,7 @@
 --[[
 							Limekit Runner
 
-			Copyright: 
+			Copyright: Take bytes
 			Author: Omega Msiska
 
 			(Note: This source code is provided unobfuscated, commented and written in the simplest lua syntax
@@ -45,7 +45,7 @@ if not app.exists(limekitProjectsFolder) then
 end
 
 window = Window {
-    title = "Limekit Runner",
+    title = "Limekit Run",
     icon = route('app_icon'),
     size = {1000, 600}
 }

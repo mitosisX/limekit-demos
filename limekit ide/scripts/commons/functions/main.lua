@@ -137,28 +137,44 @@ function projectOpener()
 
         userProjectFolder = string.match(file, '.*/') -- This gets the folder for the selected project
 
-        readPackagePaths()
-
-        userProjectJSON = app.readJSON(file) -- the app.json
-
-        scriptsFolder = app.joinPaths(userProjectFolder, 'scripts')
-        imagesFolder = app.joinPaths(userProjectFolder, 'images')
-        miscFolder = app.joinPaths(userProjectFolder, 'misc')
-
-        local appName = userProjectJSON.project.name -- will be used in multiple location
-
-        loadedAppName:setText(py.str_format('App: <strong>{}</strong> ', appName))
-        editAppName:setText(appName)
-
-        editAppVersion:setText(userProjectJSON.project.version)
-        editAppAuthor:setText(userProjectJSON.project.author)
-        editAppCopyright:setText(userProjectJSON.project.copyright)
-        editAppDescription:setText(userProjectJSON.project.description)
-        editAppEmail:setText(userProjectJSON.project.email)
-
-        loadedAppIcon:setImage(app.joinPaths(imagesFolder, 'window.png'))
-        loadedAppIcon:resizeImage(50, 50) -- maintain our initial 50x50 size when switching between user app images
+        initProject(file)
     end
+end
+
+-- Takes the app.json path and does the initialization
+function initProject(projectFile)
+    readPackagePaths()
+
+    userProjectJSON = json.parse(app.readFile(projectFile)) -- the app.json
+
+    scriptsFolder = app.joinPaths(userProjectFolder, 'scripts')
+    imagesFolder = app.joinPaths(userProjectFolder, 'images')
+    miscFolder = app.joinPaths(userProjectFolder, 'misc')
+
+    local appName = userProjectJSON.project.name -- will be used in multiple location
+
+    loadedAppName:setText(py.str_format('App: <strong>{}</strong> ', appName))
+
+    editAppName:setText(appName)
+    editAppVersion:setText(userProjectJSON.project.version)
+    editAppAuthor:setText(userProjectJSON.project.author)
+    editAppCopyright:setText(userProjectJSON.project.copyright)
+    editAppDescription:setText(userProjectJSON.project.description)
+    editAppEmail:setText(userProjectJSON.project.email)
+
+    local windowIcon = app.joinPaths(imagesFolder, 'app.png')
+
+    loadedAppIcon:setImage(windowIcon)
+    loadedAppIcon:resizeImage(50, 50) -- maintain our initial 50x50 size when switching between user app images
+
+    local theRecentProject = MenuItem(appName)
+    theRecentProject:setOnClick(function()
+        writeToConsole(appName)
+    end)
+    theRecentProject:setIcon(windowIcon)
+
+    recentProjectsMenu:addMenuItem(theRecentProject)
+
 end
 
 -- 24 November, 2023 (12:29 PM)

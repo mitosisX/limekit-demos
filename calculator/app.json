@@ -1,17 +1,1 @@
-{
-  "project": {
-    "name": "Simple",
-    "author": "Limekit",
-    "description": "Brief project description",
-    "copyright": "© 2023 Limekit. All Rights Reserved",
-    "version": "1.0.1",
-    "email": "limekit@lua.gui",
-    "url": "",
-    "routes": {
-      "single": {
-        "app_icon": "images::calc.png"
-      }
-    },
-    "lua_require": ""
-  }
-}
+{"project":{"description":"Example showing a calculator", "url":"", "lua_require":"", "copyright":"Limekit by Take bytes", "version":"1.0", "author":"Omega Msiska", "routes":{"single":{"app_icon":"images::app.png"}}, "email":"", "name":"Calculator"}}

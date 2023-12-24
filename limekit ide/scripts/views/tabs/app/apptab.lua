@@ -90,9 +90,24 @@ editAppButtonLay:setContentAlignment('right')
 saveEditButton = Button('Save')
 saveEditButton:setIcon(images('homepage/create_project/done2.png'))
 saveEditButton:setOnClick(function()
-    ask = app.questionAlertDialog(window, 'Confirm', 'Are you sure you want to save the modification?')
-    if ask then
-        writeToConsole('saving now')
+    askToSave = app.questionAlertDialog(window, 'Confirm', 'Are you sure you want to save the modification?')
+
+    if askToSave then
+        newAppName = editAppName:getText()
+
+        userProjectJSON.project.name = newAppName
+        userProjectJSON.project.version = editAppVersion:getText()
+        userProjectJSON.project.author = editAppAuthor:getText()
+        userProjectJSON.project.copyright = editAppCopyright:getText()
+        userProjectJSON.project.description = editAppDescription:getText()
+        userProjectJSON.project.email = editAppEmail:getText()
+
+        app.writeFile(app.joinPaths(userProjectFolder, 'app.json'), json.stringify(userProjectJSON))
+
+        loadedAppName:setText(py.str_format('App: <strong>{}</strong> ', newAppName))
+
+        writeToConsole('project updated successfuly')
+
     else
         writeToConsole('Not saving')
     end

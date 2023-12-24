@@ -1,5 +1,5 @@
 
-theme = Theme("modern")
+theme = Theme("misc")
  -- theme.setTheme("dark")
 
 window = Window{title="Widgets - Limekit", icon=route('app_icon')}
@@ -8,7 +8,7 @@ window = Window{title="Widgets - Limekit", icon=route('app_icon')}
 window:setOnShown(function()
   window:center()
   noti = SysNotification(images('furniture.png'), window)
-  noti:setMessage{message='First ever top-notch lua GUI framework!', 
+  noti:setMessage{message='Try adjusting Window', 
     icon='warning', duration=1000}
   
   noti:setOnClick(function()
@@ -35,26 +35,26 @@ tray:setVisibility(true)
 menubar = Menubar()
 menu = Menu()
 compose = MenuItem("Compose")
-compose:setImage(images("add.png"))
+compose:setIcon(images("add.png"))
 
 open = MenuItem("Open")
-open:setImage(images("open.png"))
+open:setIcon(images("open.png"))
 
 exit = MenuItem("Exit")
-exit:setImage(images("exit.png"))
+exit:setIcon(images("exit.png"))
 menu:addMenuItems(compose, open, exit)
 tray:setMenu(menu)
 
 malawi = ToolbarButton()
 malawi:setTooltip("Develoepd from Malawi")
-malawi:setImage(images("malawi.png"))
+malawi:setIcon(images("malawi.png"))
 toolbar:addButton(malawi)
 
 toolbar:addButton(ToolbarButton('-'))
 
 b = ToolbarButton()
 b:setTooltip("hey")
-b:setImage(images("icons8_send_50px.png"))
+b:setIcon(images("icons8_send_50px.png"))
 b:setOnClick(function (self)
   self.setImage(images("icons8_curriculum_50px.png"))
 end)

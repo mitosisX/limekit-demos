@@ -34,9 +34,6 @@ recentProjectsMenu = Menu()
 --     label = 'sdsdsd'
 -- }})
 
-recentProjectsMenu:addMenuItem(MenuItem('Hello'))
-recentProjectsMenu:addMenuItem(MenuItem('hello'))
-
 recentlyOpenedToolbarButton:setMenu(recentProjectsMenu)
 
 toolbar:addButton(newProjectToolbarButton)

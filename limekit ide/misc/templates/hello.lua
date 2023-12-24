@@ -1,4 +1,4 @@
-window = Window{title = '{} - Limekit', icon = images('window.png') size={{}, {}}}
+window = Window{title = '{} - Limekit', icon = images('app.png') size={{}, {}}}
 
 mainLay = VLayout()
 label = Label("")
