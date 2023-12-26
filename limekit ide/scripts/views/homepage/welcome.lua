@@ -1,7 +1,7 @@
 welcomeView = VLayout()
 welcomeView:setContentAlignment('vcenter', 'center')
 
-welcomeText = Label('<strong>Welcome</strong> -')
+welcomeText = Label('<strong>Limekit</strong> -')
 welcomeText:setTextSize(25)
 
 welcomeView:addChild(welcomeText)

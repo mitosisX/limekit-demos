@@ -75,7 +75,7 @@ function projectCreator()
 
     createVersion = Label('Version')
     createVersionLineEdit = LineEdit()
-    createVersionLineEdit:setText('1.0.0')
+    createVersionLineEdit:setText('1.0')
 
     createIcon = Label('Window icon')
     createIcon:setWhatsThis('The icon that shows on your window') -- Right click to show the 'Whats This'
@@ -126,23 +126,33 @@ function projectCreator()
     modal:show()
 end
 
--- This is where all edit fields are provided with values from the 
 function projectOpener()
     file = app.openFileDialog(window, "Open a project", limekitProjectsFolder, {
         ["Limekit app"] = {".json"}
     })
 
     if file ~= "" then
-        homeStackedWidget:slideNext() -- switch from home page to app's page
-
-        userProjectFolder = string.match(file, '.*/') -- This gets the folder for the selected project
 
         initProject(file)
+
+        local theRecentProject = MenuItem(userProjectJSON.project.name)
+        theRecentProject:setOnClick(function()
+            writeToConsole(app.joinPaths(userProjectFolder, 'app.json'))
+        end)
+        -- theRecentProject:setIcon(windowIcon)
+
+        recentProjectsMenu:addMenuItem(theRecentProject)
+
     end
 end
 
 -- Takes the app.json path and does the initialization
+
 function initProject(projectFile)
+    homeStackedWidget:slideNext() -- switch from home page to app's page
+
+    userProjectFolder = string.match(file, '.*/') -- This gets the folder for the selected project
+
     readPackagePaths()
 
     userProjectJSON = json.parse(app.readFile(projectFile)) -- the app.json
@@ -166,15 +176,6 @@ function initProject(projectFile)
 
     loadedAppIcon:setImage(windowIcon)
     loadedAppIcon:resizeImage(50, 50) -- maintain our initial 50x50 size when switching between user app images
-
-    local theRecentProject = MenuItem(appName)
-    theRecentProject:setOnClick(function()
-        writeToConsole(appName)
-    end)
-    theRecentProject:setIcon(windowIcon)
-
-    recentProjectsMenu:addMenuItem(theRecentProject)
-
 end
 
 -- 24 November, 2023 (12:29 PM)
@@ -198,8 +199,8 @@ function runProject()
     projectRunnerProcess:setOnProcessStarted(function()
         writeToConsole('<strong>Starting app</strong>')
 
-        runAppButton:disable()
-        runAppButton:setText('Running')
+        runAppButton:setText('Stop')
+        runAppButton:setIcon(images('app/stop.png'))
         runProgress:setVisibility(true)
 
     end)
@@ -207,8 +208,8 @@ function runProject()
     projectRunnerProcess:setOnProcessFinished(function()
         writeToConsole('<strong>App closed</strong>')
 
-        runAppButton:enable()
         runAppButton:setText('Run')
+        runAppButton:setIcon(images('app/run.png'))
         runProgress:setVisibility(false)
 
     end)
@@ -240,9 +241,12 @@ function packagePathsWriter()
 end
 
 function runApp()
-    -- color = app.colorPicker(window, 'rgb')
-    -- print(color.r)
-    -- runProgress:setVisibility(true)
-    runAppButton:setResizeRule('fixed', 'fixed')
-    runProject()
+    if not isRunning then
+        isRunning = true
+        -- runAppButton:setResizeRule('fixed', 'fixed')
+        runProject()
+    else
+        isRunning = false
+        projectRunnerProcess:stop()
+    end
 end

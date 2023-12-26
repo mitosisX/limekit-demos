@@ -26,6 +26,7 @@ userProjectJSON = None -- The app.json for each projects
 userProjectFolder = "" -- The folder for the current project
 requirePathFile = "" -- Path to the .require file
 allRequirePathsTable = {} -- All paths obtained from the .require file
+isRunning = false -- whether or not the app is running
 
 scriptsFolder = ""
 imagesFolder = ""
