@@ -27,7 +27,7 @@ confirm = Button("Confirm")
 
 for key,value in ipairs(ratings) do
     check = RadioButton(value)
-    ratingGroup:addChild(check)
+    ratingGroup:addButton(check)
     mainLay:addChild(check)
 end
 
