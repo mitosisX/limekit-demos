@@ -19,18 +19,20 @@ mainLay:addChild(questionLabel)
 ratings = {"Brilliant", "Average", "Not Satisfied"}
 
 ratingGroup = ButtonGroup()
-ratingGroup:setOnClick(function(obj, button)
-    print(button:getText())
-end)
-
-confirm = Button("Confirm")
+-- ratingGroup:setOnClick(function(obj, button)
+--     print(button:getText())
+-- end)
 
 for key,value in ipairs(ratings) do
-    check = RadioButton(value)
+    check = CheckBox(value)
+    check:setOnCheck(function(sender, state)
+        print(state)
+    end)
     ratingGroup:addButton(check)
-    mainLay:addChild(check)
+    -- mainLay:addChild(check)
 end
 
+confirm = Button("Confirm")
 mainLay:addChild(confirm)
 
 window:setLayout(mainLay)
