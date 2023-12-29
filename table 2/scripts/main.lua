@@ -78,14 +78,13 @@ end
 -- table:setCellChild(3, 3, Button('Edit'))
 
 knob = Knob()
-knob:setMinValue(0)
-knob:setMaxValue(100)
+knob:setRange(0, 50)
 knob:setIndicators(true)
 knob:setOnValueChanged(function(obj, value)
     table:addData(4, 0, value)
 end)
 
--- table:setCellChild(4, 2, knob)
+table:setCellChild(4, 2, knob)
 
 -- table.setGridVisible(false) -- Hides the grid lines
 -- table:setHeaderToolTip(1, 'Names go here')

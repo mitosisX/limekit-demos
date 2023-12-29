@@ -13,9 +13,8 @@ function makeHomepageCards(image_path, text, blue)
 
     local lay = VLayout()
 
-    local image = Label()
-    image:setTextAlign('center')
-    image:setImage(image_path)
+    local image = Image(image_path)
+    image:setImageAlign('center')
     image:resizeImage(80, 80)
 
     local label = Label(text)

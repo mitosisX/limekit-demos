@@ -14,8 +14,7 @@ appDetailsGroup = GroupBox() -- Holds the layout that holds the icon, run button
 
 appDetailsLay = HLayout() -- The above mentioned layout
 
-loadedAppIcon = Label()
-loadedAppIcon:setImage(images('app/image.png'))
+loadedAppIcon = Image(images('app/image.png'))
 loadedAppIcon:setResizeRule('fixed', 'fixed')
 loadedAppIcon:resizeImage(50, 50)
 

@@ -63,9 +63,8 @@ function projectCreator()
     createLayout:setMargins(10, 0, 0, 0)
     createMainLayout:addLayout(createLayout)
 
-    createImage = Label()
-    createImage:setImage(images('homepage/create_project/package.png'))
-    createImage:setTextAlign('center')
+    createImage = Image(images('homepage/create_project/package.png'))
+    createImage:setImageAlign('center')
 
     createHeader = Label('<strong>Create your project</strong>')
     createHeader:setTextAlign('center')
