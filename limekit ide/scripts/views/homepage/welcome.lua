@@ -1,6 +1,10 @@
 welcomeView = VLayout()
 welcomeView:setContentAlignment('vcenter', 'center')
 
+g = GifPlayer(images('homepage/cat.gif'))
+g:setSize(120, 120)
+welcomeView:addChild(g)
+
 welcomeText = Label('<strong>Limekit</strong> -')
 welcomeText:setTextSize(25)
 
@@ -32,7 +36,7 @@ end
 
 -- welcomeView:addChild(GifPlayer(images('homepage/mo.GIF')))
 
-makeHomepageCards(images('homepage/national_park_3d.png'), 'Develop modern UI')
+makeHomepageCards(images('homepage/modern.png'), 'Develop modern UI')
 makeHomepageCards(images('homepage/hundred.png'), 'Free for all users')
 makeHomepageCards(images('homepage/battery.png'), 'Batteries Included')
 makeHomepageCards(images('homepage/bug.png'), 'Please report bugs')
