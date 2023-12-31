@@ -1,7 +1,7 @@
 welcomeView = VLayout()
 welcomeView:setContentAlignment('vcenter', 'center')
 
-gif = GifPlayer(images(app.randomChoice({'homepage/cat.gif', 'homepage/sheep.gif'})))
+gif = GifPlayer(images(app.randomChoice({'homepage/sheep.gif', 'homepage/cat.gif'})))
 gif:setSize(120, 120)
 welcomeView:addChild(gif)
 

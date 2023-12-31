@@ -1,60 +1,58 @@
-window = Window("Listbox - Limekit")
-window:setIcon(route('app_icon'))
-window:setSize(400, 200)
+window = Window{title = "Listbox - Limekit", icon=route('app_icon'), size={400, 200}}
 
-main_lay = HLayout()
+mainLay = HLayout()
 
-list_widget = ListBox()
+listWidget = ListBox()
 
-grocery_list = {"cheese", "bacon", "eggs","rice", "soda"}
+groceryList = {"cheese", "bacon", "eggs","rice", "soda"}
 
-for index = 1, #grocery_list do
-	item = grocery_list[index]
-	list_widget:addItem(item)
+for index = 1, #groceryList do
+	item = groceryList[index]
+	listWidget:addItem(item)
 end
 
-add_button = Button("Add")
-add_button:setOnClick(function()
+addButton = Button("Add")
+addButton:setOnClick(function()
 	if text ~= "" then
-		text = app.textInput(window, "New Item", "Add item:")
+		text = app.textInputDialog(window, "New Item", "Add item:")
 		
-		list_widget:addItem(text)
+		listWidget:addItem(text)
 	end
 end)
 
-insert_button = Button("Insert")
-insert_button:setOnClick(function()
-	text = app.textInput(window, "Insert Item", "Insert item:")
+insertButton = Button("Insert")
+insertButton:setOnClick(function()
+	text = app.textInputDialog(window, "Insert Item", "Insert item:")
 	
 	if text ~= "" then
-		row = list_widget:getCurrentRow()
+		row = listWidget:getCurrentRow()
 		row = row + 1
 
-		list_widget:insertItemAt(row, text)
+		listWidget:insertItemAt(row, text)
 	end
 end)
 
-remove_button = Button("Remove")
-remove_button:setOnClick(function()
-	row = list_widget:getCurrentRow()
-	list_widget:removeItem(row)
+removeButton = Button("Remove")
+removeButton:setOnClick(function()
+	row = listWidget:getCurrentRow()
+	listWidget:removeItem(row)
 end)
 
-clear_button = Button("Clear")
-clear_button:setOnClick(function()
-	list_widget:clear()
+clearButton = Button("Clear")
+clearButton:setOnClick(function()
+	listWidget:clear()
 end)
 
 
-right_v_box = VLayout()
+rightVBox = VLayout()
 
-right_v_box:addChild(add_button)
-right_v_box:addChild(insert_button)
-right_v_box:addChild(remove_button)
-right_v_box:addChild(clear_button)
+rightVBox:addChild(addButton)
+rightVBox:addChild(insertButton)
+rightVBox:addChild(removeButton)
+rightVBox:addChild(clearButton)
 
-main_lay:addChild(list_widget)
-main_lay.addLayout(right_v_box)
+mainLay:addChild(listWidget)
+mainLay.addLayout(rightVBox)
 
-window:setLayout(main_lay)
+window:setLayout(mainLay)
 window:show()

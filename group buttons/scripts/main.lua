@@ -29,7 +29,7 @@ for key,value in ipairs(ratings) do
         print(state)
     end)
     ratingGroup:addButton(check)
-    -- mainLay:addChild(check)
+    mainLay:addChild(check)
 end
 
 confirm = Button("Confirm")
