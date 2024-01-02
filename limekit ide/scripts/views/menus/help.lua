@@ -1,1 +1,0 @@
-helpMenu = Menu('Help')

@@ -35,7 +35,7 @@ miscFolder = ""
 
 app.execute(scripts('commons/functions/main.lua'))
 app.execute(scripts('views/homepage/welcome.lua'))
-app.execute(scripts('commons/menus.lua'))
+app.execute(scripts('views/menus/main.lua'))
 app.execute(scripts('views/toolbar/main.lua'))
 app.execute(scripts('views/tabs/main.lua'))
 app.execute(scripts('views/docks/main.lua'))

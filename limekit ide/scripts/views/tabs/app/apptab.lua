@@ -39,6 +39,7 @@ runProgress:setMaxWidth(200)
 runProgress:setVisibility(false)
 
 appDetailsLay2:addChild(runAppButton)
+
 appDetailsLay2:addChild(runProgress)
 
 appDetailsLay:addChild(loadedAppIcon)
