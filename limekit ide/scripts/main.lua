@@ -46,7 +46,7 @@ if not app.exists(limekitProjectsFolder) then
 end
 
 window = Window {
-    title = "Limekit Run",
+    title = "Limer - Take bytes",
     icon = route('app_icon'),
     size = {1000, 600}
 }

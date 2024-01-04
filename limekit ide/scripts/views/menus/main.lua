@@ -36,7 +36,10 @@ appMenubarItems = {{
         -- shortcut = "Ctrl+N"
     }, {
         label = 'Exit',
-        icon = images('exit.png')
+        icon = images('exit.png'),
+        click = function()
+            app.exit()
+        end
     }}
 }, {
     label = '&View',
