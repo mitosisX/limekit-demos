@@ -1,5 +1,5 @@
 --[[
-							Limekit Runner
+							Limekit run
 
 			Copyright: Take bytes
 			Author: Omega Msiska
@@ -11,7 +11,7 @@
 		Development Started: 10 November, 2023
 
 ]] --
-theme = Theme('darklight')
+theme = app.Theme('darklight')
 theme:setTheme('light')
 
 json = require 'json'
@@ -21,7 +21,7 @@ projectRunnerProcess = None -- The process handling the execution of user progra
 
 -- User files and folders
 documentsFolder = app.getStandardPath('documents')
-limekitProjectsFolder = app.joinPaths(documentsFolder, 'limekit projects/')
+limekitProjectsFolder = app.joinPaths(documentsFolder, 'limekit projects')
 userProjectJSON = None -- The app.json for each projects
 userProjectFolder = "" -- The folder for the current project
 requirePathFile = "" -- Path to the .require file

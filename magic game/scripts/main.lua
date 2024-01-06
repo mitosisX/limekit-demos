@@ -1,11 +1,7 @@
--- Project started on 20 September, 2020
--- Algorithms tested and worked on 24 September, 2020 21:55 PM
--- Added animations on 25 September, 2020 00:05 AM, stopped at 00:17 AM
-
-print(zip({'Omega','Mitosis'},{'90%','100%'})[0])
+-- Developed by Omega Msiska
+-- Ported to lua from my earlier javascript code
 
 function dealToPlace()
-
     splitData = shuffleArray(categoryUse)
     sevensList = splitSevens(splitData)
 
@@ -19,7 +15,7 @@ function sevensAllocateLists(data)
     lists = {list1, list2, list3}
     for countLists, eachList in ipairs(data) do
         for listItem, getItem in ipairs(eachList) do
-            lists[countLists]:setItem(getItem)
+            lists[countLists]:addItem(getItem)
         end
     end
 end
@@ -61,6 +57,8 @@ function splitSevens(tokens)
         end
         counter = counter + 7 -- skip to the next 7th position of the last position
     end
+
+    print(sevensList[1][6])
 
     return sevensList
 end
@@ -143,9 +141,9 @@ end
 dealTimes = 1 -- Each column will share it's data to other columns, one after another
 
 function shareToColumns()
-    list1:clearItems()
-    list2:clearItems()
-    list3:clearItems()
+    list1:clear()
+    list2:clear()
+    list3:clear()
 
     -- alert(json(getColumnsList()))
 
@@ -196,12 +194,11 @@ function rand(min, max)
 end
 
 
-theme = Theme('material')
+theme = app.Theme('material')
 theme:setTheme('light_blue')
 
-window = Window("Magic Game - Limekit")
-window:setSize(500, 350)
-window:setIcon(route('app_icon'))
+window = Window{title="Magic Game - Limekit", size={500, 380}}
+-- window:setIcon(route('app_icon'))
 
 peopleData = "Edina,Noah,Juliet,Peter,Dan,Chrissy,Jack,Emmie,Rick,Mary,Sofia,Ezelina,Ronald,Bill,Amanda,Steve,Kate,Rose,Timmy,Ben,Anny"
 animalsData = "Elephant,Hare,Lion,Cheetah,Buffalo,Chicken,Panda,Monkey,Panther,Zebra,Hippo,Giraffe,Beetle,Hyena,Duck,Frog,Cat,Dog,Lizard,Mouse,Bird"
@@ -215,16 +212,21 @@ categoryUse = gameData.people
 
 bg = "#6236FF"
 
-top1 = Label("Pick something")
 
 mainLay = VLayout()
+
+top1 = Label("Pick something")
+top1:setTextAlign('center')
+mainLay:addChild(top1)
 
 hlay = HLayout()
 list1 = ListBox()
 list2 = ListBox()
 list3 = ListBox()
 
-hlay:addChildren(list1, list2, list3)
+hlay:addChild(list1)
+hlay:addChild(list2)
+hlay:addChild(list3)
 mainLay:addLayout(hlay)
 
 btnLay = HLayout()

@@ -1,5 +1,5 @@
 
-theme = Theme("misc")
+theme = app.Theme("darklight")
  -- theme.setTheme("dark")
 
 window = Window{title="Widgets - Limekit", icon=route('app_icon')}
@@ -7,7 +7,7 @@ window = Window{title="Widgets - Limekit", icon=route('app_icon')}
 
 window:setOnShown(function()
   window:center()
-  noti = SysNotification(images('furniture.png'), window)
+  noti = SysNotification(images('furniture.png'))
   noti:setMessage{message='Try adjusting Window', 
     icon='warning', duration=1000}
   
@@ -46,17 +46,17 @@ menu:addMenuItems(compose, open, exit)
 tray:setMenu(menu)
 
 malawi = ToolbarButton()
-malawi:setTooltip("Develoepd from Malawi")
+malawi:setToolTip("Develoepd from Malawi")
 malawi:setIcon(images("malawi.png"))
 toolbar:addButton(malawi)
 
 toolbar:addButton(ToolbarButton('-'))
 
 b = ToolbarButton()
-b:setTooltip("hey")
+b:setToolTip("hey")
 b:setIcon(images("icons8_send_50px.png"))
 b:setOnClick(function (self)
-  self.setImage(images("icons8_curriculum_50px.png"))
+  self:setIcon(images("icons8_curriculum_50px.png"))
 end)
 b.setCheckable(true)
 toolbar:addButton(b)
@@ -140,14 +140,14 @@ edit:setOnTextChange(function (sender, text)
   print(text)
 end)
 
-edit:setOnSelection(function(sender, text)
-  print(text)
-end)
+-- edit:setOnSelection(function(sender, text)
+--   print(text)
+-- end)
 
 lunch_list = {"egg", "turkey sandwich", "ham sandwich", "cheese", "hummus"}
 
 totalLabel = Label("Total: $0")
-totalLabel:setImage(images("icons8_plus_1_year_50px.png"))
+-- totalLabel:setImage(images("icons8_plus_1_year_50px.png"))
 -- totalLabel.setTextAlign("right")
 
 lay1 = HLayout()

@@ -1,10 +1,9 @@
 -- Creating the window
-window = Window{title="Calculator - Limekit", icon=route('app_icon')}
-window:setSize(280, 80)
+window = Window{title="Calculator - Limekit", icon=route('app_icon'), size={280, 80}}
 
 -- Setting the theme
-theme = Theme("material")
-theme:setTheme("light_blue")
+theme = app.Theme("darklight")
+theme:setTheme("light")
 
 -- Creating the main layout
 mainLay = VLayout()
@@ -33,12 +32,6 @@ for row = 1, #keyBoard do
     local key = keyBoard[row][col]
 
     buttonMap[key] = Button(key)
-    if key == "C" then
-      buttonMap[key]:setMatProperty("danger")
-    elseif key == "=" then
-      buttonMap[key]:setMatProperty("success")
-    end
-
     grid:addChild(buttonMap[key], row - 1, col - 1)
   end
 end
@@ -58,6 +51,7 @@ buttonMap["="]:setOnClick(function()
   local expression = eval(display:getText())
   display.setText(tostring(expression))
 end)
+
 buttonMap["C"]:setOnClick(function()
   display.setText("")
 end)

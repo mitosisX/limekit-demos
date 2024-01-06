@@ -17,7 +17,7 @@ homePageToolbarButton:setIcon(images('card_file_box_3d.png'))
 homePageToolbarButton:setOnClick(returnHomePage)
 
 recentlyOpenedToolbarButton = ToolbarButton('Recent Projects')
-recentlyOpenedToolbarButton:setTooltip('Projects you just opened in the runner')
+recentlyOpenedToolbarButton:setToolTip('Projects you just opened in the runner')
 recentlyOpenedToolbarButton:setIcon(images('database_refresh.png'))
 
 recentProjectsMenu = Menu()
