@@ -1,18 +1,15 @@
-
 theme = app.Theme("darklight")
- -- theme.setTheme("dark")
+theme.setTheme("light")
 
-window = Window{title="Widgets - Limekit", icon=route('app_icon')}
--- window:setIcon(images("lua.png"))
+window = Window{title="Widgets - Limekit", icon=images('app.png')}
 
 window:setOnShown(function()
   window:center()
-  noti = SysNotification(images('furniture.png'))
-  noti:setMessage{message='Try adjusting Window', 
-    icon='warning', duration=1000}
+  noti = SysNotification(images('app.png'))
+  noti:setMessage{message='Try resizing the window', icon='warning', duration=1000}
   
   noti:setOnClick(function()
-    print("clicked Notification")
+    app.alert(window, "Limekit", 'You clicked the notification')
   end)
 end)
 
@@ -29,10 +26,8 @@ window:setSize(400, 100)
 toolbar = Toolbar()
 
 tray = SysTray(images("heart.png"))
--- tray:setImage(images("heart.png"))
 tray:setVisibility(true)
 
-menubar = Menubar()
 menu = Menu()
 compose = MenuItem("Compose")
 compose:setIcon(images("add.png"))
@@ -46,8 +41,8 @@ menu:addMenuItems(compose, open, exit)
 tray:setMenu(menu)
 
 malawi = ToolbarButton()
-malawi:setToolTip("Develoepd from Malawi")
-malawi:setIcon(images("malawi.png"))
+malawi:setToolTip("Developed from Malawi")
+malawi:setIcon(images("app.png"))
 toolbar:addButton(malawi)
 
 toolbar:addButton(ToolbarButton('-'))
@@ -61,71 +56,48 @@ end)
 b.setCheckable(true)
 toolbar:addButton(b)
 
- -- window.setMenubar(menu)
 window.addToolbar(toolbar)
 
--- menu = Menu(window)
-
--- Theme to be used
 mainLayout = HLayout()
 
 mainLay1 = VLayout()
 
 button = Button()
-button.setText("Click me")
+button:setText("Click me")
 button:setFlat(true)
 button:setCheckable(true)
 button.setToolTip("I am a tooltip")
 button:setOnClick(function (x) 
-  -- app.setClipboardText("Clipboard text!")
-   -- app.qPopup(window, 'title', 'message', ['yes', 'apply', 'discard', 'retry'])
-   -- alert(window, "Alert title", app.getClipboardText())
-  -- alert(window, "Title here", "These buttons are super cool!", "question", {
-  --   "ok",
-  --   "save",
-  --   "close",
-  --   "cancel",
-  --   "ignore",
-  --   "notoall",
-  -- })
-
-  -- return
-  -- dialog = InputDialog(window)
-  -- obtainedText = dialog.getText()
-  -- if (obtainedText) x.setText(obtainedText)
+   app.alert(window, "Limekit", 'See how easy it is?')
 end)
 
 mainLay1:addChild(button)
 
- -- label = Label("Hello World")
-combo = ComboBox(theme.getThemes())
- -- combo.addItems(["Omega", "Msiska", "Mitosis", "X"])
--- combo:addItems()
-combo:setOnItemSelected(function (sender, data) 
+themes = ComboBox(theme.getThemes())
+themes:setOnItemSelected(function (sender, data) 
   theme:setTheme(data)
 end)
 
 progress = ProgressBar()
-progress.setValue(20)
+progress:setValue(20)
 
 spin = Spinner()
-spin.setPrefix("%")
-spin.setToolTip("Progressbar percentage")
+spin:setPrefix("$")
 spin:setOnValueChange(function (sender, value) 
-  progress.setValue(value)
+  progress:setValue(value)
 end)
 spin:setRange(10, 50)
 
 slider = Slider()
-slider.setSingleStep(3)
-slider.setMaximum(100)
+slider:setStep(5)
+slider:setRange(0, 100)
 slider:setOnValueChange(function (sender, value) 
-  progress.setProgress(value)
+  progress.setValue(value)
 end)
 
 cou = 40
 timer = Timer(2000, function (self) 
-  progress.setValue(cou)
+  progress:setValue(cou)
   cou = cou + 10
   -- self.stop()
 end)
@@ -174,18 +146,13 @@ lay2:addChild(spin2)
 spin1:setOnValueChange(calculateTotal)
 spin2:setOnValueChange(calculateTotal)
 
-function calculateTotal(sender)
-  total = spin1.getValue() + spin2.getValue()
-  totalLabel:setText("Total Spent: " + total)
-end
-
 styles = ComboBox()
 styles:addItems(app.getStyles())
 styles:setOnItemSelected(function (sender, style)
   app.setStyle(style)
 end)
 
-mainLay1:addChild(combo)
+mainLay1:addChild(themes)
 mainLay1:addChild(spin)
 mainLay1:addChild(progress)
 mainLay1:addChild(slider)

@@ -30,11 +30,12 @@ appMenubarItems = {{
         click = projectOpener
     }, {
         label = '-'
-    }, {
-        label = 'New Database...',
-        icon = images('database_add.png')
-        -- shortcut = "Ctrl+N"
-    }, {
+    }, -- {
+    --     label = 'New Database...',
+    --     icon = images('database_add.png')
+    --     -- shortcut = "Ctrl+N"
+    -- }, 
+    {
         label = 'Exit',
         icon = images('exit.png'),
         click = function()
