@@ -1,24 +1,19 @@
 -- Creating a window
-window = Window("Table - Limekit")
-window:setSize(558, 363)
-window:setIcon(route('app_icon'))
-
-
--- app.setFont(misc('Oakle.ttf'), 10)
+window = Window{title="Table - Limekit", icon=images('app.png'), size={558, 363}}
 
 -- Creating a main horizontal layout
 mainLay = VLayout()
 
--- theme = Theme("material")
--- theme:setTheme("light_blue")
+theme = app.Theme("darklight")
+theme:setTheme("light")
 
 -- Creating a table with dimensions 10x10
 table = Table(10, 10)
 table:setAltRowColors(true)
 
-table:setOnCellSelection(function()
+table:setOnCellSelection(function(self, sel, des)
     -- table:getSelectedCells()
-    print('Cell selection')
+    print('Row:', sel, ' Column:', des)
 end)
 
 table:setOnCellDoubleClicked(function(obj, row, column)
@@ -40,12 +35,18 @@ table:setTableData({
 })
 -- table.setAltRowColors(true)
 -- table.setCellsEditable(false)
+
+gif=GifPlayer(images('hi.gif'))
+gif:setSize(30, 30)
+
+table:setCellChild(0, 0, gif)
+
 combo = ComboBox()
-combo:addImageItems({{'lua', images('lua.png')}, {'malawi', images('lua.png')}, {'heart', images('lua.png')}});
+combo:addImageItems({{'Limekit', images('app.png')}, {'lua', images('app.png')}, {'heart', images('heart.png')}});
 
 table:setCellChild(0, 2, combo)
 
-for x=1, 5 do
+for x = 1, 5 do
     local edit = Button("")
     edit:setIcon(images('edit.png'))
     edit:setOnClick(function()

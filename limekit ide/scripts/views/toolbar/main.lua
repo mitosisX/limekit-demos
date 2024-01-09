@@ -1,6 +1,5 @@
 app.execute(scripts('views/dialogs/create_project.lua'))
 
--- ##### Toolbar 1
 toolbar = Toolbar()
 toolbar:setIconStyle('textbesideicon')
 
@@ -21,18 +20,6 @@ recentlyOpenedToolbarButton:setToolTip('Projects you just opened in the runner')
 recentlyOpenedToolbarButton:setIcon(images('database_refresh.png'))
 
 recentProjectsMenu = Menu()
-
--- recentProjectsMenu:buildFromTemplate({{
---     label = 'File'
--- }, {
---     label = 'sdsdsd'
--- }, {
---     label = 'sdsdsd'
--- }, {
---     label = 'sdsdsd'
--- }, {
---     label = 'sdsdsd'
--- }})
 
 recentlyOpenedToolbarButton:setMenu(recentProjectsMenu)
 

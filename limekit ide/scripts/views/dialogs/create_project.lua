@@ -49,20 +49,25 @@ function createUserProject(userProjectNamePicked, userProjectVersionPicked)
         app.createFolder(imagesFolder)
         app.createFolder(miscFolder)
 
+        userProjectFile = app.joinPaths(userProjectFolder, 'app.json')
+
+        writeToConsole(userProjectFile)
+
         mainLuaStruct =
             "-- Welcome to the new era for modern lua gui development\nwindow = Window{title='New app - Limekit', icon = images('app.png'), size={400, 200}}\nwindow:show()"
 
         -- Now write to the main.lua
         app.writeFile(app.joinPaths(scriptsFolder, 'main.lua'), mainLuaStruct)
-        app.writeFile(app.joinPaths(userProjectFolder, 'app.json'), json.stringify(projectJsonStruct))
+        app.writeFile(userProjectFile, json.stringify(projectJsonStruct))
 
         app.copyFile(selIconPath, app.joinPaths(imagesFolder, 'app.png'))
 
         modal:dismiss()
 
+        writeToConsole('Created at ' .. userProjectFolder)
         app.alert(window, 'Success!', 'Project has been created')
     else
-        app.criticalAlert(window, 'Error!', 'Could not create the project. Project already exists.')
+        app.criticalAlertDialog(window, 'Project already exists.', 'Could not create the project.')
     end
 
 end

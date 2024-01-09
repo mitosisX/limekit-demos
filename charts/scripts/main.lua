@@ -1,5 +1,5 @@
 window = Window{title='Charts - Limekit', size={400, 300}, icon=route('app_icon')}
-Theme('darklight'):setTheme('dark')
+app.Theme('darklight'):setTheme('dark')
 mainLay = GridLayout()
 
 combo = ComboBox()

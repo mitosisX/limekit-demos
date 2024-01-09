@@ -132,6 +132,8 @@ function projectOpener()
 
     if file ~= "" then
 
+        writeToConsole(file)
+
         initProject(file)
 
         local theRecentProject = MenuItem(userProjectJSON.project.name)
@@ -151,7 +153,6 @@ function initProject(projectFile)
     homeStackedWidget:slideNext() -- switch from home page to app's page
 
     userProjectFolder = string.match(file, '.*/') -- This gets the folder for the selected project
-
     readPackagePaths()
 
     userProjectJSON = json.parse(app.readFile(projectFile)) -- the app.json
