@@ -1,13 +1,13 @@
 editMenu = Menu('Edit')
 
 createTable = MenuItem('Create Table...')
-createTable:setImage(images('table_add.png'))
+createTable:setIcon(images('table_add.png'))
 
 createIndex = MenuItem('Create Index...')
-createIndex:setImage(images('tag_blue_add.png'))
+createIndex:setIcon(images('tag_blue_add.png'))
 
 preferences = MenuItem('Preferences...')
-preferences:setImage(images('wrench.png'))
+preferences:setIcon(images('wrench.png'))
 
 editMenu:addMenuItem(createTable)
 editMenu:addMenuItem(MenuItem('-'))

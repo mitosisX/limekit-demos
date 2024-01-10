@@ -11,8 +11,8 @@
 		Development Started: 10 November, 2023
 
 ]] --
-theme = app.Theme('darkstyle')
-theme:setTheme('dark')
+theme = app.Theme('darklight')
+theme:setTheme('light')
 
 json = require 'json'
 

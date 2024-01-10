@@ -85,6 +85,7 @@ appMenubarItems = {{
     submenu = {{
         label = 'Register'
     }, {
-        label = "About Limekit"
+        label = "About Limekit",
+        click = aboutPage
     }}
 }}

@@ -206,6 +206,7 @@ function runProject()
     end)
 
     projectRunnerProcess:setOnProcessFinished(function()
+        isRunning = false
         writeToConsole('<strong>App closed</strong>')
 
         runAppButton:setText('Run')
@@ -242,13 +243,68 @@ end
 
 function runApp()
     if not isRunning then
-        if userProjectFolder ~= "" then
-            isRunning = true
-            -- runAppButton:setResizeRule('fixed', 'fixed')
-            runProject()
-        end
+        isRunning = true
+        -- runAppButton:setResizeRule('fixed', 'fixed')
+        runProject()
     else
         isRunning = false
         projectRunnerProcess:stop()
     end
+end
+
+function aboutPage()
+    modal = Modal(window, "About Limer")
+    modal:setMinSize(550, 400)
+    modal:setMaxSize(550, 400)
+
+    createMainLayout = HLayout()
+
+    groupB = GroupBox()
+    groupB:setBackgroundColor('#307DE1')
+
+    gBLayo = VLayout()
+    gBLayo:setContentAlignment('center')
+
+    title1 = Label('<strong>Quick setup</strong>')
+    title1:setTextColor('white')
+
+    subTitle1 = Label('Takes seconds to get an app running\n')
+    subTitle1:setTextColor('white')
+
+    gBLayo:addChild(title1)
+    gBLayo:addChild(subTitle1)
+
+    title2 = Label('<strong>Cross-platform solution</strong>')
+    title2:setTextColor('white')
+    subTitle2 = Label('Same code for Windows, Linux and macOS\n')
+    subTitle2:setTextColor('white')
+
+    gBLayo:addChild(title2)
+    gBLayo:addChild(subTitle2)
+
+    title3 = Label('<strong>Intuitive API</strong>')
+    title3:setTextColor('white')
+    subTitle3 = Label('Our API is friendly even to newbies\n')
+    subTitle3:setTextColor('white')
+
+    gBLayo:addChild(title3)
+    gBLayo:addChild(subTitle3)
+
+    title4 = Label('<strong>Modern GUI</strong>')
+    title4:setTextColor('white')
+    subTitle4 = Label('Develop modern looking programs in no time')
+    subTitle4:setTextColor('white')
+
+    gBLayo:addChild(title4)
+    gBLayo:addChild(subTitle4)
+
+    groupB:setLayout(gBLayo)
+    createMainLayout:addChild(groupB)
+
+    -- buttons = modal:getButtons({'ok', 'cancel'})
+    -- v:addChild(buttons)
+
+    modal:setLayout(createMainLayout)
+
+    modal:show()
 end

@@ -1,3 +1,6 @@
+-- This example does not use buildFromTemplate to illustrate
+-- how to use Menu and MenuItem
+
 function fectchData()
 	db:execute('SELECT * FROM Fruits;')
 	data = db:fetchAll()
@@ -7,11 +10,11 @@ end
 
 database = nil
 
--- app.execute(scripts('menus/file.lua'))
--- app.execute(scripts('menus/edit.lua'))
--- app.execute(scripts('menus/view.lua'))
--- app.execute(scripts('menus/tools.lua'))
--- app.execute(scripts('menus/help.lua'))
+app.execute(scripts('menus/file.lua'))
+app.execute(scripts('menus/edit.lua'))
+app.execute(scripts('menus/view.lua'))
+app.execute(scripts('menus/tools.lua'))
+app.execute(scripts('menus/help.lua'))
 
 app.execute(scripts('toolbar/main.lua'))
 app.execute(scripts('tab/main.lua'))
@@ -48,56 +51,12 @@ segmentation = Splitter('horizontal')
 db = Sqlite3('D:/sandbox/limekit.db')
 
 menubar = Menubar()
-menubar:buildFromTemplate({
-	{label = 'File',
-		submenu={
-			{label='New Database...',
-			icon=images('database_add.png'),
-			shortcut="Ctrl+N"},
 
-			{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='-'},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-
-			shortcut="Ctrl+N"},{label='New Database...',
-			icon=images('database_add.png'),
-			shortcut="Ctrl+N"},
-		}}
-})
--- menubar:addMenuItem(fileMenu)
--- menubar:addMenuItem(editMenu)
--- menubar:addMenuItem(viewMenu)
--- menubar:addMenuItem(toolsMenu)
--- menubar:addMenuItem(helpMenu)
+menubar:addMenu(fileMenu)
+menubar:addMenu(editMenu)
+menubar:addMenu(viewMenu)
+menubar:addMenu(toolsMenu)
+menubar:addMenu(helpMenu)
 
 window:setMenubar(menubar)
 
