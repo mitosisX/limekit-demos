@@ -4,8 +4,6 @@ app.execute(scripts('views/tabs/app/properties.lua'))
 
 allAppTabs = Tab() -- The tab holding all tab items
 
--- DropShadow(allAppTabs) -- Drop shadow
-
 appTab = TabItem()
 appTab:setLayout(appTabMainLay)
 
@@ -21,4 +19,3 @@ allAppTabs:addTab(appTab, "App", images('tabs/app.png'))
 
 -- allAppTabs:addTab(editPragramsTab, "Assets", images('tabs/resources.png'))
 allAppTabs:addTab(appPropertiesTab, "Properties", images('tabs/properties.png'))
--- allAppTabs:addTab(browseDataTab, "Sqlite Browser", images('tabs/Database.png'))

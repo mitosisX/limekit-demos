@@ -125,28 +125,6 @@ function projectCreator()
     modal:show()
 end
 
-function projectOpener()
-    file = app.openFileDialog(window, "Open a project", limekitProjectsFolder, {
-        ["Limekit app"] = {".json"}
-    })
-
-    if file ~= "" then
-
-        writeToConsole(file)
-
-        initProject(file)
-
-        local theRecentProject = MenuItem(userProjectJSON.project.name)
-        theRecentProject:setOnClick(function()
-            writeToConsole(app.joinPaths(userProjectFolder, 'app.json'))
-        end)
-        -- theRecentProject:setIcon(windowIcon)
-
-        recentProjectsMenu:addMenuItem(theRecentProject)
-
-    end
-end
-
 -- Takes the app.json path and does the initialization
 
 function initProject(projectFile)
@@ -176,6 +154,28 @@ function initProject(projectFile)
 
     loadedAppIcon:setImage(windowIcon)
     loadedAppIcon:resizeImage(50, 50) -- maintain our initial 50x50 size when switching between user app images
+end
+
+function projectOpener()
+    file = app.openFileDialog(window, "Open a project", limekitProjectsFolder, {
+        ["Limekit app"] = {".json"}
+    })
+
+    if file ~= "" then
+
+        writeToConsole(file)
+
+        initProject(file)
+
+        local theRecentProject = MenuItem(userProjectJSON.project.name)
+        theRecentProject:setOnClick(function()
+            initProject(app.joinPaths(userProjectFolder, 'app.json'))
+        end)
+        -- theRecentProject:setIcon(windowIcon)
+
+        recentProjectsMenu:addMenuItem(theRecentProject)
+
+    end
 end
 
 -- 24 November, 2023 (12:29 PM)
@@ -242,9 +242,11 @@ end
 
 function runApp()
     if not isRunning then
-        isRunning = true
-        -- runAppButton:setResizeRule('fixed', 'fixed')
-        runProject()
+        if userProjectFolder ~= "" then
+            isRunning = true
+            -- runAppButton:setResizeRule('fixed', 'fixed')
+            runProject()
+        end
     else
         isRunning = false
         projectRunnerProcess:stop()
