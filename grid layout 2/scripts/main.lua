@@ -1,6 +1,4 @@
-window = Window("Grid Layout 2 - Limekit")
-window:setIcon(route('app_icon'))
--- window:setSize(200, 200)
+window = Window{title="Grid Layout 2 - Limekit", icon=images('app.png')}
 
 mainLayout = VLayout()
 

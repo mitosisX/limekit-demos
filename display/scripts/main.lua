@@ -89,7 +89,6 @@ end)
 spin:setRange(10, 50)
 
 slider = Slider()
-slider:setStep(5)
 slider:setRange(0, 100)
 slider:setOnValueChange(function (sender, value) 
   progress.setValue(value)

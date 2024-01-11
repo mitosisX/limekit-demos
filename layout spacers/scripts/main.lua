@@ -1,5 +1,4 @@
 window = Window{title="Layout Stretch - Limekit", icon=route('app_icon')}
--- window:setSize(200, 200)
 
 mainLayout = HLayout()
 
@@ -13,8 +12,8 @@ vLayout2 = VLayout()
 vLayout2:addChild(Button("Top (right)"))
 vLayout2:addChild(Button("Center (right)"))
 vLayout2:addChild(Button("Bottom (right)"))
-vLayout1.addExpansion()
-vLayout2.addExpansion()
+vLayout1:addStretch()
+vLayout2:addStretch()
 
 mainLayout:addLayout(vLayout1)
 mainLayout:addLayout(vLayout2)

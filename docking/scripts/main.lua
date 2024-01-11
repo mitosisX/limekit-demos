@@ -7,5 +7,5 @@ b = Button("Click me")
 
 dock:setMagneticAreas({'top', 'bottom'})
 dock:setChild(b)
-window:addDock(dock)
+window:addDock(dock,'left')
 window.show()

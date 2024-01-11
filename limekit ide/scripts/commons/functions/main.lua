@@ -162,9 +162,6 @@ function projectOpener()
     })
 
     if file ~= "" then
-
-        writeToConsole(file)
-
         initProject(file)
 
         local theRecentProject = MenuItem(userProjectJSON.project.name)
@@ -262,43 +259,65 @@ function aboutPage()
     groupB = GroupBox()
     groupB:setBackgroundColor('#307DE1')
 
+    theGroupLay = HLayout()
+
+    gi = GifPlayer(images(app.randomChoice({'homepage/sheep.gif', 'homepage/cat.gif'})))
+    gi:setSize(120, 120)
+    gi:setResizeRule('fixed', 'fixed')
+    gi:setMargins(90, 0, 0, 0)
+
+    theGroupLay:addChild(gi)
+
+    theGroupLay:addChild(VLine())
+
     gBLayo = VLayout()
     gBLayo:setContentAlignment('center')
 
-    title1 = Label('<strong>Quick setup</strong>')
-    title1:setTextColor('white')
+    aboutNameTitle = Label('<strong>Name</strong>')
+    aboutNameTitle:setTextColor('white')
 
-    subTitle1 = Label('Takes seconds to get an app running\n')
-    subTitle1:setTextColor('white')
+    aboutName = Label('Limekit\n')
+    aboutName:setTextColor('white')
 
-    gBLayo:addChild(title1)
-    gBLayo:addChild(subTitle1)
+    gBLayo:addChild(aboutNameTitle)
+    gBLayo:addChild(aboutName)
 
-    title2 = Label('<strong>Cross-platform solution</strong>')
-    title2:setTextColor('white')
-    subTitle2 = Label('Same code for Windows, Linux and macOS\n')
-    subTitle2:setTextColor('white')
+    aboutVersionTitle = Label('<strong>Version</strong>')
+    aboutVersionTitle:setTextColor('white')
 
-    gBLayo:addChild(title2)
-    gBLayo:addChild(subTitle2)
+    aboutVersion = Label('1.0 (wonder)\n')
+    aboutVersion:setTextColor('white')
 
-    title3 = Label('<strong>Intuitive API</strong>')
+    gBLayo:addChild(aboutVersionTitle)
+    gBLayo:addChild(aboutVersion)
+
+    aboutChiefTitle = Label('<strong>Chief Developer</strong>')
+    aboutChiefTitle:setTextColor('white')
+
+    aboutChief = Label('Omega Msiska\n')
+    aboutChief:setTextColor('white')
+
+    gBLayo:addChild(aboutChiefTitle)
+    gBLayo:addChild(aboutChief)
+
+    title3 = Label('<strong>Company</strong>')
     title3:setTextColor('white')
-    subTitle3 = Label('Our API is friendly even to newbies\n')
+    subTitle3 = Label('Take bytes\n')
     subTitle3:setTextColor('white')
 
     gBLayo:addChild(title3)
     gBLayo:addChild(subTitle3)
 
-    title4 = Label('<strong>Modern GUI</strong>')
+    title4 = Label('<strong>My github</strong>')
     title4:setTextColor('white')
-    subTitle4 = Label('Develop modern looking programs in no time')
+    subTitle4 = Label('mitosisx')
     subTitle4:setTextColor('white')
 
     gBLayo:addChild(title4)
     gBLayo:addChild(subTitle4)
 
-    groupB:setLayout(gBLayo)
+    theGroupLay:addLayout(gBLayo)
+    groupB:setLayout(theGroupLay)
     createMainLayout:addChild(groupB)
 
     -- buttons = modal:getButtons({'ok', 'cancel'})

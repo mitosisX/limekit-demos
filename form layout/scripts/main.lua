@@ -1,11 +1,9 @@
-window = Window("Form Layout - Limekit")
-window:setIcon(route('app_icon'))
-window:setSize(500, 400)
+window = Window{title="Form Layout - Limekit", icon=images('app.png'), size={500, 400}}
 
 main_grid = FormLayout()
 
-theme = Theme("material")
--- theme:setTheme("light_blue")
+theme = app.Theme("material")
+theme:setTheme("light_blue")
 
 header_label = Label("Appointment Form")
 header_label:setFont('Arial', 18)

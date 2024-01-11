@@ -1,4 +1,4 @@
-window = Window{title="Input Dialogs - Limekit", icon = route('app_icon'), size={350, 170}}
+window = Window{title="Input Dialogs - Limekit", icon = images('app.png'), size={350, 170}}
 
 mainLay = HLayout()
 
