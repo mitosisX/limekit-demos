@@ -1,0 +1,1 @@
+{"project":{"url":"", "version":"1.0", "description":"Example showing rich text editing", "routes":{"single":{"app_icon":"images::app.png"}, "group":{}}, "name":"Rich Text Editor", "copyright":"Limekit by Take bytes", "lua_require":"", "email":"", "author":"Omega Msiska"}}

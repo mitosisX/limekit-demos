@@ -6,7 +6,7 @@ window = Window{title="Widgets - Limekit", icon=images('app.png')}
 window:setOnShown(function()
   window:center()
   noti = SysNotification(images('app.png'))
-  noti:setMessage{message='Try resizing the window', icon='warning', duration=1000}
+  noti:setMessage{title='Limekit', message='Try resizing the window', icon='warning', duration=1000}
   
   noti:setOnClick(function()
     app.alert(window, "Limekit", 'You clicked the notification')
