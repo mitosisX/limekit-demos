@@ -36,19 +36,19 @@ function getTables()
 	end
 end
 
-window = Window{title = "DB Browser for SQLite - Limekit"}
-window:setIcon(route('app_icon'))
-window:setSize(1000, 600)
+window = Window{title = "DB Browser for SQLite - Limekit", icon=route('app_icon'), size={1000, 600}}
+-- window:setIcon(route('app_icon'))
+-- window:setSize(1000, 600)
 
 theme = app.Theme('darklight')
-theme:setTheme('dark')
+theme:setTheme('light')
 
 mainLay = VLayout()
 childMainLayout = HLayout()
 
 segmentation = Splitter('horizontal')
 
-db = Sqlite3('D:/sandbox/limekit.db')
+-- db = Sqlite3('D:/sandbox/limekit.db')
 
 menubar = Menubar()
 

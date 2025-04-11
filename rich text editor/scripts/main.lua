@@ -19,8 +19,10 @@ mainLay = VLayout()
 statusBar = StatusBar()
 
 textEditor = TextField()
+textEditor:removeBorder()
+textEditor:setPageSize(20, 81)
 textEditor:setTabSpacing(8)
-textEditor:setTextSize(8)
+textEditor:setTextSize(12)
 textEditor:setOnCursorPositionChange(function()
     line = textEditor:getBlockNumber() + 1
     col = textEditor:getColumnNumber()

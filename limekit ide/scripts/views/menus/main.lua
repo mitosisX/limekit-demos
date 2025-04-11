@@ -10,9 +10,7 @@ function changeTheme(obj)
         theme:setTheme('dark')
         obj:setText('Light')
         obj:setIcon(images('app/light.png'))
-
     end
-
 end
 
 appMenubarItems = {{
@@ -30,12 +28,7 @@ appMenubarItems = {{
         click = projectOpener
     }, {
         label = '-'
-    }, -- {
-    --     label = 'New Database...',
-    --     icon = images('database_add.png')
-    --     -- shortcut = "Ctrl+N"
-    -- }, 
-    {
+    }, {
         label = 'Exit',
         icon = images('exit.png'),
         click = function()

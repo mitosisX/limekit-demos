@@ -61,8 +61,6 @@ mainLay = VLayout() -- The master layout for the whole app
 
 segmentation = Splitter('horizontal')
 
--- db = Sqlite3('D:/sandbox/limekit.db')
-
 menubar = Menubar()
 menubar:buildFromTemplate(appMenubarItems) -- derived from commons/menus.lua
 window:setMenubar(menubar)

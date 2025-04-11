@@ -8,7 +8,6 @@ projectJsonStruct = {
         copyright = "",
         version = "",
         email = ""
-        -- lua_require = ""
     }
 }
 

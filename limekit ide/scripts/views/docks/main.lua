@@ -82,8 +82,7 @@ allAppUtils = {'copyFile', 'isIDE', 'renameFolder', 'getFileExt', 'sortArray', '
                'criticalAlert', 'infoAlert', 'warningAlert', 'getClipboardText', 'setClipboarText', 'listFolder',
                'createFolder', 'playSound', 'getProcesses', 'killProcess', 'getCPUCount', 'getUsers', 'getBatteryInfo',
                'getDiskPartitions', 'getDiskInfo', 'getBootTime', 'getMachineType', 'getNetworkNodeName',
-               'getProcessorName', 'getPlatformName', 'getSystemRelease', 'getOSName', 'getOSRelease', 'getOSVersion' -- 'checkUniqueChars'
-}
+               'getProcessorName', 'getPlatformName', 'getSystemRelease', 'getOSName', 'getOSRelease', 'getOSVersion'}
 
 -- ######### App utils listing
 pyUtilsList = ListBox() -- For all python utils

@@ -1,6 +1,6 @@
-window = FWindow()
+window = FluentWindow()
 
-mainLay = FlowLayout()
+-- mainLay = FlowLayout()
 
-window:addMenu('Search', FluentIcon.GAME, mainLay)
-window.show()
+-- window:addMenu('Search', FluentIcon.GAME, mainLay)
+window:show()

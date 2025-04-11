@@ -3,7 +3,7 @@ app.Theme('darklight'):setTheme('dark')
 mainLay = GridLayout()
 
 combo = ComboBox()
-combo:setOnItemSelected(function(obj, item)
+combo:setOnItemSelect(function(obj, item)
 	canvas:setTheme(item)
 end)
 

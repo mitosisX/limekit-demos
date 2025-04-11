@@ -60,9 +60,15 @@ strikeAction:setIcon(images("strike.png"))
 
 superAction = ToolbarButton("Superscript")
 superAction:setIcon(images("superscript.png"))
+superAction:setOnClick(function()
+    textEditor:setVerticalTextAlignment('superscript')
+end)
 
 subAction = ToolbarButton("Subscript")
 subAction:setIcon(images("subscript.png"))
+subAction:setOnClick(function()
+    textEditor:setVerticalTextAlignment('subscript')
+end)
 
 formatbar:addButton(boldAction)
 formatbar:addButton(italicAction)

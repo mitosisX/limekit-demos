@@ -34,8 +34,6 @@ function makeHomepageCards(image_path, text, blue)
     welcomeContentLay:addChild(group)
 end
 
--- welcomeView:addChild(GifPlayer(images('homepage/mo.GIF')))
-
 makeHomepageCards(images('homepage/modern.png'), 'Develop modern UI')
 makeHomepageCards(images('homepage/hundred.png'), 'Free for all users')
 makeHomepageCards(images('homepage/battery.png'), 'Batteries Included')

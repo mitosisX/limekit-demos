@@ -258,6 +258,14 @@ middle:setOnClick(pickMiddle)
 right = Button("Right")
 right.setOnClick(pickRight)
 
+dirLay = HLayout()
+
+dirLay:addChild(left)
+dirLay:addChild(middle)
+dirLay:addChild(right)
+
+mainLay:addLayout(dirLay)
+
 -- app.Message("If you tell me the truth I will always be correct, if you lie, I will lie too!\n\nThis isn't magic but just the power of algorithms. Ok, let's play");
 -- chooseCategory();
 

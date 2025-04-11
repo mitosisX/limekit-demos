@@ -1,6 +1,4 @@
-window = Window("Fluent UI - Limekit")
-window:setIcon(images("lua.png"))
-window:setSize(750, 600)
+window = FluentWindow{title="Fluent UI - Limekit",icon=images("lua.png") ,size={750, 600}}
 
 -- theme = Theme("material")
 -- theme:setTheme("light_blue")
@@ -124,7 +122,7 @@ end)
 
 
 co = ComboBox({"dropdown", "fadein", "pullup", "slideleft", "slideright"})
-co:onItemSelected(function(sender, item)
+co:setOnItemSelect(function(sender, item)
     anim = item
     print(anim)
 end)

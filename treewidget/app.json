@@ -1,0 +1,1 @@
+{"project":{"routes":{"group":{}, "single":{"app_icon":"images::app.png"}}, "author":"Omega Msiska", "copyright":"Limekit by Take bytes", "version":"1.0", "name":"Tree Widget", "lua_require":"", "url":"", "description":"Example showing tree widget", "email":""}}

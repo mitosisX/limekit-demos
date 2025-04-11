@@ -4,7 +4,7 @@ window:setSize(280, 170)
 
 mainLay = VLayout()
 
-menu = Menubar()
+menu = FMenubar()
 struct = {
     {
         label = "File",

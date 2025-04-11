@@ -199,7 +199,6 @@ function runProject()
         runAppButton:setText('Stop')
         runAppButton:setIcon(images('app/stop.png'))
         runProgress:setVisibility(true)
-
     end)
 
     projectRunnerProcess:setOnProcessFinished(function()
@@ -209,7 +208,6 @@ function runProject()
         runAppButton:setText('Run')
         runAppButton:setIcon(images('app/run.png'))
         runProgress:setVisibility(false)
-
     end)
 
     projectRunnerProcess:run()
@@ -241,7 +239,6 @@ end
 function runApp()
     if not isRunning then
         isRunning = true
-        -- runAppButton:setResizeRule('fixed', 'fixed')
         runProject()
     else
         isRunning = false
@@ -319,9 +316,6 @@ function aboutPage()
     theGroupLay:addLayout(gBLayo)
     groupB:setLayout(theGroupLay)
     createMainLayout:addChild(groupB)
-
-    -- buttons = modal:getButtons({'ok', 'cancel'})
-    -- v:addChild(buttons)
 
     modal:setLayout(createMainLayout)
 

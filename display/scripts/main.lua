@@ -74,7 +74,7 @@ end)
 mainLay1:addChild(button)
 
 themes = ComboBox(theme.getThemes())
-themes:setOnItemSelected(function (sender, data) 
+themes:setOnItemSelect(function (sender, data) 
   theme:setTheme(data)
 end)
 
@@ -147,7 +147,7 @@ spin2:setOnValueChange(calculateTotal)
 
 styles = ComboBox()
 styles:addItems(app.getStyles())
-styles:setOnItemSelected(function (sender, style)
+styles:setOnItemSelect(function (sender, style)
   app.setStyle(style)
 end)
 
