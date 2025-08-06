@@ -218,7 +218,7 @@ gameIcon:resizeImage(40,40)
 
 statusLabel = Label(string.format("Player %s's turn", currentPlayer))
 -- app.setFontFile(misc('CeraPro-Regular.ttf'))
-statusLabel:setTextAlign('center')
+statusLabel:setTextAlignment('center')
 statusLabel:setTextSize(18)
 statusLabel:setBold(true)
 mainLay:addChild(statusLabel)
@@ -249,7 +249,7 @@ for i=1, 9 do
         }
 	]])
 
-	button:setFixedSizes(80,80)
+	button:setFixedSize(80,80)
 	button:setOnClick(partial(handleMove, i))
 	table.insert(buttons, button)
 	gridLay:addChild(button, math.floor((i - 1) / 3) + 1, (i - 1) % 3 + 1)

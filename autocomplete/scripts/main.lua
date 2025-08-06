@@ -1,4 +1,4 @@
-window = Window{title='Charts - Limekit', size={400, 300}, icon=route('app_icon')}
+window = Window{title='Charts - Limekit', size={400, 300}, icon=images('app.png')}
 
 mainLay = VLayout()
 

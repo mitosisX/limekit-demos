@@ -1,0 +1,13 @@
+{
+ "files": {
+  "aliases": {}
+ },
+ "project": {
+  "version": "1.0",
+  "author": "",
+  "name": "slider",
+  "description": "",
+  "copyright": "",
+  "email": "test@g.com"
+ }
+}

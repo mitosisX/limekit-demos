@@ -335,7 +335,7 @@ addScrollableLayoutTab()
 addStackedWidgetTab()
 addAdvancedControlsTab()
 
-window:setMainWidget(tabWidget)
+window:setMainChild(tabWidget)
 
 
 window:show()

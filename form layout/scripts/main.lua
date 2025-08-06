@@ -7,7 +7,7 @@ theme:setTheme("light_blue")
 
 header_label = Label("Appointment Form")
 header_label:setFont('Arial', 18)
-header_label:setTextAlign('center')
+header_label:setTextAlignment('center')
 
 first_name_edit = LineEdit()
 first_name_edit.setHint('First')
