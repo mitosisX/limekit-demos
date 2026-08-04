@@ -1,1 +1,9 @@
-{"project":{"name":"calculator","version":"2.0","author":"Limekit","description":"Limekit 2.0 example"}}
+{
+  "api": "2.0",
+  "project": {
+    "name": "calculator",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Limekit 2.0 example"
+  }
+}
