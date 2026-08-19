@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "splitter-and-scroller",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Panes the user can resize, and content bigger than its window"
+  }
+}

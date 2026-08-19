@@ -1,0 +1,11 @@
+{
+    "api": "2.0",
+    "project": {
+        "name": "choices",
+        "copyright": "",
+        "description": "Check boxes, radio buttons, button groups and combo boxes",
+        "email": "",
+        "version": "1.0",
+        "author": "Limekit"
+    }
+}

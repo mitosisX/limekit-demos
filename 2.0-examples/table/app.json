@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "table",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "A grid of cells: headers, editing, widgets in cells, and colours"
+  }
+}

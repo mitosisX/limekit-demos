@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "text-inputs",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Single-line and multi-line text, selection, and password fields"
+  }
+}

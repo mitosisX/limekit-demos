@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "sliders-and-gauges",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Sliders, dials, spinners, progress bars and an LCD readout"
+  }
+}

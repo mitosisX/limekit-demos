@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "window-events",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Resize, mouse, close and shown -- the window's own events"
+  }
+}

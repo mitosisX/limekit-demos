@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "grid-layout",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Rows and columns, spanning cells, and 1-based coordinates"
+  }
+}

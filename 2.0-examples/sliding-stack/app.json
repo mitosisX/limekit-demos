@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "sliding-stack",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "One page at a time, with an animated transition between them"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "dialogs",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Every built-in dialog: files, folders, questions, and typed input"
+  }
+}

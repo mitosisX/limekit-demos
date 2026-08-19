@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "system-tray",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "A tray icon with a menu, and desktop notifications"
+  }
+}

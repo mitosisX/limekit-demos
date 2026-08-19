@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "system-info",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Hashes, clipboard, base64, and what the machine is"
+  }
+}

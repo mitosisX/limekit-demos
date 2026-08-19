@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "log-viewer",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Tail a growing file, filter it, and colour it by severity"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "notepad",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "A complete text editor: menus, files, find, and a status bar"
+  }
+}

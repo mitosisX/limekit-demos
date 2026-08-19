@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "menus-and-toolbars",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Menubar, submenus, toolbars, status bar and shortcuts"
+  }
+}

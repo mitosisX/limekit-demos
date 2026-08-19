@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "tree-view",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "A hierarchy: columns, nesting, editing and icons"
+  }
+}

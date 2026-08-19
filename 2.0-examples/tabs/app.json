@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "tabs",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Tab pages, closable tabs, and reading the current one"
+  }
+}

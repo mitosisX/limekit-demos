@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "form-layout",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Label-and-field rows, the layout built for data entry"
+  }
+}

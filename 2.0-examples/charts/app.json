@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "charts",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Six charts: four bar arrangements, lines, an area band, live data"
+  }
+}

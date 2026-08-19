@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "date-and-time",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Calendars, date and time pickers, and a running clock"
+  }
+}

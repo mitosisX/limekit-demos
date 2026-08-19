@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "widget-gallery",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Every ui class, live on a page, generated from one table"
+  }
+}

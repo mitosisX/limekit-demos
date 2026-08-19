@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "layouts",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Boxes inside boxes: spacing, margins, stretch and spacers"
+  }
+}

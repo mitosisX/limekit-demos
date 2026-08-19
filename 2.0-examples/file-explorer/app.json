@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "file-explorer",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "A two-pane file browser: tree, listing, preview and file operations"
+  }
+}

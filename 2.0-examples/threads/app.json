@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "threads",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Work off the GUI thread, and get back safely"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "image-viewer",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Images, GIFs, resource paths and project routes",
+    "routes": {
+      "single": {
+        "app_icon": "images::app.png"
+      },
+      "group": {
+        "gallery": {
+          "group_label": "images",
+          "heart": "heart.png",
+          "flag": "malawi.png",
+          "food": "kfc.png",
+          "portrait": "man.png"
+        }
+      }
+    }
+  }
+}

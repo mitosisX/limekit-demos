@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "docking",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Dock panels the user can float, move and close"
+  }
+}

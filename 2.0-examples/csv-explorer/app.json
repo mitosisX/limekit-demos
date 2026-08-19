@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "csv-explorer",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Load a CSV, sort it, summarise it, and chart a column"
+  }
+}

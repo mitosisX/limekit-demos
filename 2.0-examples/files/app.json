@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "files",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Reading, writing and walking the file system"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "tic-tac-toe",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "A complete game: grid, state, and a computer opponent"
+  }
+}

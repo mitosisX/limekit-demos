@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "accordion",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Collapsible sections stacked in a column"
+  }
+}
