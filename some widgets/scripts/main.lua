@@ -12,7 +12,7 @@ styleLabel = Label("&Style:")
 styleLabel.setBuddy(styleComboBox)
 
 useStylePaletteCheckBox = CheckBox("&Use style's standard palette")
-useStylePaletteCheckBox.setChecked(true)
+useStylePaletteCheckBox.setCheck(true)
 
 disableWidgetsCheckBox = CheckBox("&Disable widgets")
 
@@ -22,7 +22,7 @@ topLeftGroupBox = GroupBox("Group 1")
 radioButton1 = RadioButton("Radio button 1")
 radioButton2 = RadioButton("Radio button 2")
 radioButton3 = RadioButton("Radio button 3")
-radioButton1.setChecked(true)
+radioButton1.setCheck(true)
 
 checkBox = CheckBox("Tri-state check box")
 checkBox.setTristate(true)
@@ -46,7 +46,7 @@ defaultPushButton.setDefault(true)
 
 togglePushButton = Button("Toggle Push Button")
 togglePushButton.setCheckable(true)
-togglePushButton.setChecked(true)
+togglePushButton.setCheck(true)
 
 flatPushButton = Button("Flat Push Button")
 flatPushButton.setFlat(true)
@@ -104,7 +104,7 @@ bottomLeftTabWidget:addTab(tab2, "Text &Edit")
 
 bottomRightGroupBox = GroupBox("Group 3")
 bottomRightGroupBox.setCheckable(true)
-bottomRightGroupBox.setChecked(true)
+bottomRightGroupBox.setCheck(true)
 
 lineEdit = LineEdit('s3cRe7')
 lineEdit.setInputMode('password')
