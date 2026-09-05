@@ -490,6 +490,7 @@ local ELSEWHERE = {
     { "FormLayout", "Label on the left, widget on the right -- as used for every entry here.", "form-layout" },
     { "StackedLayout", "One child visible at a time, with no animation. SlidingStackedWidget is the animated version.", "sliding-stack" },
     { "DesignSurface", "Shows widgets without letting them be used, so a click selects rather than presses. For building a designer, not an app.", "-- Limer's Designer" },
+    { "WidgetPalette", "A searchable list of every buildable widget that can be dragged onto a DesignSurface. For building a designer, not an app.", "-- Limer's Designer" },
 }
 
 -- BUILDING THE PAGE --------------------------------------------------------
