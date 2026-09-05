@@ -1,0 +1,10 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "Designer login",
+    "author": "Limekit",
+    "version": "1.0",
+    "description": "A window built in Limer's designer, wired up in main.lua"
+  },
+  "files": { "aliases": {} }
+}
