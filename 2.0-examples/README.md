@@ -1,6 +1,6 @@
 # Limekit 2.0 examples
 
-Forty-four apps written against the **2.0 API**. Every one boots headless in
+Forty-five apps written against the **2.0 API**. Every one boots headless in
 Limekit's own test suite (`tests/test_demo_smoke.py::test_modern_demo_boots_clean`),
 so if the framework regresses, these break in CI rather than in your hands.
 
@@ -90,6 +90,7 @@ Larger apps, each built around one idea worth stealing.
 | `minesweeper` | The board as a Lua table painted onto buttons; a safe first click; flood fill with an explicit stack; a clock; best times in JSON |
 | `spreadsheet` | Formulas with references and `SUM(A1:B3)` ranges, evaluated in the sandbox after substitution; recalculation with memoisation; `#CYCLE` instead of a hang; CSV that keeps the formulas |
 | `folder-mirror` | `FileWatcher` + debounce `Timer` + worker `Thread` + `Signal`: a folder kept in sync, with the work off the GUI thread and the report back on it |
+| `pixel-editor` | Pencil, fill, eraser and pick over a table of colours; undo as snapshots; mirror mode; SVG out as text and PNG out as bytes -- a PNG encoder (CRC32, Adler-32, stored-block zlib) in `png.lua`, written through `writeBase64` |
 
 `widget-gallery` is worth opening first if you are new: it shows all 63
 classes at once, and Limekit's test suite checks it against the live registry,

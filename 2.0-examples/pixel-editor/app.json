@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "pixel-editor",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Pixel art: tools, a palette, fill, undo and redo, and a PNG written byte by byte in Lua"
+  }
+}
