@@ -1,6 +1,6 @@
 # Limekit 2.0 examples
 
-Thirty-nine apps written against the **2.0 API**. Every one boots headless in
+Forty-four apps written against the **2.0 API**. Every one boots headless in
 Limekit's own test suite (`tests/test_demo_smoke.py::test_modern_demo_boots_clean`),
 so if the framework regresses, these break in CI rather than in your hands.
 
@@ -78,6 +78,18 @@ python -m limekit "2.0-examples/hello-window"
 | `log-viewer` | Tailing a growing file with a timer, filtered and coloured by severity |
 | `kanban` | A board of cards: modal editing, moving columns, saved as JSON |
 | `widget-gallery` | Every `ui` class, live, generated from one table |
+
+## Going further
+
+Larger apps, each built around one idea worth stealing.
+
+| Example | Shows |
+|---|---|
+| `expense-tracker` | An app in three modules: `store.lua` owns the SQL, `report.lua` the charts, `main.lua` the widgets. One `refresh` draws everything through the current filter; a modal built once serves both add and edit |
+| `markdown-notes` | A Markdown renderer in Lua feeding `setHtml`; save-as-you-type with a debounced single-shot timer; search across title, text and tags in one query |
+| `minesweeper` | The board as a Lua table painted onto buttons; a safe first click; flood fill with an explicit stack; a clock; best times in JSON |
+| `spreadsheet` | Formulas with references and `SUM(A1:B3)` ranges, evaluated in the sandbox after substitution; recalculation with memoisation; `#CYCLE` instead of a hang; CSV that keeps the formulas |
+| `folder-mirror` | `FileWatcher` + debounce `Timer` + worker `Thread` + `Signal`: a folder kept in sync, with the work off the GUI thread and the report back on it |
 
 `widget-gallery` is worth opening first if you are new: it shows all 63
 classes at once, and Limekit's test suite checks it against the live registry,

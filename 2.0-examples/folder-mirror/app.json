@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "folder-mirror",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Keeps a copy of a folder up to date: a file watcher, a worker thread, a signal back, and a log"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "spreadsheet",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "A small spreadsheet: formulas with cell references and ranges, recalculation, cycle detection, CSV"
+  }
+}

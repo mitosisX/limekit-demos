@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "expense-tracker",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Expenses in SQLite, filtered, charted and exported -- an app split into modules"
+  }
+}

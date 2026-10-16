@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "markdown-notes",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Notes with live Markdown preview, search, tags and autosave -- a renderer written in Lua"
+  }
+}

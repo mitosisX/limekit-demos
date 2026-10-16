@@ -1,0 +1,9 @@
+{
+  "api": "2.0",
+  "project": {
+    "name": "minesweeper",
+    "version": "1.0",
+    "author": "Limekit",
+    "description": "Minesweeper: a safe first click, flood-fill reveals, a clock, three sizes and best times"
+  }
+}
